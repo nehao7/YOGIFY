@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightGrey"
-    tools:context=".veriication_screen">
+    tools:context=".login_signup_screen.veriication_screen">
 
 
     <LinearLayout
