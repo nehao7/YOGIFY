@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_signup"
+    app:startDestination="@id/login_signup_screen_1">
+
+    <fragment
+        android:id="@+id/login_signup_screen_1"
+        android:name="com.pardeep.yogify.login_signup_screen_1"
+        android:label="fragment_login_signup_screen_1"
+        tools:layout="@layout/fragment_login_signup_screen_1" >
+        <action
+            android:id="@+id/action_login_signup_screen_1_to_login_signup_screen_2"
+            app:destination="@id/login_signup_screen_2" />
+        <action
+            android:id="@+id/action_login_signup_screen_1_to_veriication_screen"
+            app:destination="@id/veriication_screen" />
+    </fragment>
+    <fragment
+        android:id="@+id/login_signup_screen_2"
+        android:name="com.pardeep.yogify.login_signup_screen_2"
+        android:label="fragment_login_signup_screen_2"
+        tools:layout="@layout/fragment_login_signup_screen_2" >
+        <action
+            android:id="@+id/action_login_signup_screen_2_to_veriication_screen"
+            app:destination="@id/veriication_screen" />
+    </fragment>
+    <fragment
+        android:id="@+id/veriication_screen"
+        android:name="com.pardeep.yogify.veriication_screen"
+        android:label="fragment_veriication_screen"
+        tools:layout="@layout/fragment_veriication_screen" />
+</navigation>
