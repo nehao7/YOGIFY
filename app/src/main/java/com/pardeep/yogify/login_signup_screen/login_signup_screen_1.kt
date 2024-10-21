@@ -50,9 +50,35 @@ class login_signup_screen_1 : Fragment() {
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
+
         binding?.signIn?.setOnClickListener {
-            navController = findNavController()
-            navController.navigate(R.id.action_login_signup_screen_1_to_login_signup_screen_2)
+
+            if (binding?.etEmail?.text?.trim().isNullOrBlank()) {
+                binding?.TextInputLayout?.helperText = "required*"
+                binding?.TextInputLayout?.setHelperTextColor(requireContext().getColorStateList(R.color.red))
+            } else if (binding?.etPassword?.text?.trim().isNullOrBlank()) {
+                binding?.passwordTextInputLayout?.helperText = "required"
+                binding?.passwordTextInputLayout?.setHelperTextColor(requireContext().getColorStateList(R.color.red))
+            } else {
+                // adding block of code for login here
+            }
+
+        }
+
+        navController = findNavController()
+        //navigation to second screen for sign up when user don't have a account
+       binding?.signUpBtn?.setOnClickListener {
+
+           navController.navigate(R.id.action_login_signup_screen_1_to_login_signup_screen_2)
+       }
+        binding?.googleBtn?.setOnClickListener {
+            navController.navigate(R.id.action_login_signup_screen_1_to_veriication_screen)
+        }
+        binding?.facebookBtn?.setOnClickListener {
+            navController.navigate(R.id.action_login_signup_screen_1_to_veriication_screen)
+        }
+        binding?.twitterBtn?.setOnClickListener {
+            navController.navigate(R.id.action_login_signup_screen_1_to_veriication_screen)
         }
     }
 

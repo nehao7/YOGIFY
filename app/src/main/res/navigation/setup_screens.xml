@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/setupScreen_1"
-        android:name="com.pardeep.yogify.setupScreen_1"
+        android:name="com.pardeep.yogify.setupScreens.SetupScreen_1"
         android:label="fragment_setup_screen_1"
         tools:layout="@layout/fragment_setup_screen_1" />
 </navigation>

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_login_signup_screen_2_to_veriication_screen"
             app:destination="@id/veriication_screen" />
+        <action
+            android:id="@+id/action_login_signup_screen_2_to_login_signup_screen_1"
+            app:destination="@id/login_signup_screen_1" />
     </fragment>
     <fragment
         android:id="@+id/veriication_screen"

@@ -7,4 +7,10 @@
     <color name="dullYellow">#ADBC9F</color>
     <color name="yellow">#FBFADA</color>
     <color name="lightGrey">#F2F2F2</color>
+    <color name="red">#D60202</color>
+    
+    <color name="purple">#7469B6</color>
+    <color name="lightPurple">#AD88C6</color>
+    <color name="lightPink">#E1AFD1</color>
+    <color name="lightYellow">#FFE6E6</color>
 </resources>
