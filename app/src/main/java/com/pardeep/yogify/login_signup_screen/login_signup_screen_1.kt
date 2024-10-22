@@ -72,13 +72,13 @@ class login_signup_screen_1 : Fragment() {
            navController.navigate(R.id.action_login_signup_screen_1_to_login_signup_screen_2)
        }
         binding?.googleBtn?.setOnClickListener {
-            navController.navigate(R.id.action_login_signup_screen_1_to_veriication_screen)
+            navController.navigate(R.id.action_login_signup_screen_1_to_verification_Screen2)
         }
         binding?.facebookBtn?.setOnClickListener {
-            navController.navigate(R.id.action_login_signup_screen_1_to_veriication_screen)
+            navController.navigate(R.id.action_login_signup_screen_1_to_verification_Screen2)
         }
         binding?.twitterBtn?.setOnClickListener {
-            navController.navigate(R.id.action_login_signup_screen_1_to_veriication_screen)
+            navController.navigate(R.id.action_login_signup_screen_1_to_verification_Screen2)
         }
     }
 

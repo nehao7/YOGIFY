@@ -79,7 +79,7 @@ class login_signup_screen_2 : Fragment() {
                 val bundle = Bundle()
                 bundle.putInt("randomNumber", randomNumber)
                 navController = findNavController()
-                navController.navigate(R.id.action_login_signup_screen_2_to_veriication_screen, bundle)
+                navController.navigate(R.id.action_login_signup_screen_2_to_verification_Screen2, bundle)
 
 
 
@@ -91,13 +91,13 @@ class login_signup_screen_2 : Fragment() {
 
         //navigate to verification screen if user chooses to sign up with google or facebook or twitter
         binding?.googleBtn?.setOnClickListener {
-         navController.navigate(R.id.action_login_signup_screen_2_to_veriication_screen)
+         navController.navigate(R.id.action_login_signup_screen_2_to_verification_Screen2)
         }
         binding?.facebookBtn?.setOnClickListener {
-            navController.navigate(R.id.action_login_signup_screen_2_to_veriication_screen)
+            navController.navigate(R.id.action_login_signup_screen_2_to_verification_Screen2)
         }
         binding?.twitterBtn?.setOnClickListener {
-            navController.navigate(R.id.action_login_signup_screen_2_to_veriication_screen)
+            navController.navigate(R.id.action_login_signup_screen_2_to_verification_Screen2)
         }
 
         binding?.signInBtn?.setOnClickListener {

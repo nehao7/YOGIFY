@@ -6,4 +6,19 @@
     </style>
 
     <style name="Theme.YOGIFY" parent="Base.Theme.YOGIFY" />
+
+    <style name="checkbox_button" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">30dp</item>
+        <item name="android:layout_marginEnd">30dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:padding">30dp</item>
+        <item name="android:background">@drawable/on_btn_click</item>
+        <item name="android:button">@android:color/transparent</item>
+        <item name="backgroundTint">@color/dullYellow</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+        
 </resources>
