@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import com.pardeep.yogify.R
+import com.pardeep.yogify.databinding.FragmentSetupScreen4Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,9 +23,13 @@ class SetupScreen4 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    var binding : FragmentSetupScreen4Binding? = null
+    lateinit var navController: NavController
+    var setupActivity : SetupActivity? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupActivity = activity as SetupActivity
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -35,7 +41,32 @@ class SetupScreen4 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setup_screen4, container, false)
+        binding = FragmentSetupScreen4Binding.inflate(layoutInflater)
+        return binding?.root
+       // return inflater.inflate(R.layout.fragment_setup_screen4, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.nextBtn?.setOnClickListener {
+
+            if (binding?.etName?.text?.trim().isNullOrBlank()) {
+                binding?.TextInputLayout?.helperText = "Please enter your name"
+                //binding?.TextInputLayout?.setHelperTextColor()
+            } else if (binding?.etLastName?.text?.trim().isNullOrBlank()) {
+                binding?.TextInputLayout2?.helperText = "Please enter your last name"
+                //binding?.TextInputLayout?.setHelperTextColor()
+            } else if (binding?.etWeight?.text?.trim().isNullOrBlank()) {
+                binding?.TextInputLayout3?.helperText = "Please enter your weight"
+                //binding?.TextInputLayout?.setHelperTextColor()
+            } else if (binding?.etHeight?.text?.trim().isNullOrBlank()) {
+                binding?.TextInputLayout4?.helperText = "Please enter your height"
+                //binding?.TextInputLayout?.setHelperTextColor()
+            }
+            else {
+               setupActivity?.moveToSecondDestination()
+            }
+        }
     }
 
     companion object {

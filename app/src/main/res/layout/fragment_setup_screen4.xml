@@ -31,6 +31,7 @@
 
 
     <LinearLayout
+        android:id="@+id/llv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -67,7 +68,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="20dp"
             android:hint="Last name"
             app:boxStrokeColor="@color/lightGreen"
             app:counterMaxLength="20"
@@ -81,21 +81,102 @@
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/llv">
 
+        <RadioButton
+            android:id="@+id/yesBtn"
+            style="@style/checkbox_button"
+            android:text=" Male " />
 
+        <RadioButton
+            android:id="@+id/NoBtn"
+            style="@style/checkbox_button"
+            android:text="Female" />
 
-        <LinearLayout
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/llv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TextInputLayout3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"/>
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:hint="Height"
 
+            app:boxStrokeColor="@color/lightGreen"
+            app:counterMaxLength="5"
+            app:endIconMode="clear_text"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:hintTextColor="@color/lightGreen">
 
+            <EditText
+                android:id="@+id/etHeight"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TextInputLayout4"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_weight="1"
+            android:hint="Weight"
+            app:boxStrokeColor="@color/lightGreen"
+            app:counterMaxLength="3"
+            app:endIconMode="clear_text"
+            app:helperTextTextColor="@android:color/holo_red_dark"
+            app:hintTextColor="@color/lightGreen">
+
+            <EditText
+                android:id="@+id/etWeight"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/nextBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Next"
+        app:backgroundTint="@color/lightGreen"
+        android:enabled="true"
+        android:layout_margin="50dp"
+        android:background="@drawable/btn_shape"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/llv2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

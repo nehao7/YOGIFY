@@ -1,4 +1,4 @@
-package com.pardeep.yogify.login_signup_screen
+package com.pardeep.yogify
 
 interface ActivityDestination {
     fun moveToSecondDestination()

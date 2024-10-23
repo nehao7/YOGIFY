@@ -4,24 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".setupScreens.SetupScreen_1"
-    android:background="@color/lightGrey">
+    tools:context=".setupScreens.SetupScreen_1">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:gravity="center"
         android:text="What motivate you"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_margin="15dp"/>
+        android:textStyle="bold" />
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:background="@color/lightGrey"
         android:layout_marginTop="100dp">
 
         <LinearLayout
@@ -35,37 +33,44 @@
                 android:id="@+id/checkbox1"
                 style="@style/checkbox_button"
                 android:text="Stay Young"
+                android:gravity="center"
                 />
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox2"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Lose weight"/>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox3"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Get shaped"/>
 
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox4"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Improve health"/>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox5"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Boost energy"/>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox6"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Sleep better"/>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox7"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Reduce stress"/>
 
             <com.google.android.material.button.MaterialButton
@@ -74,7 +79,7 @@
                 android:layout_height="50dp"
                 android:text="Next"
                 app:backgroundTint="@color/lightGreen"
-                android:enabled="true"
+                android:enabled="false"
                 android:layout_margin="30dp"
                 android:background="@drawable/btn_shape"
                 android:layout_gravity="center_horizontal"/>

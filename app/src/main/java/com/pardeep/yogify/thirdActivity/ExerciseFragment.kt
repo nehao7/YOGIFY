@@ -1,14 +1,12 @@
-package com.pardeep.yogify.setupScreens
+package com.pardeep.yogify.thirdActivity
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
-import com.pardeep.yogify.R
-import com.pardeep.yogify.databinding.FragmentSetupScreen3Binding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.pardeep.yogify.databinding.FragmentExerciseBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,15 +15,17 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SetupScreen3.newInstance] factory method to
+ * Use the [ExerciseFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SetupScreen3 : Fragment() {
+class ExerciseFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    var binding: FragmentSetupScreen3Binding? = null
-    lateinit var navController: NavController
+    var binding : FragmentExerciseBinding?=null
+    var levelAdp = LevelAdaptor()
+    var musicMeditationAdp = MusicMeditationAdp()
+    lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,32 +40,20 @@ class SetupScreen3 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSetupScreen3Binding.inflate(layoutInflater)
+        binding = FragmentExerciseBinding.inflate(layoutInflater)
         return binding?.root
-        //return inflater.inflate(R.layout.fragment_setup_screen3, container, false)
+        //return inflater.inflate(R.layout.fragment_exercise, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.nextBtn?.setOnClickListener {
-            navController = findNavController()
-            navController.navigate(R.id.action_setupScreen3_to_setupScreen4)
-        }
+        binding?.recyclerView1?.adapter = levelAdp
+        linearLayoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
+        binding?.recyclerView1?.layoutManager = linearLayoutManager
 
-        binding?.radioGroup?.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
-                R.id.yesBtn -> {
-                    binding?.nextBtn?.isEnabled = true
-                }
-
-                R.id.noBtn -> {
-                    binding?.nextBtn?.isEnabled = true
-
-                }
-
-            }
-        }
+        binding?.recyclerView2?.adapter = musicMeditationAdp
+        linearLayoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
+        binding?.recyclerView2?.layoutManager = linearLayoutManager
     }
 
     companion object {
@@ -75,12 +63,12 @@ class SetupScreen3 : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment SetupScreen3.
+         * @return A new instance of fragment ExerciseFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SetupScreen3().apply {
+            ExerciseFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

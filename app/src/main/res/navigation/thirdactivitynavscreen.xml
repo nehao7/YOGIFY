@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/thirdactivitynavscreen"
+    app:startDestination="@id/exerciseFragment">
+
+    <fragment
+        android:id="@+id/exerciseFragment"
+        android:name="com.pardeep.yogify.thirdActivity.ExerciseFragment"
+        android:label="fragment_exercise"
+        tools:layout="@layout/fragment_exercise" >
+        <action
+            android:id="@+id/action_exerciseFragment_to_trackingFragment"
+            app:destination="@id/trackingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.pardeep.yogify.thirdActivity.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/seachFragment"
+        android:name="com.pardeep.yogify.thirdActivity.SeachFragment"
+        android:label="fragment_seach"
+        tools:layout="@layout/fragment_seach" >
+        <action
+            android:id="@+id/action_seachFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trackingFragment"
+        android:name="com.pardeep.yogify.thirdActivity.TrackingFragment"
+        android:label="fragment_tracking"
+        tools:layout="@layout/fragment_tracking" >
+        <action
+            android:id="@+id/action_trackingFragment_to_seachFragment"
+            app:destination="@id/seachFragment" />
+    </fragment>
+</navigation>

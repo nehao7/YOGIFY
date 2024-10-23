@@ -5,7 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.pardeep.yogify.R
+import com.pardeep.yogify.databinding.FragmentLoginSignupScreen2Binding
+import com.pardeep.yogify.databinding.FragmentSetupScreen2Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +26,8 @@ class SetupScreen2 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    var binding : FragmentSetupScreen2Binding? = null
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +42,28 @@ class SetupScreen2 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setup_screen2, container, false)
+        binding = FragmentSetupScreen2Binding.inflate(layoutInflater)
+        return binding?.root
+       // return inflater.inflate(R.layout.fragment_setup_screen2, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.nextBtn?.setOnClickListener {
+            navController = findNavController()
+            navController.navigate(R.id.action_setupScreen2_to_setupScreen3)
+        }
+
+        val radioBtnListerner = CompoundButton.OnCheckedChangeListener { _, _ ->
+            binding?.nextBtn?.isEnabled = binding?.rb1?.isChecked !! || binding?.rb2?.isChecked!! || binding?.rb3?.isChecked!! ||
+            binding?.rb4?.isChecked!! || binding?.rb5?.isChecked!! }
+
+        binding?.rb1?.setOnCheckedChangeListener(radioBtnListerner)
+        binding?.rb2?.setOnCheckedChangeListener(radioBtnListerner)
+        binding?.rb3?.setOnCheckedChangeListener(radioBtnListerner)
+        binding?.rb4?.setOnCheckedChangeListener(radioBtnListerner)
+        binding?.rb5?.setOnCheckedChangeListener(radioBtnListerner)
+
     }
 
     companion object {

@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
+import androidx.core.widget.CompoundButtonCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.pardeep.yogify.R
@@ -52,6 +54,21 @@ class SetupScreen_1 : Fragment() {
             navController.navigate(R.id.action_setupScreen_1_to_setupScreen2)
 
         }
+
+        //checkbox condition to enable the next button
+        val checkBoxListner = CompoundButton.OnCheckedChangeListener { _, _ ->
+            binding?.nextBtn?.isEnabled = binding?.checkbox1?.isChecked !! || binding?.checkbox2?.isChecked!! || binding?.checkbox3?.isChecked!! ||
+            binding?.checkbox4?.isChecked!! || binding?.checkbox5?.isChecked!! || binding?.checkbox6?.isChecked!! || binding?.checkbox7?.isChecked!!
+        }
+
+        binding?.checkbox1?.setOnCheckedChangeListener(checkBoxListner)
+        binding?.checkbox2?.setOnCheckedChangeListener(checkBoxListner)
+        binding?.checkbox3?.setOnCheckedChangeListener(checkBoxListner)
+        binding?.checkbox4?.setOnCheckedChangeListener(checkBoxListner)
+        binding?.checkbox5?.setOnCheckedChangeListener(checkBoxListner)
+        binding?.checkbox6?.setOnCheckedChangeListener(checkBoxListner)
+        binding?.checkbox7?.setOnCheckedChangeListener(checkBoxListner)
+
     }
     companion object {
         /**

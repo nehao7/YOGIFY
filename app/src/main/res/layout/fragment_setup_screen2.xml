@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/lightGrey"
     tools:context=".setupScreens.SetupScreen2">
 
     <TextView
@@ -33,46 +35,51 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
-            </RadioGroup>
-
-
             <RadioButton
-                android:id="@+id/checkbox1"
+                android:id="@+id/rb1"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Full Body"
                 />
 
             <RadioButton
-                android:id="@+id/checkbox2"
+                android:id="@+id/rb2"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Arm"/>
 
             <RadioButton
-                android:id="@+id/checkbox3"
+                android:id="@+id/rb3"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Legs"/>
 
 
             <RadioButton
-                android:id="@+id/checkbox4"
+                android:id="@+id/rb4"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Chest"/>
 
             <RadioButton
-                android:id="@+id/checkbox5"
+                android:id="@+id/rb5"
                 style="@style/checkbox_button"
+                android:gravity="center"
                 android:text="Spine"/>
+
+            </RadioGroup>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/nextBtn"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:text="Next"
-                android:enabled="true"
+                app:backgroundTint="@color/lightGreen"
+                android:enabled="false"
                 android:layout_margin="30dp"
-                bac
+                android:background="@drawable/btn_shape"
                 android:layout_gravity="center_horizontal"/>
+
 
 
         </LinearLayout>
