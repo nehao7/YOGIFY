@@ -1,4 +1,4 @@
-package com.pardeep.yogify.login_signup_screen
+package com.pardeep.yogify.setupScreens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pardeep.yogify.R
-import com.pardeep.yogify.databinding.FragmentVerificationScreenBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,20 +14,16 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [Verification_Screen.newInstance] factory method to
+ * Use the [SetupScreen2.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Verification_Screen : Fragment() {
-
+class SetupScreen2 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    var mainActivity : MainActivity?=null
-    var binding : FragmentVerificationScreenBinding?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainActivity = activity as MainActivity
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -40,18 +35,9 @@ class Verification_Screen : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentVerificationScreenBinding.inflate(layoutInflater)
-        return binding?.root
-        //return inflater.inflate(R.layout.fragment_verification__screen, container, false)
+        return inflater.inflate(R.layout.fragment_setup_screen2, container, false)
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding?.verifyBtn?.setOnClickListener {
-            mainActivity?.moveToSecondFragment()
-        }
-    }
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -59,12 +45,12 @@ class Verification_Screen : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment Verification_Screen.
+         * @return A new instance of fragment SetupScreen2.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Verification_Screen().apply {
+            SetupScreen2().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

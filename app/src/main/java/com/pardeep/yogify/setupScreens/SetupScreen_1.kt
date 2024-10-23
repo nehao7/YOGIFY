@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import com.pardeep.yogify.R
+import com.pardeep.yogify.databinding.FragmentSetupScreen1Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +24,8 @@ class SetupScreen_1 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    var binding : FragmentSetupScreen1Binding?= null
+    lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +40,19 @@ class SetupScreen_1 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_setup_screen_1, container, false)
+        binding = FragmentSetupScreen1Binding.inflate(layoutInflater)
+        return binding?.root
+        //return inflater.inflate(R.layout.fragment_setup_screen_1, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding?.nextBtn?.setOnClickListener {
+            navController = findNavController()
+            navController.navigate(R.id.action_setupScreen_1_to_setupScreen2)
+
+        }
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of

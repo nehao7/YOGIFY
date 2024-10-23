@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".setupScreens.SetupScreen_1"
-    android:background="@color/lightGrey">
+    tools:context=".setupScreens.SetupScreen2">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="What motivate you"
+        android:text="Focusing Area"
         android:textSize="30sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -30,57 +28,55 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <com.google.android.material.checkbox.MaterialCheckBox
+
+            </RadioGroup>
+
+
+            <RadioButton
                 android:id="@+id/checkbox1"
                 style="@style/checkbox_button"
-                android:text="Stay Young"
+                android:text="Full Body"
                 />
 
-            <com.google.android.material.checkbox.MaterialCheckBox
+            <RadioButton
                 android:id="@+id/checkbox2"
                 style="@style/checkbox_button"
-                android:text="Lose weight"/>
+                android:text="Arm"/>
 
-            <com.google.android.material.checkbox.MaterialCheckBox
+            <RadioButton
                 android:id="@+id/checkbox3"
                 style="@style/checkbox_button"
-                android:text="Get shaped"/>
+                android:text="Legs"/>
 
 
-            <com.google.android.material.checkbox.MaterialCheckBox
+            <RadioButton
                 android:id="@+id/checkbox4"
                 style="@style/checkbox_button"
-                android:text="Improve health"/>
+                android:text="Chest"/>
 
-            <com.google.android.material.checkbox.MaterialCheckBox
+            <RadioButton
                 android:id="@+id/checkbox5"
                 style="@style/checkbox_button"
-                android:text="Boost energy"/>
-
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/checkbox6"
-                style="@style/checkbox_button"
-                android:text="Sleep better"/>
-
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/checkbox7"
-                style="@style/checkbox_button"
-                android:text="Reduce stress"/>
+                android:text="Spine"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/nextBtn"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:text="Next"
-                app:backgroundTint="@color/lightGreen"
                 android:enabled="true"
                 android:layout_margin="30dp"
-                android:background="@drawable/btn_shape"
+                bac
                 android:layout_gravity="center_horizontal"/>
 
 
         </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+
+</FrameLayout>
