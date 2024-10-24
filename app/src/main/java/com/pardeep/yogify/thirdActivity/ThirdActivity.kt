@@ -29,25 +29,31 @@ class ThirdActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.id) {
-                R.id.Exercise -> binding?.bottomNavigationView?.menu?.get(0)?.setChecked(true)
-                R.id.Tracking -> binding?.bottomNavigationView?.menu?.get(1)?.setChecked(true)
-                R.id.Search -> binding?.bottomNavigationView?.menu?.get(2)?.setChecked(true)
-                R.id.Profile -> binding?.bottomNavigationView?.menu?.get(3)?.setChecked(true)
+                R.id.Exercise -> binding?.bottomNavigation?.menu?.get(0)?.setChecked(true)
+                R.id.Tracking -> binding?.bottomNavigation?.menu?.get(1)?.setChecked(true)
+                R.id.Search -> binding?.bottomNavigation?.menu?.get(2)?.setChecked(true)
+                R.id.Profile -> binding?.bottomNavigation?.menu?.get(3)?.setChecked(true)
             }
             return@addOnDestinationChangedListener
         }
 
 
-        binding?.bottomNavigationView?.setOnItemSelectedListener {item ->
-                when (item.itemId) {
-                    R.id.Exercise -> navController.navigate(R.id.exerciseFragment)
-                    R.id.Tracking -> navController.navigate(R.id.trackingFragment)
-                    R.id.Search -> navController.navigate(R.id.seachFragment)
-                    R.id.Profile -> navController.navigate(R.id.profileFragment)
-                }
-                return@setOnItemSelectedListener true
+        binding?.bottomNavigation?.setOnItemSelectedListener {items ->
+            when (items.itemId) {
+                R.id.Exercise -> navController.navigate(R.id.exerciseFragment)
+                R.id.Tracking -> navController.navigate(R.id.trackingFragment)
+                R.id.Search -> navController.navigate(R.id.seachFragment)
+                R.id.Profile -> navController.navigate(R.id.profileFragment)
             }
+            return@setOnItemSelectedListener true
+        }
+
+        binding?.tollbar?.setNavigationOnClickListener {
+            drawableFragment
 
 
         }
+
+
+    }
 }

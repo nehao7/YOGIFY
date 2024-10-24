@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_exerciseFragment_to_trackingFragment"
             app:destination="@id/trackingFragment" />
+        <action
+            android:id="@+id/action_exerciseFragment_to_drawableFragment"
+            app:destination="@id/drawableFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -37,4 +40,9 @@
             android:id="@+id/action_trackingFragment_to_seachFragment"
             app:destination="@id/seachFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/drawableFragment"
+        android:name="com.pardeep.yogify.thirdActivity.drawableFragment"
+        android:label="fragment_drawable"
+        tools:layout="@layout/fragment_drawable" />
 </navigation>

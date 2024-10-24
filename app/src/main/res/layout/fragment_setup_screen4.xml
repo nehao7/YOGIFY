@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="-10dp"
-        android:backgroundTint="@color/dullYellow"
+        android:backgroundTint="@color/lightGrey"
         android:elevation="8dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +29,25 @@
 
     </androidx.cardview.widget.CardView>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintTop_toBottomOf="@id/cardView1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/llv"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/btn_border">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_launcher_background"/>
+
+
+    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:id="@+id/llv"
@@ -37,7 +56,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView1">
+        app:layout_constraintTop_toBottomOf="@id/cardView2">
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -94,13 +113,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/llv">
 
-        <RadioButton
-            android:id="@+id/yesBtn"
-            style="@style/checkbox_button"
-            android:text=" Male " />
+
 
         <RadioButton
-            android:id="@+id/NoBtn"
+            android:id="@+id/maleRadioBtn"
+            style="@style/checkbox_button"
+            android:text=" Male" />
+
+        <RadioButton
+            android:id="@+id/FemaleRadioBtn"
             style="@style/checkbox_button"
             android:text="Female" />
 
@@ -112,6 +133,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="2"
+        android:layout_marginVertical="20dp"
         app:layout_constraintTop_toBottomOf="@id/radioGroup">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -119,11 +141,9 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_weight="1"
             android:hint="Height"
-
             app:boxStrokeColor="@color/lightGreen"
             app:counterMaxLength="5"
             app:endIconMode="clear_text"
@@ -143,8 +163,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_weight="1"
             android:hint="Weight"
             app:boxStrokeColor="@color/lightGreen"

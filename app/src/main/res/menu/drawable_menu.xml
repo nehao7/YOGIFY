@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/Favourite"
+        android:title="Favourite"
+        />
+
+    <item android:id="@+id/Feedback"
+        android:title="Feedback"/>
+
+    <item android:id="@+id/Terms_and_Conditions"
+        android:title="Terms and Conditions"/>"
+
+    <item android:title="Share"
+        android:id="@+id/Share"/>
+
+    <item
+        android:id="@+id/Settings"
+        android:title="Settings"/>
+
+    <item android:id="@+id/logout"
+        android:title="Logout"/>
+
+</menu>

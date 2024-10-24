@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
+import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentExerciseBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,6 +29,7 @@ class ExerciseFragment : Fragment() {
     var levelAdp = LevelAdaptor()
     var musicMeditationAdp = MusicMeditationAdp()
     lateinit var linearLayoutManager: LinearLayoutManager
+    val imageList = ArrayList<SlideModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +58,15 @@ class ExerciseFragment : Fragment() {
         binding?.recyclerView2?.adapter = musicMeditationAdp
         linearLayoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
         binding?.recyclerView2?.layoutManager = linearLayoutManager
+
+
+        //image slide view
+        imageList.add(SlideModel(R.drawable.standing_pose_bend, "Standing Pose" , scaleType = ScaleTypes.CENTER_CROP))
+        imageList.add(SlideModel(R.drawable.standing_pose_bend, "Standing Pose" , scaleType = ScaleTypes.CENTER_CROP))
+        imageList.add(SlideModel(R.drawable.standing_pose_bend, "Standing Pose" , scaleType = ScaleTypes.CENTER_CROP))
+
+
+        binding?.imageSlider?.setImageList(imageList)
     }
 
     companion object {
