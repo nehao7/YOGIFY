@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.pardeep.yogify.R
@@ -27,9 +28,11 @@ class ExerciseFragment : Fragment() {
     private var param2: String? = null
     var binding : FragmentExerciseBinding?=null
     var levelAdp = LevelAdaptor()
+    var thirtyMinAdp = ThirtyMinAdaptor()
     var musicMeditationAdp = MusicMeditationAdp()
     lateinit var linearLayoutManager: LinearLayoutManager
     val imageList = ArrayList<SlideModel>()
+    lateinit var linearSnapHelper: LinearSnapHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +58,18 @@ class ExerciseFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
         binding?.recyclerView1?.layoutManager = linearLayoutManager
 
-        binding?.recyclerView2?.adapter = musicMeditationAdp
+        // linear snap helper used for center snaping
+       linearSnapHelper = LinearSnapHelper()
+           linearSnapHelper.attachToRecyclerView(binding?.recyclerView1)
+
+        // snap position value
+        var snapView = linearSnapHelper.findSnapView(linearLayoutManager)
+
+        //get position of snap
+        var snapPosition = linearLayoutManager.getPosition(snapView!!)
+
+
+        binding?.recyclerView2?.adapter = thirtyMinAdp
         linearLayoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
         binding?.recyclerView2?.layoutManager = linearLayoutManager
 

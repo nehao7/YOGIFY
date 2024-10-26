@@ -67,6 +67,7 @@
         android:id="@+id/recyclerView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:listitem="@layout/fragment_custom_layout"
         />
 
     <TextView
@@ -75,13 +76,14 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:text="Music and mediation" />
+        android:text="30 min workout" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:listitem="@layout/fragment_custom_layout"
          />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,7 +24,7 @@ class LevelAdaptor() : RecyclerView.Adapter<LevelAdaptor.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.image.setImageDrawable(R.drawable.ic_launcher_foreground.toDrawable())
+        holder.image.setImageResource(R.drawable.beginner_pose)
 
     }
 

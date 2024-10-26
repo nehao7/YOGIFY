@@ -1,6 +1,7 @@
 package com.pardeep.yogify.thirdActivity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,10 +11,12 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.ActivityThirdBinding
+import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class ThirdActivity : AppCompatActivity() {
     var binding: ActivityThirdBinding? = null
     lateinit var navController: NavController
+    private  val TAG = "ThirdActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,26 +30,22 @@ class ThirdActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.fragmentContainerView)
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            when (destination.id) {
-                R.id.Exercise -> binding?.bottomNavigation?.menu?.get(0)?.setChecked(true)
-                R.id.Tracking -> binding?.bottomNavigation?.menu?.get(1)?.setChecked(true)
-                R.id.Search -> binding?.bottomNavigation?.menu?.get(2)?.setChecked(true)
-                R.id.Profile -> binding?.bottomNavigation?.menu?.get(3)?.setChecked(true)
-            }
-            return@addOnDestinationChangedListener
-        }
 
-
-        binding?.bottomNavigation?.setOnItemSelectedListener {items ->
-            when (items.itemId) {
-                R.id.Exercise -> navController.navigate(R.id.exerciseFragment)
-                R.id.Tracking -> navController.navigate(R.id.trackingFragment)
-                R.id.Search -> navController.navigate(R.id.seachFragment)
-                R.id.Profile -> navController.navigate(R.id.profileFragment)
+        binding?.bottomNavigation?.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
+            override fun onTabSelected(
+                lastIndex: Int,
+                lastTab: AnimatedBottomBar.Tab?,
+                newIndex: Int,
+                newTab: AnimatedBottomBar.Tab
+            ) {
+                Log.d(TAG, "onTabSelected:$newIndex, title: ${newTab.title}\"")
             }
-            return@setOnItemSelectedListener true
-        }
+
+            // An optional method that will be fired whenever an already selected tab has been selected again.
+            override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
+                Log.d("bottom_bar", "Reselected index: $index, title: ${tab.title}")
+            }
+        })
 
         binding?.tollbar?.setNavigationOnClickListener {
             drawableFragment

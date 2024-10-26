@@ -53,4 +53,15 @@ dependencies {
 
     //adding dependency for image slider
     implementation("com.github.denzcoskun:ImageSlideshow:0.1.2")
+    //adding animated navigaton bottom bar dependency
+    implementation( "nl.joery.animatedbottombar:library:1.1.0")
+
+    //dependency for lottie animation
+    implementation("com.airbnb.android:lottie:6.5.2")
+
+    // adding dependency of dot indicator
+    implementation("com.tbuonomo:dotsindicator:5.0")
+
+    // viewpager2 dependency
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
 }
