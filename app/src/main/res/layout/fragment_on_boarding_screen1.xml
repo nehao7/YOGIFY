@@ -7,6 +7,7 @@
     android:background="@color/lightGrey"
     tools:context=".onBoardingScreens.onBoardingScreen1">
 
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"
         android:layout_width="232dp"

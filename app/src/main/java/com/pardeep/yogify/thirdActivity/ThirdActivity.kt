@@ -6,7 +6,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.get
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.pardeep.yogify.R
@@ -20,7 +19,8 @@ class ThirdActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_third)
+        binding = ActivityThirdBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -38,21 +38,40 @@ class ThirdActivity : AppCompatActivity() {
                 newIndex: Int,
                 newTab: AnimatedBottomBar.Tab
             ) {
-                Log.d(TAG, "onTabSelected:$newIndex, title: ${newTab.title}\"")
+                when(newIndex){
+                    0 ->{
+                        navController.navigate(R.id.exerciseFragment)
+                    }
+                    1->{
+                        navController.navigate(R.id.trackingFragment)
+                    }
+                    2->{
+                        navController.navigate(R.id.seachFragment)
+                    }
+                    3->{
+                        navController.navigate(R.id.profileFragment)
+                    }
+                }
             }
 
             // An optional method that will be fired whenever an already selected tab has been selected again.
             override fun onTabReselected(index: Int, tab: AnimatedBottomBar.Tab) {
-                Log.d("bottom_bar", "Reselected index: $index, title: ${tab.title}")
+
+                Log.d(TAG, "onTabSelected:$index, title: ${tab.title}\"")
+
             }
         })
-
-        binding?.tollbar?.setNavigationOnClickListener {
-            drawableFragment
-
-
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.exerciseFragment -> binding?.bottomNavigation?.selectTabAt(0)
+                R.id.trackingFragment -> binding?.bottomNavigation?.selectTabAt(1)
+                R.id.seachFragment -> binding?.bottomNavigation?.selectTabAt(2)
+                R.id.profileFragment -> binding?.bottomNavigation?.selectTabAt(3)
+                // ... add more cases for other fragments
+            }
         }
 
-
     }
+
+
 }

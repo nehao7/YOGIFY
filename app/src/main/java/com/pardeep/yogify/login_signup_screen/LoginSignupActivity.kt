@@ -6,11 +6,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.pardeep.yogify.ActivityDestination
+import com.pardeep.yogify.setupScreens.ActivityDestination
 import com.pardeep.yogify.R
 import com.pardeep.yogify.setupScreens.SetupActivity
 
-class MainActivity : AppCompatActivity() {
+class LoginSignupActivity : AppCompatActivity() {
     var activityDestination : ActivityDestination?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun moveToSecondFragment() {
-        val intent = Intent(this, SetupActivity::class.java)
+        val intent = Intent(this , SetupActivity::class.java)
         startActivity(intent)
-       finish()
+        finish()
     }
 
 

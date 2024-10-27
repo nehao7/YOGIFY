@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".thirdActivity.EditProfile">
+
+    <androidx.cardview.widget.CardView
+    android:id="@+id/cardView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="-10dp"
+    android:backgroundTint="@color/lightGrey"
+    android:elevation="8dp"
+    app:cardCornerRadius="20dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="40dp"
+        android:text="Enter Detailed"
+        android:textSize="20dp" />
+
+</androidx.cardview.widget.CardView>
+
+<com.google.android.material.card.MaterialCardView
+android:id="@+id/cardView2"
+android:layout_width="100dp"
+android:layout_height="100dp"
+app:cardCornerRadius="50dp"
+app:layout_constraintTop_toBottomOf="@id/cardView1"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintBottom_toTopOf="@id/llv"
+android:layout_marginVertical="20dp">
+
+<ImageButton
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/baseline_person_24"
+    android:background="@android:color/transparent"/>
+
+
+</com.google.android.material.card.MaterialCardView>
+
+<LinearLayout
+android:id="@+id/llv"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:weightSum="2"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/cardView2">
+
+
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/TextInputLayout"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginVertical="20dp"
+    android:hint="First Name"
+    app:boxStrokeColor="@color/lightGreen"
+    app:counterMaxLength="20"
+    app:endIconMode="clear_text"
+    app:helperTextTextColor="@android:color/holo_red_dark"
+    app:hintTextColor="@color/lightGreen">
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</com.google.android.material.textfield.TextInputLayout>
+
+
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/TextInputLayout2"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_marginEnd="30dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginVertical="20dp"
+    android:hint="Last Name"
+    app:boxStrokeColor="@color/lightGreen"
+    app:counterMaxLength="20"
+    app:endIconMode="clear_text"
+    app:helperTextTextColor="@android:color/holo_red_dark"
+    app:hintTextColor="@color/lightGreen">
+
+    <EditText
+        android:id="@+id/etLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
+
+<RadioGroup
+android:id="@+id/radioGroup"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:padding="10dp"
+android:weightSum="2"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@id/llv">
+
+
+
+<RadioButton
+    android:id="@+id/maleRadioBtn"
+    style="@style/checkbox_button"
+    android:text=" Male" />
+
+<RadioButton
+    android:id="@+id/FemaleRadioBtn"
+    style="@style/checkbox_button"
+    android:text="Female" />
+
+</RadioGroup>
+
+<LinearLayout
+android:id="@+id/llv2"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:weightSum="2"
+android:layout_marginVertical="20dp"
+app:layout_constraintTop_toBottomOf="@id/radioGroup">
+
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/TextInputLayout3"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginVertical="20dp"
+    android:hint="Weight"
+    app:boxStrokeColor="@color/lightGreen"
+    app:counterMaxLength="20"
+    app:endIconMode="clear_text"
+    app:helperTextTextColor="@android:color/holo_red_dark"
+    app:hintTextColor="@color/lightGreen">
+
+    <EditText
+        android:id="@+id/etWeight"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</com.google.android.material.textfield.TextInputLayout>
+
+<com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/TextInputLayout4"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="15dp"
+    android:layout_marginVertical="20dp"
+    android:hint="Height"
+    app:boxStrokeColor="@color/lightGreen"
+    app:counterMaxLength="20"
+    app:endIconMode="clear_text"
+    app:helperTextTextColor="@android:color/holo_red_dark"
+    app:hintTextColor="@color/lightGreen">
+
+    <EditText
+        android:id="@+id/etHeight"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</com.google.android.material.textfield.TextInputLayout>
+
+
+</LinearLayout>
+
+<com.google.android.material.button.MaterialButton
+android:id="@+id/nextBtn"
+android:layout_width="150dp"
+android:layout_height="50dp"
+android:text="Next"
+app:backgroundTint="@color/lightGreen"
+android:enabled="true"
+android:layout_margin="50dp"
+android:background="@drawable/btn_shape"
+android:layout_gravity="center_horizontal"
+app:layout_constraintTop_toBottomOf="@id/llv2"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

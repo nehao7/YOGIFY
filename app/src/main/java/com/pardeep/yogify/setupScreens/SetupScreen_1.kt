@@ -28,9 +28,11 @@ class SetupScreen_1 : Fragment() {
     private var param2: String? = null
     var binding : FragmentSetupScreen1Binding?= null
     lateinit var navController: NavController
+    var setupActivity : SetupActivity? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupActivity = activity as SetupActivity
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -50,9 +52,8 @@ class SetupScreen_1 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.nextBtn?.setOnClickListener {
-            navController = findNavController()
+            navController  = findNavController()
             navController.navigate(R.id.action_setupScreen_1_to_setupScreen2)
-
         }
 
         //checkbox condition to enable the next button

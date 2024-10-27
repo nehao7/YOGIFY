@@ -1,4 +1,4 @@
-package com.pardeep.yogify
+package com.pardeep.yogify.setupScreens
 
 interface ActivityDestination {
     fun moveToSecondDestination()

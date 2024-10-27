@@ -1,6 +1,7 @@
 package com.pardeep.yogify.thirdActivity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +34,7 @@ class ExerciseFragment : Fragment() {
     lateinit var linearLayoutManager: LinearLayoutManager
     val imageList = ArrayList<SlideModel>()
     lateinit var linearSnapHelper: LinearSnapHelper
+    private val TAG = "ExerciseFragment"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,14 +62,18 @@ class ExerciseFragment : Fragment() {
 
         // linear snap helper used for center snaping
        linearSnapHelper = LinearSnapHelper()
-           linearSnapHelper.attachToRecyclerView(binding?.recyclerView1)
+        linearSnapHelper.attachToRecyclerView(binding?.recyclerView1)
 
-        // snap position value
-        var snapView = linearSnapHelper.findSnapView(linearLayoutManager)
-
-        //get position of snap
-        var snapPosition = linearLayoutManager.getPosition(snapView!!)
-
+        // Post a runnable to get the snap position after layout is complete
+        binding?.recyclerView1?.post {
+            val snapView = linearSnapHelper.findSnapView(linearLayoutManager)
+            if (snapView != null) {
+                val snapPosition = linearLayoutManager.getPosition(snapView)
+                // ... use snapPosition here ...
+            } else {
+                Log.e(TAG, "onViewCreated: snapView is null ",)
+            }
+        }
 
         binding?.recyclerView2?.adapter = thirtyMinAdp
         linearLayoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)

@@ -36,5 +36,9 @@
 
 
     </style>
+
+    <style name="Screen">
+        <item name="background">@color/lightGrey</item>
+    </style>
         
 </resources>
