@@ -65,4 +65,8 @@ dependencies {
     // viewpager2 dependency
     implementation("androidx.viewpager2:viewpager2:1.1.0")
 
+    //dependency for Carousal layout
+    implementation ("com.google.android.material:material:1.9.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
 }

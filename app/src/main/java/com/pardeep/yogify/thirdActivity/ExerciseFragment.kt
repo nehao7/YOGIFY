@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.pardeep.yogify.R
@@ -27,7 +29,7 @@ class ExerciseFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    var binding : FragmentExerciseBinding?=null
+    var binding: FragmentExerciseBinding? = null
     var levelAdp = LevelAdaptor()
     var thirtyMinAdp = ThirtyMinAdaptor()
     var musicMeditationAdp = MusicMeditationAdp()
@@ -35,9 +37,11 @@ class ExerciseFragment : Fragment() {
     val imageList = ArrayList<SlideModel>()
     lateinit var linearSnapHelper: LinearSnapHelper
     private val TAG = "ExerciseFragment"
+    var thirdActivity : ThirdActivity?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        thirdActivity = activity as ThirdActivity
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -56,12 +60,28 @@ class ExerciseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //searchBar
+        binding?.searchBar?.setOnClickListener {
+            binding?.searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return true
+                }
+
+                override fun onQueryTextSubmit(query: String?): Boolean {
+
+                    return true
+                }
+            })
+        }
+
         binding?.recyclerView1?.adapter = levelAdp
-        linearLayoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
+        linearLayoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding?.recyclerView1?.layoutManager = linearLayoutManager
 
         // linear snap helper used for center snaping
-       linearSnapHelper = LinearSnapHelper()
+        linearSnapHelper = LinearSnapHelper()
         linearSnapHelper.attachToRecyclerView(binding?.recyclerView1)
 
         // Post a runnable to get the snap position after layout is complete
@@ -71,19 +91,38 @@ class ExerciseFragment : Fragment() {
                 val snapPosition = linearLayoutManager.getPosition(snapView)
                 // ... use snapPosition here ...
             } else {
-                Log.e(TAG, "onViewCreated: snapView is null ",)
+                Log.e(TAG, "onViewCreated: snapView is null ")
             }
         }
 
         binding?.recyclerView2?.adapter = thirtyMinAdp
-        linearLayoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.HORIZONTAL , false)
+        linearLayoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding?.recyclerView2?.layoutManager = linearLayoutManager
 
 
         //image slide view
-        imageList.add(SlideModel(R.drawable.standing_pose_bend, "Standing Pose" , scaleType = ScaleTypes.CENTER_CROP))
-        imageList.add(SlideModel(R.drawable.standing_pose_bend, "Standing Pose" , scaleType = ScaleTypes.CENTER_CROP))
-        imageList.add(SlideModel(R.drawable.standing_pose_bend, "Standing Pose" , scaleType = ScaleTypes.CENTER_CROP))
+        imageList.add(
+            SlideModel(
+                R.drawable.standing_pose_bend,
+                "Standing Pose",
+                scaleType = ScaleTypes.CENTER_CROP
+            )
+        )
+        imageList.add(
+            SlideModel(
+                R.drawable.standing_pose_bend,
+                "Standing Pose",
+                scaleType = ScaleTypes.CENTER_CROP
+            )
+        )
+        imageList.add(
+            SlideModel(
+                R.drawable.standing_pose_bend,
+                "Standing Pose",
+                scaleType = ScaleTypes.CENTER_CROP
+            )
+        )
 
 
         binding?.imageSlider?.setImageList(imageList)

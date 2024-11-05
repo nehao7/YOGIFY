@@ -1,40 +1,29 @@
-package com.pardeep.yogify.setupScreens
+package com.pardeep.yogify.splashScreen
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toolbar
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pardeep.yogify.R
-import com.pardeep.yogify.databinding.ActivitySetupBinding
-import com.pardeep.yogify.thirdActivity.ThirdActivity
+import com.pardeep.yogify.onBoardingScreens.OnBoardingMainActivity
 
-class SetupActivity : AppCompatActivity() {
-    var binding : ActivitySetupBinding?= null
+
+class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivitySetupBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+        setContentView(R.layout.activity_splash_screen)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-      setSupportActionBar(binding?.tollbar)
-
-
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this,OnBoardingMainActivity ::class.java))
+        }, 3000)
     }
-
-    fun moveToSecondDestination() {
-        val intent = Intent(this, ThirdActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-
-
 }

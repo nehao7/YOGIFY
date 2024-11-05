@@ -56,6 +56,7 @@ class SetupScreen_1 : Fragment() {
             navController.navigate(R.id.action_setupScreen_1_to_setupScreen2)
         }
 
+
         //checkbox condition to enable the next button
         val checkBoxListner = CompoundButton.OnCheckedChangeListener { _, _ ->
             binding?.nextBtn?.isEnabled = binding?.checkbox1?.isChecked !! || binding?.checkbox2?.isChecked!! || binding?.checkbox3?.isChecked!! ||

@@ -37,8 +37,29 @@
 
     </style>
 
-    <style name="Screen">
-        <item name="background">@color/lightGrey</item>
+   <!-- color -->
+    <style name="ScreenBackground">
+        <item name="android:background">@color/lightGrey</item>
     </style>
-        
+
+    <style name="textColor">
+        <item name="android:textColor">@color/lightGreen</item>
+    </style>
+
+    <style name="descriptionColor">
+        <item name="android:textColor">@color/lightGreen</item>
+    </style>
+
+    <style name="link">
+        <item name="android:textColor">@color/lightGreen</item>
+    </style>
+
+    <style name="button">
+        <item name="android:backgroundTint">@color/lightGreen</item>
+    </style>
+
+    <style name="textInputEditBackground" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/lightGreen</item>
+        <item name="hintTextColor">@color/lightGreen</item>
+    </style>
 </resources>

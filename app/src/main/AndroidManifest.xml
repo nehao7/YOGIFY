@@ -13,15 +13,16 @@
         android:theme="@style/Theme.YOGIFY"
         tools:targetApi="31">
         <activity
-            android:name=".onBoardingScreens.OnBoardingMainActivity"
-            android:exported="true" >
+            android:name=".splashScreen.SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity
+            android:name=".onBoardingScreens.OnBoardingMainActivity"
+            android:exported="false"/>
         <activity
             android:name=".thirdActivity.ThirdActivity"
             android:exported="false" />
@@ -30,7 +31,6 @@
             android:exported="false" />
         <activity
             android:name=".login_signup_screen.LoginSignupActivity"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
-
 </manifest>

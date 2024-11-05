@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGrey"
+    style="@style/ScreenBackground"
     tools:context=".onBoardingScreens.OnBoardingMainActivity">
 
 
@@ -28,7 +28,7 @@
         android:layout_marginTop="30dp"
         app:dotsCornerRadius="8dp"
         app:progressMode="true"
-        app:selectedDotColor="@color/lightGreen"
+        style="@style/button"
         app:layout_constraintTop_toBottomOf="@id/view_pager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -49,8 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/right_arrow"
-
-            android:background="@android:color/transparent"/>
+            style="@style/button"
+            />
 
 
     </androidx.cardview.widget.CardView>
@@ -71,7 +71,7 @@
             android:id="@+id/previousButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
+            style="@style/button"
             android:src="@drawable/right_arrow" />
 
 

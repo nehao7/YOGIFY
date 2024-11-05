@@ -20,5 +20,14 @@
     <color name="Dark">#112D60</color>
     <color name="Dark2">#B6C0C5</color>
 
+    <!-- dark mode color -->
+    <color name="customBlack">#131313</color>
+    <color name="orange">#FF5733</color>
+    <color name="lightWhite">#F5F5F5</color>
+    <color name="pureWhite">#FFFFFF</color>
+    <color name="dullBlack">#F5F5F5</color>
+
+
+
 
 </resources>

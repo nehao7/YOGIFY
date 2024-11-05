@@ -35,12 +35,39 @@
 
 </style>
 
-    <style name="Screen">
-        <item name="android:background">#000000</item>
+    <style name="ScreenBackground">
+        <item name="android:background">@color/customBlack</item>
     </style>
 
-    <style name="TextColor">
-        <item name="android:textColor"></item>
+    <style name="textColor">
+        <item name="android:textColor">@color/pureWhite</item>
+    </style>
+
+    <style name="descriptionColor">
+        <item name="android:textColor">@color/lightWhite</item>
+    </style>
+
+    <style name="button">
+        <item name="android:backgroundTint">@color/orange</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/pureWhite</item>
+    </style>
+
+    <style name="link">
+        <item name="android:textColor">@color/orange</item>
+    </style>
+
+    <style name="textInputEditBackground" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/orange</item>
+        <item name="endIconTint">@color/lightWhite</item>
+        <item name="hintTextColor">@color/orange</item>
 
     </style>
+
+    <style name="EditTextInputBoxcolor">
+        <item name="android:background">#30FFFFFF</item>
+    </style>
+
+
+
 </resources>
