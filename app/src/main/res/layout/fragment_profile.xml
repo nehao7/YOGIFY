@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="50dp"
-                android:text="Full name" />
+                android:text="@string/full_name" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,14 +54,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
-                    android:text="5'4'" />
+                    android:text="@string/_5_4" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
-                    android:text="60kg'" />
+                    android:text="@string/_60kg" />
 
 
             </LinearLayout>
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:text="Email@gamil.com" />
+                android:text="@string/email_gamil_com" />
 
 
         </LinearLayout>
@@ -93,7 +93,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="30dp"
             android:background="@android:color/transparent"
-            android:text="Edit Profile"
+            android:text="@string/edit_profile"
             android:textAlignment="viewStart"
             android:drawableEnd="@drawable/right_arrow"
             android:textColor="@color/purple" />
@@ -104,7 +104,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
-            android:text="Language"
+            android:text="@string/language"
             android:textAlignment="viewStart"
             android:drawableEnd="@drawable/right_arrow"
             android:textColor="@color/purple" />
@@ -115,7 +115,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
-            android:text="Help"
+            android:text="@string/help"
             android:textAlignment="viewStart"
             android:drawableEnd="@drawable/right_arrow"
             android:textColor="@color/purple" />
@@ -126,7 +126,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
-            android:text="Theme"
+            android:text="@string/theme"
             android:textAlignment="viewStart"
             android:drawableEnd="@drawable/right_arrow"
             android:textColor="@color/purple" />
@@ -137,7 +137,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
-            android:text="Log out"
+            android:text="@string/log_out"
             android:textAlignment="viewStart"
             android:drawableEnd="@drawable/right_arrow"
             android:textColor="@color/purple" />

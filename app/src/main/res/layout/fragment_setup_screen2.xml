@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Focusing Area"
+        android:text="@string/focusing_area"
         android:textSize="30sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -39,33 +39,33 @@
                 android:id="@+id/rb1"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Full Body"
+                android:text="@string/full_body"
                 />
 
             <RadioButton
                 android:id="@+id/rb2"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Arm"/>
+                android:text="@string/arm"/>
 
             <RadioButton
                 android:id="@+id/rb3"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Legs"/>
+                android:text="@string/legs"/>
 
 
             <RadioButton
                 android:id="@+id/rb4"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Chest"/>
+                android:text="@string/chest"/>
 
             <RadioButton
                 android:id="@+id/rb5"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Spine"/>
+                android:text="@string/spine"/>
 
             </RadioGroup>
 
@@ -73,7 +73,7 @@
                 android:id="@+id/nextBtn"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:text="Next"
+                android:text="@string/next"
                 app:backgroundTint="@color/lightGreen"
                 android:enabled="false"
                 android:layout_margin="30dp"

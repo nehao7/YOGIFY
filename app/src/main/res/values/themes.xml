@@ -56,10 +56,23 @@
 
     <style name="button">
         <item name="android:backgroundTint">@color/lightGreen</item>
+        <item name="android:background">@color/lightGrey</item>
     </style>
+
+    <style name="dotIndicator">
+        <item name="android:background">@color/lightGrey</item>
+        <item name="dotsColor">@color/lightGreen</item>
+        <item name="selectedDotColor">@color/lightGreen</item>
+    </style>
+
 
     <style name="textInputEditBackground" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/lightGreen</item>
         <item name="hintTextColor">@color/lightGreen</item>
     </style>
+
+    <style name="loginBtn">
+        <item name="android:backgroundTint">@color/lightGreen</item>
+    </style>
+
 </resources>

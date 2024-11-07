@@ -11,7 +11,7 @@ import com.pardeep.yogify.R
 class MusicMeditationAdp() : RecyclerView.Adapter<MusicMeditationAdp.ViewHolder>() {
 
     class ViewHolder(var view : View) : RecyclerView.ViewHolder(view){
-        var image = view.findViewById<ImageView>(R.id.image)
+        var image = view.findViewById<ImageView>(R.id.ImageView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

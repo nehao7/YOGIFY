@@ -12,7 +12,7 @@
         android:id="@+id/tollbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lightGrey"
+        style="@style/ScreenBackground"
         app:subtitle="fragment name"
         app:subtitleCentered="true"
         app:navigationIcon="@drawable/baseline_menu_24"

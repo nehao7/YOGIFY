@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="center"
-            android:text="Verify your Identity"
+            android:text="@string/verify_your_identity"
             android:textColor="@color/lightGreen"
             android:textSize="30sp" />
 
@@ -29,10 +29,21 @@
             android:layout_height="wrap_content"
             android:layout_margin="25dp"
             android:gravity="center"
-            android:text="Enter the verification code that sent to your mobile"
+            android:text="@string/VerificationDescription"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             android:textColor="@color/lightGreen"
             android:textSize="18sp" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="232dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            app:lottie_rawRes="@raw/verification_animation"
+            app:lottie_loop="true"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="10dp"
+            app:lottie_autoPlay="true"/>
 
 
         <LinearLayout
@@ -148,7 +159,7 @@
                 android:layout_marginVertical="20dp"
                 android:layout_marginStart="60dp"
                 android:backgroundTint="@color/lightGreen"
-                android:text="Resend Code"
+                android:text="@string/resend_code"
                 app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraSmall" />
 
             <com.google.android.material.button.MaterialButton
@@ -158,7 +169,7 @@
                 android:layout_marginVertical="20dp"
                 android:layout_marginStart="38dp"
                 android:backgroundTint="@color/darkGreen"
-                android:text="Verify Code"
+                android:text="@string/verify_code"
                 app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraSmall" />
 
 

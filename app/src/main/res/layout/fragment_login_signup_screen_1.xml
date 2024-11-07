@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="50dp"
-        android:text="Yogify"
+        android:text="@string/AppName"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@id/llv"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="25dp"
-            android:text="Login to your Account"
+            android:text="@string/login_to_your_account"
             android:textSize="18sp" />
 
 
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginBottom="12dp"
-            android:hint="Email"
+            android:hint="@string/email"
             app:helperTextTextColor="@color/orange"
             app:endIconMode="clear_text">
 
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:hint="Password"
+            android:hint="@string/password"
             app:helperTextTextColor="@color/orange"
             app:endIconMode="password_toggle">
 
@@ -83,12 +83,12 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/sign_in"
-            style="@style/button"
+            style="@style/loginBtn"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginHorizontal="40dp"
             android:layout_marginVertical="20dp"
-            android:text="Sign in"
+            android:text="@string/sign_in"
             app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraSmall" />
 
 
@@ -100,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="Or sign in with"
+        android:text="@string/or_sign_in_with"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,8 +156,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="center"
-            android:text="Don't have an account?"
-            android:textSize="15dp"
+            android:text="@string/don_t_have_an_account"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/llv2"
@@ -170,8 +170,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="center"
-            android:text=" signup"
-            android:textSize="15dp"
+            android:text="@string/signup"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/llv2"

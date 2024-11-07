@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/ScreenBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".setupScreens.SetupScreen_1">
 
@@ -23,7 +24,7 @@
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox1"
                 style="@style/checkbox_button"
-                android:text="Stay Young"
+                android:text="@string/stay_young"
                 android:gravity="center"
                 />
 
@@ -31,44 +32,44 @@
                 android:id="@+id/checkbox2"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Lose weight"/>
+                android:text="@string/lose_weight"/>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox3"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Get shaped"/>
+                android:text="@string/get_shaped"/>
 
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox4"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Improve health"/>
+                android:text="@string/improve_health"/>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox5"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Boost energy"/>
+                android:text="@string/boost_energy"/>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox6"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Sleep better"/>
+                android:text="@string/sleep_better"/>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox7"
                 style="@style/checkbox_button"
                 android:gravity="center"
-                android:text="Reduce stress"/>
+                android:text="@string/reduce_stress"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/nextBtn"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:text="Next"
+                android:text="@string/next"
                 app:backgroundTint="@color/lightGreen"
                 android:enabled="false"
                 android:layout_margin="30dp"

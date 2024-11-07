@@ -26,9 +26,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Flexibility Text"
+            android:text="@string/flexibility_text"
             android:textColor="@color/white"
-            android:textSize="30dp" />
+            android:textSize="30sp" />
 
     </androidx.cardview.widget.CardView>
 
@@ -38,8 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Can you touch your feet."
-        android:textSize="25dp"
+        android:text="@string/can_you_touch_your_feet"
+        android:textSize="25sp"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,12 +73,12 @@
         <RadioButton
             android:id="@+id/yesBtn"
             style="@style/checkbox_button"
-            android:text="Yes | I can" />
+            android:text="@string/yes_i_can" />
 
         <RadioButton
             android:id="@+id/noBtn"
             style="@style/checkbox_button"
-            android:text="No | I can't" />
+            android:text="@string/no_i_can_t" />
 
     </RadioGroup>
 
@@ -86,7 +86,7 @@
         android:id="@+id/nextBtn"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:text="Next"
+        android:text="@string/next"
         app:backgroundTint="@color/lightGreen"
         android:enabled="false"
         android:layout_margin="30dp"
