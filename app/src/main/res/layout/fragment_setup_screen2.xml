@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/focusing_area"
+        style="@style/textColor"
         android:textSize="30sp"
         android:textStyle="bold"
         android:gravity="center"

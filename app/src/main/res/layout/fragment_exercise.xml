@@ -85,12 +85,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="10dp"
                 android:layout_marginBottom="10dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_gravity="center_horizontal"
+                />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

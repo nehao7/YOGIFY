@@ -33,7 +33,7 @@ class CalenderAdapter( val days: List<DayDataClass>,
 
 
         holder.cardView.setOnClickListener{
-            recyclerInterface.onItemClick(position)
+            recyclerInterface.onItemClick(position , "calenderAdaptor")
         }
 
 

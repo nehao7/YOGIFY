@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".login_signup_screen.Verification_Screen">
 
     <LinearLayout
@@ -15,35 +16,35 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            style="@style/textColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:gravity="center"
             android:text="@string/verify_your_identity"
-            android:textColor="@color/lightGreen"
             android:textSize="30sp" />
 
 
         <TextView
+            style="@style/descriptionColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="25dp"
             android:gravity="center"
             android:text="@string/VerificationDescription"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textColor="@color/lightGreen"
             android:textSize="18sp" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="232dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            app:lottie_rawRes="@raw/verification_animation"
-            app:lottie_loop="true"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="-10dp"
             android:layout_marginBottom="10dp"
-            app:lottie_autoPlay="true"/>
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/verification_animation" />
 
 
         <LinearLayout
@@ -53,6 +54,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextInputLayout1"
+                style="@style/textInputEditBackground"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
                 android:layout_marginVertical="25dp"
@@ -63,6 +65,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_code_1"
+                    style="@style/EditTextInputBoxcolor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -73,7 +76,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextInputLayout2"
-
+                style="@style/textInputEditBackground"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
                 android:layout_marginVertical="25dp"
@@ -82,6 +85,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_code_2"
+                    style="@style/EditTextInputBoxcolor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -92,6 +96,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextInputLayout3"
+                style="@style/textInputEditBackground"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
                 android:layout_marginVertical="25dp"
@@ -100,6 +105,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_code_3"
+                    style="@style/EditTextInputBoxcolor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -111,6 +117,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextInputLayout4"
+                style="@style/textInputEditBackground"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
                 android:layout_marginVertical="25dp"
@@ -119,6 +126,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_code_4"
+                    style="@style/EditTextInputBoxcolor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -129,6 +137,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextInputLayout5"
+                style="@style/textInputEditBackground"
                 android:layout_width="50dp"
                 android:layout_height="60dp"
                 android:layout_marginVertical="25dp"
@@ -137,6 +146,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_code_5"
+                    style="@style/EditTextInputBoxcolor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -154,21 +164,21 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
+                style="@style/loginBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"
                 android:layout_marginStart="60dp"
-                android:backgroundTint="@color/lightGreen"
                 android:text="@string/resend_code"
                 app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraSmall" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/verifyBtn"
+                style="@style/loginBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"
                 android:layout_marginStart="38dp"
-                android:backgroundTint="@color/darkGreen"
                 android:text="@string/verify_code"
                 app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraSmall" />
 

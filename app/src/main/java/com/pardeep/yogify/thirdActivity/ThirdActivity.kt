@@ -1,9 +1,12 @@
 package com.pardeep.yogify.thirdActivity
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
@@ -16,6 +19,8 @@ class ThirdActivity : AppCompatActivity() {
     var binding: ActivityThirdBinding? = null
     lateinit var navController: NavController
     private  val TAG = "ThirdActivity"
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var editor :SharedPreferences.Editor
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,6 +31,45 @@ class ThirdActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+
+        // ---------------------------- Day night mode ------------
+        sharedPreferences = getSharedPreferences("DayNightMode" , MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+
+        if(sharedPreferences.getBoolean("Night" , false)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+        // ---------------------Alert Dialog box----------
+//        AlertDialog.Builder(this).apply {
+//            setTitle("Do you want the Mode")
+//                .setPositiveButton("Yes"){
+//                    _ ,_ ->
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//                    editor.putBoolean("Night" , true)
+//                    editor.commit()
+//                    editor.apply()
+//
+//                }
+//                    .setNegativeButton("No"){
+//                    _ ,_ ->
+//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//                    editor.putBoolean("Night" , false)
+//                    editor.commit()
+//                    editor.apply()
+//
+//                }
+//
+//        }.show()
+        // ---------------------Alert Dialog box----------
+
+        // ---------------------------- Day night mode ------------
+
+
+
 
 
         navController = findNavController(R.id.fragmentContainerView)

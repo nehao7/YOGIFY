@@ -1,10 +1,12 @@
 package com.pardeep.yogify.setupScreens
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toolbar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pardeep.yogify.R
@@ -12,6 +14,8 @@ import com.pardeep.yogify.databinding.ActivitySetupBinding
 import com.pardeep.yogify.thirdActivity.ThirdActivity
 
 class SetupActivity : AppCompatActivity() {
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var editor : SharedPreferences.Editor
     var binding : ActivitySetupBinding?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +28,20 @@ class SetupActivity : AppCompatActivity() {
             insets
         }
 
-      setSupportActionBar(binding?.tollbar)
+        // ---------------------------- Day night mode ------------
+        sharedPreferences = getSharedPreferences("DayNightMode" , MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+
+        if(sharedPreferences.getBoolean("Night" , false)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+        // ---------------------------- Day night mode ------------
+
+
+        setSupportActionBar(binding?.tollbar)
 
 
     }

@@ -1,10 +1,12 @@
 package com.pardeep.yogify.onBoardingScreens
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
@@ -19,7 +21,10 @@ class OnBoardingMainActivity : AppCompatActivity() {
     val fragments = listOf(
         onBoardingScreen1(), onBoardingScreen2(), onBoardScreen3()
     )
-    var viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle, fragments)
+    lateinit var sharedPreferences: SharedPreferences
+    lateinit var editor : SharedPreferences.Editor
+
+    val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle, fragments)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,6 +35,19 @@ class OnBoardingMainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // ---------------------------- Day night mode ------------
+        sharedPreferences = getSharedPreferences("DayNightMode" , MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+
+        if(sharedPreferences.getBoolean("Night" , false)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+        // ---------------------------- Day night mode ------------
+
 
         //ViewPager adapter linking
         binding?.viewPager?.adapter = viewPagerAdapter

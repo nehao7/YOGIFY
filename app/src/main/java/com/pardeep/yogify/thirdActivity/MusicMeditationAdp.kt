@@ -15,7 +15,7 @@ class MusicMeditationAdp() : RecyclerView.Adapter<MusicMeditationAdp.ViewHolder>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_custom_layout,parent,false)
+        var view = LayoutInflater.from(parent.context).inflate(R.layout.category_specific_view,parent,false)
         return ViewHolder(view)
     }
 
