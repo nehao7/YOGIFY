@@ -1,6 +1,7 @@
 package com.pardeep.yogify.setupScreens
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,9 +27,12 @@ class SetupScreen3 : Fragment() {
     private var param2: String? = null
     var binding: FragmentSetupScreen3Binding? = null
     lateinit var navController: NavController
+    private  val TAG = "SetupScreen3"
+    lateinit var setupActivity: SetupActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupActivity = activity as SetupActivity
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -50,21 +54,22 @@ class SetupScreen3 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.nextBtn?.setOnClickListener {
             navController = findNavController()
-            navController.navigate(R.id.action_setupScreen3_to_setupScreen4)
+            setupActivity.progressBarIncrement("SetupScreen3")
+            navController.navigate(R.id.setupScreen5)
         }
-
-        binding?.radioGroup?.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
-                R.id.yesBtn -> {
-                    binding?.nextBtn?.isEnabled = true
+        binding?.radioGroup?.setOnCheckedChangeListener{_, checkId ->
+            when(checkId){
+                R.id.radioBtn1 -> {
+                    binding?.nextBtn?.isEnabled =true
                 }
 
-                R.id.noBtn -> {
-                    binding?.nextBtn?.isEnabled = true
-
+                R.id.radioBtn2 -> {
+                    binding?.nextBtn?.isEnabled =true
                 }
-
+                else -> binding?.nextBtn?.isEnabled = false
             }
+
+
         }
     }
 

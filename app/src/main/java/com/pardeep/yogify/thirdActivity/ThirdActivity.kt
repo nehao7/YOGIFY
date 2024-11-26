@@ -11,16 +11,21 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.ActivityThirdBinding
+import com.pardeep.yogify.setupScreens.setupScreen6
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
-class ThirdActivity : AppCompatActivity() {
+class ThirdActivity : AppCompatActivity()  {
     var binding: ActivityThirdBinding? = null
     lateinit var navController: NavController
-    private  val TAG = "ThirdActivity"
+    private val TAG = "ThirdActivity"
     lateinit var sharedPreferences: SharedPreferences
-    lateinit var editor :SharedPreferences.Editor
+    lateinit var editor: SharedPreferences.Editor
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,40 +38,26 @@ class ThirdActivity : AppCompatActivity() {
         }
 
 
-        // ---------------------------- Day night mode ------------
-        sharedPreferences = getSharedPreferences("DayNightMode" , MODE_PRIVATE)
+
+        binding?.fragmentName?.setText("Exercise")
+
+
+//        // ---------------------------- Day night mode ------------
+        sharedPreferences = getSharedPreferences("DayNightMode", MODE_PRIVATE)
         editor = sharedPreferences.edit()
 
-        if(sharedPreferences.getBoolean("Night" , false)){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-        else{
+        if (sharedPreferences.getBoolean("Night", false)) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            binding?.dayNightModeBtn?.setImageResource(R.drawable.cloud_sun)
+            binding?.drawerBtn?.setImageResource(R.drawable.bars_sort_night)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            binding?.dayNightModeBtn?.setImageResource(R.drawable.clouds_moon)
+            binding?.drawerBtn?.setImageResource(R.drawable.bars_sort)
         }
-        // ---------------------Alert Dialog box----------
-//        AlertDialog.Builder(this).apply {
-//            setTitle("Do you want the Mode")
-//                .setPositiveButton("Yes"){
-//                    _ ,_ ->
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//                    editor.putBoolean("Night" , true)
-//                    editor.commit()
-//                    editor.apply()
-//
-//                }
-//                    .setNegativeButton("No"){
-//                    _ ,_ ->
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//                    editor.putBoolean("Night" , false)
-//                    editor.commit()
-//                    editor.apply()
-//
-//                }
-//
-//        }.show()
-        // ---------------------Alert Dialog box----------
-
-        // ---------------------------- Day night mode ------------
+        binding?.dayNightModeBtn?.setOnClickListener {
+            changeTheme()
+        }
 
 
 
@@ -74,26 +65,33 @@ class ThirdActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.fragmentContainerView)
 
-
-        binding?.bottomNavigation?.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
+        binding?.bottomNavigation?.setOnTabSelectListener(object :
+            AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(
                 lastIndex: Int,
                 lastTab: AnimatedBottomBar.Tab?,
                 newIndex: Int,
                 newTab: AnimatedBottomBar.Tab
             ) {
-                when(newIndex){
-                    0 ->{
+                when (newIndex) {
+                    0 -> {
                         navController.navigate(R.id.exerciseFragment)
+                        binding?.fragmentName?.setText("Exercise")
                     }
-                    1->{
+
+                    1 -> {
                         navController.navigate(R.id.trackingFragment)
+                        binding?.fragmentName?.setText("Progress")
                     }
-                    2->{
+
+                    2 -> {
                         navController.navigate(R.id.seachFragment)
+                        binding?.fragmentName?.setText("Search")
                     }
-                    3->{
+
+                    3 -> {
                         navController.navigate(R.id.profileFragment)
+                        binding?.fragmentName?.setText("Profile")
                     }
                 }
             }
@@ -117,7 +115,27 @@ class ThirdActivity : AppCompatActivity() {
 
     }
 
+    private fun changeTheme() {
+    // ---------------------------- Day night mode ------------
+        binding?.dayNightModeBtn?.setOnClickListener {
+            if (sharedPreferences.getBoolean("Night" , false)){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                editor.putBoolean("Night" , false)
+                editor.commit()
+                editor.apply()
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                editor.putBoolean("Night" , true)
+                editor.commit()
+                editor.apply()
+            }
+        }
+        // ---------------------------- Day night mode ------------
+    }
 
+    fun setName(name : String) {
+        binding?.fragmentName?.setText(name)
+    }
 
 
 }

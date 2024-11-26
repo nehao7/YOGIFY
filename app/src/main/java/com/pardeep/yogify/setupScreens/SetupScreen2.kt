@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import androidx.navigation.ActivityNavigatorExtras
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.pardeep.yogify.R
@@ -28,9 +29,11 @@ class SetupScreen2 : Fragment() {
     private var param2: String? = null
     var binding : FragmentSetupScreen2Binding? = null
     lateinit var navController: NavController
+    lateinit var setupActivity: SetupActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupActivity = activity as SetupActivity
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -40,6 +43,7 @@ class SetupScreen2 : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentSetupScreen2Binding.inflate(layoutInflater)
@@ -51,6 +55,7 @@ class SetupScreen2 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.nextBtn?.setOnClickListener {
             navController = findNavController()
+            setupActivity.progressBarIncrement("SetupScreen2")
             navController.navigate(R.id.action_setupScreen2_to_setupScreen3)
         }
 

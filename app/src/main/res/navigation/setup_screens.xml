@@ -29,12 +29,30 @@
         android:label="fragment_setup_screen3"
         tools:layout="@layout/fragment_setup_screen3" >
         <action
-            android:id="@+id/action_setupScreen3_to_setupScreen4"
-            app:destination="@id/setupScreen4" />
+            android:id="@+id/action_setupScreen3_to_setupScreen5"
+            app:destination="@id/setupScreen5" />
     </fragment>
     <fragment
         android:id="@+id/setupScreen4"
         android:name="com.pardeep.yogify.setupScreens.SetupScreen4"
         android:label="fragment_setup_screen4"
         tools:layout="@layout/fragment_setup_screen4" />
+    <fragment
+        android:id="@+id/setupScreen5"
+        android:name="com.pardeep.yogify.setupScreens.SetupScreen5"
+        android:label="fragment_setup_screen5"
+        tools:layout="@layout/fragment_setup_screen5" >
+        <action
+            android:id="@+id/action_setupScreen5_to_setupScreen6"
+            app:destination="@id/setupScreen6" />
+    </fragment>
+    <fragment
+        android:id="@+id/setupScreen6"
+        android:name="com.pardeep.yogify.setupScreens.setupScreen6"
+        android:label="fragment_setup_screen6"
+        tools:layout="@layout/fragment_setup_screen6" >
+        <action
+            android:id="@+id/action_setupScreen6_to_setupScreen4"
+            app:destination="@id/setupScreen4" />
+    </fragment>
 </navigation>

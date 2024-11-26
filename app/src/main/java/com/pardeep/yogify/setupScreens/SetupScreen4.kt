@@ -1,12 +1,17 @@
 package com.pardeep.yogify.setupScreens
 
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore.PickerMediaColumns
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresExtension
 import androidx.navigation.NavController
-import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentSetupScreen4Binding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -25,7 +30,19 @@ class SetupScreen4 : Fragment() {
     private var param2: String? = null
     var binding : FragmentSetupScreen4Binding? = null
     lateinit var navController: NavController
-    var setupActivity : SetupActivity? = null
+    private  val TAG = "SetupScreen4"
+
+    lateinit var setupActivity: SetupActivity
+
+
+    val imagePicker = registerForActivityResult(ActivityResultContracts.PickVisualMedia()){ uri ->
+
+        if(uri != null){
+            binding?.imagePicker?.setImageURI(uri)
+        }else{
+            Log.d(TAG, "onViewCreated: No media selected")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +63,7 @@ class SetupScreen4 : Fragment() {
        // return inflater.inflate(R.layout.fragment_setup_screen4, container, false)
     }
 
+    @RequiresExtension(extension = Build.VERSION_CODES.R, version = 2)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.nextBtn?.setOnClickListener {
@@ -56,18 +74,21 @@ class SetupScreen4 : Fragment() {
             } else if (binding?.etLastName?.text?.trim().isNullOrBlank()) {
                 binding?.TextInputLayout2?.helperText = "Please enter your last name"
                 //binding?.TextInputLayout?.setHelperTextColor()
-            } else if (binding?.etWeight?.text?.trim().isNullOrBlank()) {
-                binding?.TextInputLayout3?.helperText = "Please enter your weight"
-                //binding?.TextInputLayout?.setHelperTextColor()
-            } else if (binding?.etHeight?.text?.trim().isNullOrBlank()) {
-                binding?.TextInputLayout4?.helperText = "Please enter your height"
-                //binding?.TextInputLayout?.setHelperTextColor()
-            }
-            else {
-               setupActivity?.moveToSecondDestination()
+            } else {
+                setupActivity.progressBarIncrement("SetupScreen4")
+                setupActivity.moveToSecondDestination()
             }
         }
+
+        //-------------- image picker ---------------------------
+        binding?.imagePicker?.setOnClickListener {
+            imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        }
+        //-------------- image picker ---------------------------
+
+
     }
+
 
     companion object {
         /**

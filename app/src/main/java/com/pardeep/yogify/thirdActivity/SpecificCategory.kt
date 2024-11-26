@@ -13,25 +13,25 @@ import org.w3c.dom.Text
 class SpecificCategory(
     var array : ArrayList<SpecificData>,
     val recyclerInterface: RecyclerInterface
-) : RecyclerView.Adapter<SpecificCategory.Viewholder>() {
+) : RecyclerView.Adapter<SpecificCategory.ViewHolder>() {
 
-    class Viewholder(var view : View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(var view : View) : RecyclerView.ViewHolder(view) {
         val cardView = view.findViewById<CardView>(R.id.cardView)
         val image = view.findViewById<ImageView>(R.id.imageView)
         val title = view.findViewById<TextView>(R.id.textView)
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view = LayoutInflater.from(parent.context).inflate(R.layout.category_specific_view, parent, false)
-        return Viewholder(view)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return array.size
     }
 
-    override fun onBindViewHolder(holder: Viewholder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.image.setImageResource(array[position].image!!)
         holder.title.setText(array[position].title)
 

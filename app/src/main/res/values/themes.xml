@@ -8,13 +8,13 @@
     <style name="Theme.YOGIFY" parent="Base.Theme.YOGIFY" />
 
     <style name="checkbox_button" parent="Widget.AppCompat.CompoundButton.CheckBox">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">30dp</item>
-        <item name="android:layout_marginEnd">30dp</item>
-        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_marginHorizontal">20dp</item>
+        <item name="android:layout_marginVertical">5dp</item>
         <item name="android:padding">30dp</item>
-
+        <item name="android:drawableTint">@color/lightGreen</item>
+        <item name="android:button">@android:color/transparent</item>
         <item name="android:background">@drawable/on_btn_click</item>
         <item name="android:textStyle">bold</item>
 
@@ -33,8 +33,6 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@drawable/on_btn_click</item>
         <item name="android:button">@android:color/transparent</item>
-
-
     </style>
 
    <!-- color -->
@@ -66,9 +64,11 @@
     </style>
 
 
-    <style name="textInputEditBackground" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="textInputEditBackground" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
         <item name="boxStrokeColor">@color/lightGreen</item>
         <item name="hintTextColor">@color/lightGreen</item>
+        <item name="android:background">@color/dullBlack</item>
+
     </style>
 
     <style name="loginBtn">
@@ -76,4 +76,11 @@
         <item name="android:textColor">@color/pureWhite</item>
     </style>
 
+    <style name="progressIndicatorColor">
+        <item name="indicatorColor">@color/lightGreen</item>
+    </style>
+
+    <style name="cardViewCorner">
+        <item name="android:color">@color/lightGreen</item>
+    </style>
 </resources>

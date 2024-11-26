@@ -102,7 +102,6 @@ class TrackingFragment : Fragment() , RecyclerInterface {
     }
 
     private fun findFirstDayOfWeek(calendar: Calendar) {
-        val selectDate = calendar.time
         calendar.set(Calendar.DAY_OF_WEEK , calendar.firstDayOfWeek)
 
         //find first day of week
@@ -127,8 +126,6 @@ class TrackingFragment : Fragment() , RecyclerInterface {
         val currentDate = dateFormat.format(calendar.time)
         Log.d(TAG, "onViewCreated: $dayOfWeek , $firstDayOfWeek")
         Log.d(TAG, "onViewCreated: ${calendar.time}")
-        val data = calendar.set(dayOfWeek, firstDayOfWeek)
-
         var currentDatePosition = 0
 
         for (i in 0..6) {

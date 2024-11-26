@@ -37,15 +37,15 @@ class OnBoardingMainActivity : AppCompatActivity() {
         }
 
         // ---------------------------- Day night mode ------------
-        sharedPreferences = getSharedPreferences("DayNightMode" , MODE_PRIVATE)
-        editor = sharedPreferences.edit()
-
-        if(sharedPreferences.getBoolean("Night" , false)){
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-        else{
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
+//        sharedPreferences = getSharedPreferences("DayNightMode" , MODE_PRIVATE)
+//        editor = sharedPreferences.edit()
+//
+//        if(sharedPreferences.getBoolean("Night" , false)){
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//        }
+//        else{
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//        }
         // ---------------------------- Day night mode ------------
 
 

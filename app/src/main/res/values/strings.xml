@@ -18,7 +18,7 @@
     <string name="ExerciseDifficultyLevel">Difficulty level</string>
     <string name="AppName">Yogify</string>
     <string name="login_to_your_account">Login to your Account</string>
-    <string name="email">Email</string>
+
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
     <string name="or_sign_in_with">Or sign in with</string>
@@ -28,7 +28,7 @@
     <string name="username">Username</string>
     <string name="sign_up">Sign up</string>
     <string name="have_an_account">have an account?</string>
-    <string name="signin">SignIn</string>
+    <string name="signIn">SignIn</string>
     <string name="your_path_to_a_healthier_you">Your Path to a Healthier You</string>
     <string name="OnBoardingScreen1Description">Experience the benefits of regular yoga practice: increased flexibility, improved strength, reduced stress, and a clearer mind.Start your journey today!</string>
     <string name="discover_your_inner_peace">Discover Your Inner Peace</string>
@@ -38,7 +38,7 @@
     <string name="full_name">Full name</string>
     <string name="_5_4">5\'4\'</string>
     <string name="_60kg">60kg\'</string>
-    <string name="email_gamil_com">Email@gamil.com</string>
+    <string name="email">Email@gamil.com</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="language">Language</string>
     <string name="help">Help</string>
@@ -57,8 +57,8 @@
     <string name="enter_detailed">Enter Detailed</string>
     <string name="stay_young">Stay Young</string>
     <string name="lose_weight">Lose weight</string>
-    <string name="get_shaped">Get shaped</string>
-    <string name="improve_health">Improve health</string>
+    <string name="get_shaped">Get\n shaped</string>
+    <string name="improve_health">Improve\n health</string>
     <string name="boost_energy">Boost energy</string>
     <string name="sleep_better">Sleep better</string>
     <string name="reduce_stress">Reduce stress</string>

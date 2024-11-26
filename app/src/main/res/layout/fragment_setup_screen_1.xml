@@ -1,80 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/ScreenBackground"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".setupScreens.SetupScreen_1">
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         >
 
         <LinearLayout
-            android:id="@+id/linearlayout"
+            android:id="@+id/linearlayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginVertical="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                >
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox1"
+                    style="@style/checkbox_button"
+                    android:drawableTop="@drawable/muscle"
+                    android:gravity="center"
+                    android:text="@string/stay_young" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox2"
+                    style="@style/checkbox_button"
+                    android:drawableTop="@drawable/scale"
+                    android:gravity="center"
+                    android:text="@string/lose_weight" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearlayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox3"
+                    style="@style/checkbox_button"
+                    android:drawableTop="@drawable/body"
+                    android:gravity="center"
+                    android:text="@string/get_shaped" />
 
 
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/checkbox1"
-                style="@style/checkbox_button"
-                android:text="@string/stay_young"
-                android:gravity="center"
-                />
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox4"
+                    style="@style/checkbox_button"
+                    android:drawableTop="@drawable/heart_rate"
+                    android:gravity="center"
+                    android:text="@string/improve_health" />
 
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/checkbox2"
-                style="@style/checkbox_button"
-                android:gravity="center"
-                android:text="@string/lose_weight"/>
+            </LinearLayout>
 
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/checkbox3"
-                style="@style/checkbox_button"
-                android:gravity="center"
-                android:text="@string/get_shaped"/>
+            <LinearLayout
+                android:id="@+id/linearlayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
 
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox5"
+                    style="@style/checkbox_button"
+                    android:drawableTop="@drawable/bolt__1_"
+                    android:gravity="center"
+                    android:text="@string/boost_energy" />
 
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/checkbox4"
-                style="@style/checkbox_button"
-                android:gravity="center"
-                android:text="@string/improve_health"/>
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkbox6"
+                    style="@style/checkbox_button"
+                    android:drawableTop="@drawable/face_sleeping"
+                    android:gravity="center"
+                    android:text="@string/sleep_better" />
 
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/checkbox5"
-                style="@style/checkbox_button"
-                android:gravity="center"
-                android:text="@string/boost_energy"/>
-
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/checkbox6"
-                style="@style/checkbox_button"
-                android:gravity="center"
-                android:text="@string/sleep_better"/>
+            </LinearLayout>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/checkbox7"
                 style="@style/checkbox_button"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/smile"
                 android:gravity="center"
-                android:text="@string/reduce_stress"/>
+                android:text="@string/reduce_stress" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/nextBtn"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                android:text="@string/next"
-                app:backgroundTint="@color/lightGreen"
-                android:enabled="false"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="30dp"
-                android:background="@drawable/btn_shape"
-                android:layout_gravity="center_horizontal"/>
+                style="@style/loginBtn"
+                android:text="@string/next"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraSmall"
+                />
 
 
         </LinearLayout>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -27,17 +28,24 @@ class InnerLevelFragment : Fragment() , RecyclerInterface {
     private var param1: String? = null
     private var param2: String? = null
     var levelName : String? = ""
+    var title : String? = ""
+    var image : Int = 0
     var dayArray = arrayListOf<String>("Day1", "Day2" , "Day3" ,"Day4" , "Day5" , )
     var dayRecyclerView = DayRecyclerView(dayArray , this)
     var binding : FragmentInnerLevelBinding?=null
     lateinit var gridLayoutManager: GridLayoutManager
     lateinit var navController: NavController
+    var thirdActivity : ThirdActivity?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            levelName = it.getString("Level")
+            thirdActivity = activity as ThirdActivity
+            levelName = it.getInt("Level").toString()
+            title = it.getString("title")
+            image = it.getInt("image")
+
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
@@ -56,6 +64,9 @@ class InnerLevelFragment : Fragment() , RecyclerInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
+        print("levelname : $title")
+        print("image : $image" )
+        thirdActivity?.setName(title.toString())
         gridLayoutManager = GridLayoutManager(requireContext() , 3 , LinearLayoutManager.VERTICAL ,false)
         binding?.dayRecyclerView?.layoutManager = gridLayoutManager
         binding?.dayRecyclerView?.adapter = dayRecyclerView
@@ -84,8 +95,9 @@ class InnerLevelFragment : Fragment() , RecyclerInterface {
 
     override fun onItemClick(position: Int, callFrom: String) {
         if (callFrom == "DayRecycler"){
-            navController.navigate(R.id.inner_day_fragment)
-
+            navController.navigate(R.id.inner_day_fragment, bundleOf("image" to image,
+               ))
         }
     }
+
 }

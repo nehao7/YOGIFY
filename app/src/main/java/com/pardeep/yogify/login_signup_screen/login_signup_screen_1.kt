@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentLoginSignupScreen1Binding
@@ -28,10 +30,16 @@ class login_signup_screen_1 : Fragment() {
     private var param2: String? = null
     var binding : FragmentLoginSignupScreen1Binding? = null
     lateinit var navController: NavController
+    lateinit var loginSignupActivity: LoginSignupActivity
+
+    // ----------- firebase---------
+    lateinit var firebaseAuth: FirebaseAuth
+    // ----------- firebase---------
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loginSignupActivity = activity as LoginSignupActivity
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -50,6 +58,13 @@ class login_signup_screen_1 : Fragment() {
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
+        navController = findNavController()
+
+        // ------------------------ fireAuth init----------------
+        firebaseAuth = FirebaseAuth.getInstance()
+        // ------------------------ fireAuth init----------------
+
+        // ---------------- login functionality using email and password------------
 
         binding?.signIn?.setOnClickListener {
 
@@ -60,12 +75,23 @@ class login_signup_screen_1 : Fragment() {
                 binding?.passwordTextInputLayout?.helperText = "required"
                 binding?.passwordTextInputLayout?.setHelperTextColor(requireContext().getColorStateList(R.color.red))
             } else {
-                // adding block of code for login here
+                val email = binding?.etEmail?.text.toString()
+                val password = binding?.etPassword?.text.toString()
+                firebaseAuth.signInWithEmailAndPassword(email , password).addOnCompleteListener {
+                    if (it.isSuccessful){
+                        Toast.makeText(requireContext(), "login successfully", Toast.LENGTH_SHORT).show()
+                        loginSignupActivity.loginSuccessfully()
+
+                    }else{
+                        Toast.makeText(requireContext(), "Invalid Account", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
             }
 
         }
+        // ---------------- login functionality using email and password-------------
 
-        navController = findNavController()
         //navigation to second screen for sign up when user don't have a account
        binding?.signUpBtn?.setOnClickListener {
 

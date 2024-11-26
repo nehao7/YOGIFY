@@ -1,6 +1,7 @@
 package com.pardeep.yogify.thirdActivity
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.pardeep.yogify.ExerciseImageFragment
+import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentSelectiveExerciseBinding
 import java.util.Locale
 
@@ -31,6 +33,8 @@ class SelectiveExerciseFragment : Fragment() {
     val fragments = listOf(ExerciseImageFragment(), ExerciseImageFragment())
     lateinit var exerciseViewPager: ExerciseViewPager
     lateinit var textToSpeech: TextToSpeech
+    val milliSecond : Long = 60000 // 1 min = 60000millisecond
+    var countDownTimer : CountDownTimer?=null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +61,6 @@ class SelectiveExerciseFragment : Fragment() {
         textToSpeech = TextToSpeech(requireContext() , object : TextToSpeech. OnInitListener{
             override fun onInit(status: Int) {
                 if (status == TextToSpeech.SUCCESS){
-                    val result = textToSpeech.setLanguage(Locale.US)
                     if (status == TextToSpeech.LANG_NOT_SUPPORTED || status == TextToSpeech.LANG_MISSING_DATA){
                         Toast.makeText(requireContext(), "Language error", Toast.LENGTH_SHORT).show()
                     }else
@@ -73,15 +76,22 @@ class SelectiveExerciseFragment : Fragment() {
         var click = 0
         binding?.play?.setOnClickListener{
             if (click == 0){
+                binding?.play?.setImageResource(R.drawable.pause)
+                startTimer()
                 click++
                 speak(binding?.instruction?.text.toString())
             }else{
                 click = 0
+                binding?.play?.setImageResource(R.drawable.play__3_)
+
                 textToSpeech.stop()
             }
 
         }
         //------------------------- text to speech ---------------------------
+
+
+
 
         exerciseViewPager = ExerciseViewPager(lifecycle = lifecycle, fragments = fragments , fragmentManager = childFragmentManager )
         binding?.viewPager?.adapter = exerciseViewPager
@@ -131,4 +141,26 @@ class SelectiveExerciseFragment : Fragment() {
                 }
             }
     }
+
+    //---------------count down-------------------------
+    fun startTimer(){
+        countDownTimer?.cancel()
+
+        countDownTimer = object : CountDownTimer(milliSecond,1000) {
+            override fun onTick(millisUntilFinished: Long) {
+
+                val progress = ((milliSecond - millisUntilFinished) * 100 / milliSecond).toInt()
+                binding?.linearProgress?.progress = progress
+                println(progress)
+            }
+
+            override fun onFinish() {
+                binding?.linearProgress?.progress =100
+                binding?.play?.setImageResource(R.drawable.play__3_)
+            }
+
+        }.start()
+    }
+
+    //---------------count down-------------------------
 }

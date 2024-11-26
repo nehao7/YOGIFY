@@ -25,6 +25,7 @@ class inner_day_fragment : Fragment() , RecyclerInterface {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    var image : Int = 0
     var innerLevelAdaptor = InnerLevelAdaptor(this)
     lateinit var linearLayoutManager: LinearLayoutManager
     var binding : FragmentInnerDayFragmentBinding?= null
@@ -35,6 +36,7 @@ class inner_day_fragment : Fragment() , RecyclerInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+            image = it.getInt("image")
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
@@ -55,6 +57,8 @@ class inner_day_fragment : Fragment() , RecyclerInterface {
         linearLayoutManager = LinearLayoutManager(requireContext() , LinearLayoutManager.VERTICAL , false)
         binding?.recyclerView?.layoutManager = linearLayoutManager
         binding?.recyclerView?.adapter = innerLevelAdaptor
+        binding?.imageView?.setImageResource(image)
+        binding?.imageView?.cropToPadding
         navController = findNavController()
     }
 

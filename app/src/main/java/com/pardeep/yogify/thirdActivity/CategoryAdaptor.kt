@@ -10,7 +10,7 @@ import com.pardeep.yogify.R
 
 class CategoryAdaptor(
     var array: ArrayList<CategoryData>,
-    val recyclerInterface: RecyclerInterface
+    var categoryRecyclerInterface: CategoryRecyclerInterface
 ):RecyclerView.Adapter<CategoryAdaptor.ViewHolder>() {
     class ViewHolder(var view : View) : RecyclerView.ViewHolder(view) {
         val carditem = view.findViewById<CardView>(R.id.cardView)
@@ -19,7 +19,7 @@ class CategoryAdaptor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var view = LayoutInflater.from(parent.context).inflate(R.layout.custom_category_view,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.custom_category_view,parent,false)
         return ViewHolder(view)
     }
 
@@ -29,9 +29,14 @@ class CategoryAdaptor(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.title.setText(array[position].title)
+        holder.title.setText(array[position].name)
         holder.carditem.setOnClickListener{
-            recyclerInterface.onItemClick(position , "categoryAdaptor")
+            categoryRecyclerInterface.onItemClick(position , "categoryAdaptor")
+        }
+
+        holder.carditem.setOnLongClickListener {
+            categoryRecyclerInterface.longClickListener(position,"categoryAdaptor")
+            return@setOnLongClickListener true
         }
     }
 

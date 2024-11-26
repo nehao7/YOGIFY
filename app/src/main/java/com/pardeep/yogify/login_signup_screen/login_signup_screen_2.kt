@@ -1,14 +1,18 @@
 package com.pardeep.yogify.login_signup_screen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentLoginSignupScreen2Binding
+import kotlin.math.log
 import kotlin.random.Random
 
 /**
@@ -27,9 +31,12 @@ class login_signup_screen_2 : Fragment() {
     private var param2: String? = null
     var binding: FragmentLoginSignupScreen2Binding? = null
     lateinit var navController: NavController
+    lateinit var loginSignupActivity: LoginSignupActivity
+    lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loginSignupActivity = activity as LoginSignupActivity
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -50,39 +57,37 @@ class login_signup_screen_2 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
 
+        //------------------- init fireAuth ---------------
+        firebaseAuth = FirebaseAuth.getInstance()
+        //------------------- init fireAuth ---------------
+
         binding?.signUp?.setOnClickListener {
 
 
-            if (binding?.etEmail?.text?.trim().isNullOrBlank()) {
-                binding?.emailTextInputLayout?.helperText = "required"
-                binding?.confirmPasswordTextInputLayout?.setHelperTextColor(requireContext().getColorStateList(R.color.red))
-            } else if (binding?.etPassword?.text?.trim().isNullOrBlank()) {
+            if (binding?.userNameEt?.text?.trim().isNullOrBlank()) {
+                binding?.usernameTextInputLayout?.helperText = "required"
+                binding?.usernameTextInputLayout?.setHelperTextColor(requireContext().getColorStateList(R.color.red))
+            } else if (binding?.emailEt?.text?.trim().isNullOrBlank()) {
+                binding?.emailTextInput?.helperText = "required"
+                binding?.emailTextInput?.setHelperTextColor(requireContext().getColorStateList(R.color.red))
+
+            } else if (binding?.passwordEt?.text?.trim().isNullOrBlank()) {
                 binding?.passwordTextInputLayout?.helperText = "required"
-                binding?.confirmPasswordTextInputLayout?.setHelperTextColor(requireContext().getColorStateList(R.color.red))
-
-            } else if (binding?.etConfirmPassword?.text?.trim().isNullOrBlank()) {
-                binding?.confirmPasswordTextInputLayout?.helperText = "required"
-                binding?.confirmPasswordTextInputLayout?.setHelperTextColor(requireContext().getColorStateList(R.color.red))
-            } else if (binding?.etPassword?.text.toString() != binding?.etConfirmPassword?.text.toString()) {
-                binding?.confirmPasswordTextInputLayout?.helperText = "password does not match"
-                binding?.confirmPasswordTextInputLayout?.setHelperTextColor(requireContext().getColorStateList(
-                    R.color.red))
-            } else {
-                binding?.emailTextInputLayout?.helperText = ""
+                binding?.passwordTextInputLayout?.setHelperTextColor(requireContext().getColorStateList(R.color.red))
+            }else {
+                binding?.emailTextInput?.helperText = ""
                 binding?.passwordTextInputLayout?.helperText = ""
-                binding?.confirmPasswordTextInputLayout?.helperText = ""
-                var randomNumber = 0
-                val min = 10000
-                val max = 99999
-                randomNumber = Random.nextInt(min, max + 1)
-                println(randomNumber)
-                val bundle = Bundle()
-                bundle.putInt("randomNumber", randomNumber)
-                navController = findNavController()
-                navController.navigate(R.id.action_login_signup_screen_2_to_verification_Screen2, bundle)
+                binding?.usernameTextInputLayout?.helperText = ""
+                val email = binding?.emailEt?.text.toString()
+                val password = binding?.passwordEt?.text.toString()
+                val userName = binding?.userNameEt?.text.toString()
+                firebaseAuth.createUserWithEmailAndPassword(email ,password).addOnCompleteListener {
+                    navController.navigate(R.id.action_login_signup_screen_2_to_login_signup_screen_1)
+                }
+                    .addOnFailureListener { err ->
+                        Toast.makeText(requireContext(), "${err.message}", Toast.LENGTH_SHORT).show()
 
-
-
+                    }
                 // navigate to next screen where you want
             }
 
@@ -98,10 +103,6 @@ class login_signup_screen_2 : Fragment() {
         }
         binding?.twitterBtn?.setOnClickListener {
             navController.navigate(R.id.action_login_signup_screen_2_to_verification_Screen2)
-        }
-
-        binding?.signInBtn?.setOnClickListener {
-            navController.navigate(R.id.action_login_signup_screen_2_to_login_signup_screen_1)
         }
     }
 

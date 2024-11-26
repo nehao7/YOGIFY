@@ -79,6 +79,14 @@
                 android:paddingEnd="58dp"
                 android:scrollbarStyle="outsideOverlay" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/CategoryAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="Add Category"
+                />
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categoryRecyclerView"

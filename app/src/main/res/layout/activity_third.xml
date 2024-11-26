@@ -6,23 +6,41 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/ScreenBackground"
     tools:context=".thirdActivity.ThirdActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/tollbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/ScreenBackground"
-        app:subtitle="fragment name"
-        app:subtitleCentered="true"
-        app:navigationIcon="@drawable/baseline_menu_24"
-        app:menu="@menu/tool_bar_menu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+   <ImageButton
+       android:id="@+id/drawerBtn"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/baseline_menu_24"
+       android:background="@android:color/transparent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       android:layout_margin="15dp"/>
 
-    </com.google.android.material.appbar.MaterialToolbar>
+    <ImageButton
+        android:id="@+id/dayNightModeBtn"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/clouds_moon"
+       android:background="@android:color/transparent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       android:layout_margin="15dp"/>
+
+    <TextView
+        android:id="@+id/fragmentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textColor"
+        android:text="Fragment Name"
+        app:layout_constraintStart_toEndOf="@id/drawerBtn"
+        app:layout_constraintEnd_toStartOf="@id/dayNightModeBtn"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"/>
+
+
 
     <LinearLayout
         android:layout_width="0dp"
@@ -30,8 +48,9 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintTop_toBottomOf="@id/tollbar">
+        app:layout_constraintTop_toBottomOf="@id/drawerBtn">
 
         <fragment
             android:id="@+id/fragmentContainerView"

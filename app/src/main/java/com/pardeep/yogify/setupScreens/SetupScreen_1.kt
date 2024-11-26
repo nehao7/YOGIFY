@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
-import androidx.core.widget.CompoundButtonCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.pardeep.yogify.R
@@ -28,7 +27,10 @@ class SetupScreen_1 : Fragment() {
     private var param2: String? = null
     var binding : FragmentSetupScreen1Binding?= null
     lateinit var navController: NavController
-    var setupActivity : SetupActivity? = null
+    lateinit var setupActivity: SetupActivity
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +55,9 @@ class SetupScreen_1 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.nextBtn?.setOnClickListener {
             navController  = findNavController()
+            setupActivity.progressBarIncrement("SetupScreen1")
             navController.navigate(R.id.action_setupScreen_1_to_setupScreen2)
+
         }
 
 
@@ -70,6 +74,8 @@ class SetupScreen_1 : Fragment() {
         binding?.checkbox5?.setOnCheckedChangeListener(checkBoxListner)
         binding?.checkbox6?.setOnCheckedChangeListener(checkBoxListner)
         binding?.checkbox7?.setOnCheckedChangeListener(checkBoxListner)
+
+
 
     }
     companion object {
