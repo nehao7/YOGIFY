@@ -5,17 +5,14 @@
     <item
         android:id="@+id/Exercise"
         android:icon="@drawable/house_chimney"
-        android:title="Home" />
+        android:title="Home"
+        />
 
     <item
         android:id="@+id/Tracking"
         android:icon="@drawable/chart_line_up"
         android:title="Progress" />
 
-    <item
-        android:id="@+id/Search"
-        android:icon="@drawable/search"
-        android:title="Search" />
 
     <item
         android:id="@+id/Profile"

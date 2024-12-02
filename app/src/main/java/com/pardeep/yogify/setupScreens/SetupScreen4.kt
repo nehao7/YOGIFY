@@ -2,7 +2,6 @@ package com.pardeep.yogify.setupScreens
 
 import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore.PickerMediaColumns
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

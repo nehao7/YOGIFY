@@ -1,5 +1,6 @@
 package com.pardeep.yogify.thirdActivity
 
+import android.app.Dialog
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -36,6 +37,7 @@ class ThirdActivity : AppCompatActivity()  {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
 
 
 
@@ -85,11 +87,6 @@ class ThirdActivity : AppCompatActivity()  {
                     }
 
                     2 -> {
-                        navController.navigate(R.id.seachFragment)
-                        binding?.fragmentName?.setText("Search")
-                    }
-
-                    3 -> {
                         navController.navigate(R.id.profileFragment)
                         binding?.fragmentName?.setText("Profile")
                     }
@@ -107,8 +104,7 @@ class ThirdActivity : AppCompatActivity()  {
             when (destination.id) {
                 R.id.exerciseFragment -> binding?.bottomNavigation?.selectTabAt(0)
                 R.id.trackingFragment -> binding?.bottomNavigation?.selectTabAt(1)
-                R.id.seachFragment -> binding?.bottomNavigation?.selectTabAt(2)
-                R.id.profileFragment -> binding?.bottomNavigation?.selectTabAt(3)
+                R.id.profileFragment -> binding?.bottomNavigation?.selectTabAt(2)
                 // ... add more cases for other fragments
             }
         }

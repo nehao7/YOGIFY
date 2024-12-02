@@ -4,7 +4,7 @@ import com.google.firebase.database.Exclude
 
 data class CategoryData(
     var id : String?="",
-    var name : String?=""
+    var name : String?="",
 ){
     @Exclude
     fun toMap() : Map<String , Any?>{

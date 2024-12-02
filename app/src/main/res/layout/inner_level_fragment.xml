@@ -29,6 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/image_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/beginner_pose"
@@ -55,6 +56,7 @@
                 app:layout_constraintTop_toBottomOf="@id/poseName">
 
                 <TextView
+                    android:id="@+id/levelName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -65,6 +67,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/duration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -74,10 +77,21 @@
                     app:layout_constraintStart_toEndOf="@id/poseName"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="3dp"
+                    android:text="min"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@id/duration"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
             </LinearLayout>
 
             <ImageButton
+                android:id="@+id/innerImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"

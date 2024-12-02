@@ -3,6 +3,8 @@ package com.pardeep.yogify.thirdActivity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +15,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
+import androidx.core.view.marginEnd
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -87,6 +90,7 @@ class ExerciseFragment : Fragment(), RecyclerInterface, CategoryRecyclerInterfac
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         navController = findNavController()
 
 
@@ -146,7 +150,6 @@ class ExerciseFragment : Fragment(), RecyclerInterface, CategoryRecyclerInterfac
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
                 val categoryDataArray : CategoryData?=snapshot.getValue(CategoryData::class.java)
                 categoryDataArray?.id = snapshot.key
-
                 if (categoryDataArray!=null){
                     categoryData.forEachIndexed { index, categoryDataModel ->
                         if (categoryDataModel.id == categoryDataArray.id){
@@ -162,7 +165,6 @@ class ExerciseFragment : Fragment(), RecyclerInterface, CategoryRecyclerInterfac
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 val categoryDataArray : CategoryData?=snapshot.getValue(CategoryData::class.java)
                 categoryDataArray?.id = snapshot.key
-
                 if (categoryDataArray != null){
                     categoryData.remove(categoryDataArray)
                     categoryAdapter.notifyDataSetChanged()
@@ -279,9 +281,7 @@ class ExerciseFragment : Fragment(), RecyclerInterface, CategoryRecyclerInterfac
                     )
                 )
 
-                binding?.recyclerView2?.adapter = thirtyMinAdp
-                thirtyLinearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                binding?.recyclerView2?.layoutManager = thirtyLinearLayoutManager
+
 
                 //--------------------------------specific Recycler view-----------------------------------------
 
@@ -312,6 +312,8 @@ class ExerciseFragment : Fragment(), RecyclerInterface, CategoryRecyclerInterfac
 
                 binding?.imageSlider?.setImageList(imageList)
             }
+
+
         }
     }
 
@@ -355,13 +357,51 @@ class ExerciseFragment : Fragment(), RecyclerInterface, CategoryRecyclerInterfac
 
             "categoryAdaptor" -> {
                 Toast.makeText(requireContext(), "categoryAdaptorClick", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "${position}", Toast.LENGTH_SHORT).show()
+                when(position){
+                    0 -> {
+                        binding?.recyclerView2?.adapter = thirtyMinAdp
+                        thirtyLinearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                        binding?.recyclerView2?.layoutManager = thirtyLinearLayoutManager
+
+                        animateView(position)
+
+                    }
+                    1-> {
+                        binding?.recyclerView2?.adapter = null
+                        thirtyLinearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                        binding?.recyclerView2?.layoutManager = thirtyLinearLayoutManager
+
+                        animateView(position)
+                    }
+                }
 
             }
 
             "specificAdaptor" -> {
-                Toast.makeText(requireContext(), "specificAdaptorclick", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "specificAdaptor click", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.selectiveExerciseFragment , bundleOf(
+                    "title" to specificData[position].title,
+                    "image1" to specificData[position].image,
+                    "image2" to specificData[position].image,
+                    "image3" to specificData[position].image,
+                    "image4" to specificData[position].image,
+                ))
+
             }
         }
+    }
+
+    private fun animateView(position: Int) {
+        for (i in 0 .. binding?.categoryRecyclerView?.childCount!!){
+            val child = binding?.categoryRecyclerView?.getChildAt(i)
+            child?.scaleX = 0.9f
+            child?.scaleY = 0.9f
+        }
+        val clickedItem = binding?.categoryRecyclerView?.findViewHolderForAdapterPosition(position)?.itemView
+        clickedItem?.scaleX = 1.1f
+        clickedItem?.scaleY = 1.1f
+
     }
 
     override fun longClickListener(position: Int, callFrom: String) {
@@ -397,9 +437,8 @@ class ExerciseFragment : Fragment(), RecyclerInterface, CategoryRecyclerInterfac
                                     } else {
                                         dismiss()
                                         val newName = categoryEt.text.toString()
-                                        val updateData = CategoryData(id = categoryId , name = newName).toMap()
+                                        val updateData = CategoryData(id = categoryData[position].id ,name = newName).toMap()
                                         categoryDatabaseReference.child(categoryId.toString()).updateChildren(updateData)
-
                                     }
                                 }
                             }.show()
@@ -410,5 +449,15 @@ class ExerciseFragment : Fragment(), RecyclerInterface, CategoryRecyclerInterfac
             }
         }
     }
+
+    override fun onPause() {
+        super.onPause()
+        imageList.clear()
+        levelData.clear()
+        categoryData.clear()
+        specificData.clear()
+
+    }
 }
+
 

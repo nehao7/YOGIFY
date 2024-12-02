@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,6 +17,7 @@
         <activity
             android:name=".splashScreen.SplashScreen"
             android:exported="false">
+
         </activity>
 
         <activity
@@ -26,24 +28,17 @@
         <activity
             android:name=".thirdActivity.ThirdActivity"
             android:exported="true">
-
-        </activity>
-
-
-        <activity
-            android:name=".setupScreens.SetupActivity"
-            android:exported="false" >
-
-        </activity>
-        <activity
-            android:name=".login_signup_screen.LoginSignupActivity"
-            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
+
+        <activity
+            android:name=".setupScreens.SetupActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".login_signup_screen.LoginSignupActivity"
+            android:exported="false"/>
     </application>
 </manifest>

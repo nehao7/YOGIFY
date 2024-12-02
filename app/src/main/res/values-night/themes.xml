@@ -89,4 +89,9 @@
         <item name="android:color">@color/orange</item>
     </style>
 
+    <style name="bottomNav">
+        <item name="indicatorColor">@color/orange</item>
+        <item name="android:background">@color/customBlack</item>
+    </style>
+
 </resources>

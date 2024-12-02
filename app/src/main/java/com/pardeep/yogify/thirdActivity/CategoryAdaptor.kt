@@ -35,7 +35,7 @@ class CategoryAdaptor(
         }
 
         holder.carditem.setOnLongClickListener {
-            categoryRecyclerInterface.longClickListener(position,"categoryAdaptor")
+            categoryRecyclerInterface.longClickListener(position,"categoryAdaptor" )
             return@setOnLongClickListener true
         }
     }

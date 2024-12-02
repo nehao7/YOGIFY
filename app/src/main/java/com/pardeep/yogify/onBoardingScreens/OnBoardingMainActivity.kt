@@ -17,14 +17,14 @@ import com.pardeep.yogify.login_signup_screen.LoginSignupActivity
 
 class OnBoardingMainActivity : AppCompatActivity() {
     var binding: ActivityOnBoardingMainBinding? = null
-    var currePosition = 0
+    var currentPosition = 0
     val fragments = listOf(
         onBoardingScreen1(), onBoardingScreen2(), onBoardScreen3()
     )
     lateinit var sharedPreferences: SharedPreferences
     lateinit var editor : SharedPreferences.Editor
 
-    val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle, fragments)
+    var viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle, fragments)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -37,15 +37,32 @@ class OnBoardingMainActivity : AppCompatActivity() {
         }
 
         // ---------------------------- Day night mode ------------
-//        sharedPreferences = getSharedPreferences("DayNightMode" , MODE_PRIVATE)
-//        editor = sharedPreferences.edit()
-//
-//        if(sharedPreferences.getBoolean("Night" , false)){
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-//        }
-//        else{
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//        }
+        sharedPreferences = getSharedPreferences("DayNightMode" , MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+
+        if(sharedPreferences.getBoolean("Night" , false)){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            binding?.imageBtn?.setImageResource(R.drawable.cloud_sun)
+        }
+        else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            binding?.imageBtn?.setImageResource(R.drawable.clouds_moon)
+
+        }
+
+        binding?.imageBtn?.setOnClickListener {
+            if (sharedPreferences.getBoolean("Night", false)) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                editor.putBoolean("Night", false)
+                editor.commit()
+                editor.apply()
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                editor.putBoolean("Night", true)
+                editor.commit()
+                editor.apply()
+            }
+        }
         // ---------------------------- Day night mode ------------
 
 
@@ -54,42 +71,24 @@ class OnBoardingMainActivity : AppCompatActivity() {
         binding?.viewPager?.registerOnPageChangeCallback(object :ViewPager2.OnPageChangeCallback(){
          override fun onPageSelected(position: Int) {
              super.onPageSelected(position)
-             currePosition = position
+             currentPosition = position
          }
      })
 
         // next button navigation functionality for onboarding screen
         binding?.nextButton?.setOnClickListener {
-            when(currePosition){
+            when(currentPosition){
                 0 -> {
                     binding?.viewPager?.currentItem = 1
-                    binding?.cardView2?.visibility = View.VISIBLE
                 }
                 1 -> {
                     binding?.viewPager?.currentItem = 2
-                    binding?.cardView2?.visibility = View.VISIBLE
                 }
-                2 -> {
-                    binding?.cardView2?.visibility = View.VISIBLE
-                    val intent = Intent(this ,LoginSignupActivity::class.java )
+                2 -> { val intent = Intent(this ,LoginSignupActivity::class.java )
                     startActivity(intent)
                     finish()
                 }
 
-            }
-        }
-
-        // previous button navigation functionality for onboarding screen
-        binding?.previousButton?.setOnClickListener {
-            when(currePosition){
-                2->{
-                    binding?.viewPager?.currentItem = 1
-                    binding?.cardView2?.visibility = View.VISIBLE
-                }
-                1->{
-                    binding?.viewPager?.currentItem = 0
-                    binding?.cardView2?.visibility = View.INVISIBLE
-                }
             }
         }
 
@@ -99,4 +98,6 @@ class OnBoardingMainActivity : AppCompatActivity() {
 
 
     }
-}
+    override fun onDestroy() { super.onDestroy() // Clean up binding
+     binding?.viewPager?.adapter = null
+}}

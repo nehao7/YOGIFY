@@ -1,6 +1,7 @@
 package com.pardeep.yogify.login_signup_screen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentLoginSignupScreen1Binding
+import kotlin.concurrent.thread
 
 /**
  * A simple [Fragment] subclass.
@@ -31,7 +33,7 @@ class login_signup_screen_1 : Fragment() {
     var binding : FragmentLoginSignupScreen1Binding? = null
     lateinit var navController: NavController
     lateinit var loginSignupActivity: LoginSignupActivity
-
+    private  val TAG = "login_signup_screen_1"
     // ----------- firebase---------
     lateinit var firebaseAuth: FirebaseAuth
     // ----------- firebase---------
@@ -77,14 +79,16 @@ class login_signup_screen_1 : Fragment() {
             } else {
                 val email = binding?.etEmail?.text.toString()
                 val password = binding?.etPassword?.text.toString()
-                firebaseAuth.signInWithEmailAndPassword(email , password).addOnCompleteListener {
-                    if (it.isSuccessful){
-                        Toast.makeText(requireContext(), "login successfully", Toast.LENGTH_SHORT).show()
-                        loginSignupActivity.loginSuccessfully()
+                    firebaseAuth.signInWithEmailAndPassword(email , password).addOnCompleteListener {
+                        if (it.isSuccessful){
+                            Toast.makeText(requireContext(), "login successfully", Toast.LENGTH_SHORT).show()
+                            loginSignupActivity.loginSuccessfully()
 
-                    }else{
-                        Toast.makeText(requireContext(), "Invalid Account", Toast.LENGTH_SHORT).show()
-                    }
+                        }else{
+                            Toast.makeText(requireContext(), "Invalid Account", Toast.LENGTH_SHORT).show()
+                        }
+
+
 
                 }
             }

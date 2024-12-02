@@ -83,4 +83,9 @@
     <style name="cardViewCorner">
         <item name="android:color">@color/lightGreen</item>
     </style>
+
+    <style name="bottomNav">
+        <item name="indicatorColor">@color/white</item>
+        <item name="android:background">@color/lightGrey</item>
+    </style>
 </resources>

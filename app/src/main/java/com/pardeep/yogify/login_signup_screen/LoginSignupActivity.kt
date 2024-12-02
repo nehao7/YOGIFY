@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pardeep.yogify.R
-import com.pardeep.yogify.onBoardingScreens.OnBoardingMainActivity
 import com.pardeep.yogify.setupScreens.SetupActivity
 
 class LoginSignupActivity : AppCompatActivity() {
