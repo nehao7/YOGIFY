@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".thirdActivity.inner_day_fragment">
+    tools:context=".admin.inner_day_fragment">
 
     <ImageView
         android:id="@+id/imageView"

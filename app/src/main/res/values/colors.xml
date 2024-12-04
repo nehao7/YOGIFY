@@ -28,8 +28,7 @@
     <color name="lightWhite">#F5F5F5</color>
     <color name="pureWhite">#FFFFFF</color>
     <color name="dullBlack">#F5F5F5</color>
-
-
+    <color name="bg_grey">#D9EBF3</color>
 
 
 </resources>

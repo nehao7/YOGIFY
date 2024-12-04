@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/exerciseFragment"
-        android:name="com.pardeep.yogify.thirdActivity.ExerciseFragment"
+        android:name="com.pardeep.yogify.admin.ExerciseFragment"
         android:label="fragment_exercise"
         tools:layout="@layout/fragment_exercise" >
         <action
@@ -22,12 +22,12 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.pardeep.yogify.thirdActivity.ProfileFragment"
+        android:name="com.pardeep.yogify.admin.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/trackingFragment"
-        android:name="com.pardeep.yogify.thirdActivity.TrackingFragment"
+        android:name="com.pardeep.yogify.admin.TrackingFragment"
         android:label="fragment_tracking"
         tools:layout="@layout/fragment_tracking" >
         <action
@@ -36,12 +36,12 @@
     </fragment>
     <fragment
         android:id="@+id/drawableFragment"
-        android:name="com.pardeep.yogify.thirdActivity.drawableFragment"
+        android:name="com.pardeep.yogify.admin.drawableFragment"
         android:label="fragment_drawable"
         tools:layout="@layout/fragment_drawable" />
     <fragment
         android:id="@+id/innerLevelFragment"
-        android:name="com.pardeep.yogify.thirdActivity.InnerLevelFragment"
+        android:name="com.pardeep.yogify.admin.InnerLevelFragment"
         android:label="fragment_inner_level"
         tools:layout="@layout/fragment_inner_level" >
         <action
@@ -50,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/inner_day_fragment"
-        android:name="com.pardeep.yogify.thirdActivity.inner_day_fragment"
+        android:name="com.pardeep.yogify.admin.inner_day_fragment"
         android:label="fragment_inner_day_fragment"
         tools:layout="@layout/fragment_inner_day_fragment" >
         <action
@@ -59,7 +59,17 @@
     </fragment>
     <fragment
         android:id="@+id/selectiveExerciseFragment"
-        android:name="com.pardeep.yogify.thirdActivity.SelectiveExerciseFragment"
+        android:name="com.pardeep.yogify.admin.SelectiveExerciseFragment"
         android:label="fragment_selective_exercise"
         tools:layout="@layout/fragment_selective_exercise" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.pardeep.yogify.admin.fragments.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" />
+    <fragment
+        android:id="@+id/addExerciseFragment"
+        android:name="com.pardeep.yogify.admin.fragments.AddExerciseFragment"
+        android:label="fragment_add_exercise"
+        tools:layout="@layout/fragment_add_exercise" />
 </navigation>

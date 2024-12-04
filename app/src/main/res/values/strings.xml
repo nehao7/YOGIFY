@@ -7,6 +7,8 @@
     <string name="CalenderRecyclerViewDayName">M</string>
     <string name="Date">12</string>
     <string name="beginner">Beginner</string>
+    <string name="update">Update</string>
+    <string name="add">Add</string>
     <string name="start">Start</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -69,4 +71,7 @@
     <string name="logout">Logout</string>
     <string name="category">Category</string>
     <string name="exercise">Exercise</string>
+    <string name="delete_alert">Are you sure you want to Delete ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

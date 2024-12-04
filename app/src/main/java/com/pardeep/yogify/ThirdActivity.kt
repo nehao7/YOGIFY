@@ -146,6 +146,10 @@ class ThirdActivity : AppCompatActivity()  {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            R.id.Category->{
+                navController.navigate(R.id.categoriesFragment)
+                return true
+            }
             R.id.logout->{
                 logout()
                 return true

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    kotlin("plugin.serialization") version "1.9.24"
 }
 
 android {
@@ -29,6 +30,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding=true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -36,6 +38,16 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+
+    packagingOptions{
+
+        exclude ("META-INF/DEPENDENCIES")
+        exclude ("META-INF/LICENSE")
+        exclude ("META-INF/LICENSE.txt")
+        exclude ("META-INF/NOTICE")
+        exclude ("META-INF/NOTICE.txt")
+
     }
 }
 
@@ -75,6 +87,17 @@ dependencies {
 
     //shimmer effect
     implementation("com.facebook.shimmer:shimmer:0.5.0")
+
+    implementation("com.vanniktech:android-image-cropper:4.5.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    implementation(platform("io.github.jan-tennert.supabase:bom:3.0.2"))
+//    implementation("io.github.jan-tennert.supabase:postgrest-kt")
+//    implementation("io.github.jan-tennert.supabase:auth-kt")
+    implementation ("io.github.jan-tennert.supabase:storage-kt:3.0.2")
+//    implementation("io.github.jan-tennert.supabase:realtime-kt")
+    implementation("io.ktor:ktor-client-apache5:3.0.1")
+
 
 
 }

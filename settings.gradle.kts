@@ -19,6 +19,8 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://jitpack.io") 
         }
+//        maven  ("https://repo.supabase.io/maven")
+        maven ("https://dl.bintray.com/supabase/maven" )
     }
 }
 

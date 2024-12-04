@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:openDrawer="start"
-    tools:context=".thirdActivity.drawableFragment">
+    tools:context=".admin.drawableFragment">
 
     <include layout="@layout/activity_third"/>
 
