@@ -1,22 +1,23 @@
-package com.pardeep.yogify.thirdActivity
+package com.pardeep.yogify
 
-import android.app.Dialog
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.pardeep.yogify.R
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.pardeep.yogify.databinding.ActivityThirdBinding
-import com.pardeep.yogify.setupScreens.setupScreen6
+import com.pardeep.yogify.login_signup_screen.LoginSignupActivity
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class ThirdActivity : AppCompatActivity()  {
@@ -25,6 +26,8 @@ class ThirdActivity : AppCompatActivity()  {
     private val TAG = "ThirdActivity"
     lateinit var sharedPreferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
+    lateinit var mainmenu: Unit
+    private lateinit var mAuth: FirebaseAuth
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +40,7 @@ class ThirdActivity : AppCompatActivity()  {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        mAuth = Firebase.auth
 
 
 
@@ -133,5 +137,32 @@ class ThirdActivity : AppCompatActivity()  {
         binding?.fragmentName?.setText(name)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        return super.onCreateOptionsMenu(menu)
+        mainmenu=menuInflater.inflate(R.menu.menu_main, menu)
+        return true
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.logout->{
+                logout()
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+    private fun logout() {
+        mAuth.signOut()
+        // Redirect to LoginActivity
+        startActivity(Intent(this, LoginSignupActivity::class.java))
+        finish() // Close MainActivity
+        // Clear any saved user authentication state
+
+
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        return super.onSupportNavigateUp() || navController.popBackStack()
+    }
 }

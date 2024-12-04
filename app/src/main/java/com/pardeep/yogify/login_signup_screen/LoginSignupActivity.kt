@@ -9,7 +9,9 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pardeep.yogify.R
+import com.pardeep.yogify.customer.CustomerActivity
 import com.pardeep.yogify.setupScreens.SetupActivity
+import com.pardeep.yogify.ThirdActivity
 
 class LoginSignupActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
@@ -39,10 +41,17 @@ class LoginSignupActivity : AppCompatActivity() {
     }
 
     fun moveToSecondFragment() {
-        val intent = Intent(this , SetupActivity::class.java)
+        val intent = Intent(this , ThirdActivity::class.java)
         startActivity(intent)
         finish()
     }
+
+    fun moveToCustomerPanel() {
+        val intent = Intent(this ,CustomerActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
 
     fun loginSuccessfully() {
         startActivity(Intent(this ,SetupActivity::class.java))

@@ -5,16 +5,21 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.pardeep.yogify.R
 import com.pardeep.yogify.onBoardingScreens.OnBoardingMainActivity
 
 
 class SplashScreen : AppCompatActivity() {
+    var mAuth = Firebase.auth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,10 +30,14 @@ class SplashScreen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        supportActionBar?.hide()
 
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this,OnBoardingMainActivity::class.java))
+
+            startActivity(Intent(this,
+                OnBoardingMainActivity::class.java))
+            finish()
         }, 2000)
     }
 }

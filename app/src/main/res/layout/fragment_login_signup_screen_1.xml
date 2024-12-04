@@ -5,7 +5,7 @@
     style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login_signup_screen.login_signup_screen_1">
+    tools:context=".login_signup_screen.login_screen">
 
 
     <TextView
@@ -90,6 +90,18 @@
             android:layout_marginVertical="20dp"
             android:text="@string/sign_in"
             app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraSmall" />
+
+        <ProgressBar
+            android:id="@+id/pbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
 
     </LinearLayout>

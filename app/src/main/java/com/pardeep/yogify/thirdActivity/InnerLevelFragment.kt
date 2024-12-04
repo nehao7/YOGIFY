@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pardeep.yogify.R
+import com.pardeep.yogify.ThirdActivity
 import com.pardeep.yogify.databinding.FragmentInnerLevelBinding
 
 // TODO: Rename parameter arguments, choose names that match

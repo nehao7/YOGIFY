@@ -1,7 +1,6 @@
 package com.pardeep.yogify.login_signup_screen
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +8,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.firestore.firestore
+import com.pardeep.yogify.Constants
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentLoginSignupScreen2Binding
-import kotlin.math.log
-import kotlin.random.Random
 
 /**
  * A simple [Fragment] subclass.
@@ -25,14 +26,17 @@ import kotlin.random.Random
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2: String = "param2"
 
-class login_signup_screen_2 : Fragment() {
+class login_signup_screen_2 : Fragment(){
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     var binding: FragmentLoginSignupScreen2Binding? = null
     lateinit var navController: NavController
     lateinit var loginSignupActivity: LoginSignupActivity
-    lateinit var firebaseAuth: FirebaseAuth
+    val mAuht = Firebase.auth
+    var db = Firebase.firestore
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +62,7 @@ class login_signup_screen_2 : Fragment() {
         navController = findNavController()
 
         //------------------- init fireAuth ---------------
-        firebaseAuth = FirebaseAuth.getInstance()
+//        firebaseAuth = FirebaseAuth.getInstance()
         //------------------- init fireAuth ---------------
 
         binding?.signUp?.setOnClickListener {
@@ -81,13 +85,46 @@ class login_signup_screen_2 : Fragment() {
                 val email = binding?.emailEt?.text.toString()
                 val password = binding?.passwordEt?.text.toString()
                 val userName = binding?.userNameEt?.text.toString()
-                firebaseAuth.createUserWithEmailAndPassword(email ,password).addOnCompleteListener {
-                    navController.navigate(R.id.action_login_signup_screen_2_to_login_signup_screen_1)
-                }
-                    .addOnFailureListener { err ->
-                        Toast.makeText(requireContext(), "${err.message}", Toast.LENGTH_SHORT).show()
+              mAuht.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
 
-                    }
+                  if (task.isSuccessful) {
+                      // Registration successful
+                      val user = mAuht.currentUser
+                      val registerModel = CustomerRegModel()
+                      registerModel.username = userName
+                      registerModel.useremail = email
+                      registerModel.userauthId = user?.uid
+//                      startActivity(Intent(this, MainActivity::class.java))
+//                      Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT)
+//                          .show()
+//                      finish()
+                      // Save user details to Firestore database
+                      db.collection(Constants.customers).add(registerModel)
+                          .addOnCompleteListener { registrationTask ->
+                              if (registrationTask.isSuccessful) {
+
+                                  loginSignupActivity.moveToSecondFragment()
+                                  // Registration and data save successful
+                              } else {
+                                  Toast.makeText(
+                                      requireContext(),
+                                      "Registration error",
+                                      Toast.LENGTH_SHORT
+                                  ).show()
+                              }
+                          }
+                  } else {
+                      // Registration failed
+                      // Handle error appropriately
+                  }
+              }
+//                firebaseAuth.createUserWithEmailAndPassword(email ,password).addOnCompleteListener {
+//                    navController.navigate(R.id.action_login_signup_screen_2_to_login_signup_screen_1)
+//                }
+//                    .addOnFailureListener { err ->
+//                        Toast.makeText(requireContext(), "${err.message}", Toast.LENGTH_SHORT).show()
+//
+//                    }
                 // navigate to next screen where you want
             }
 

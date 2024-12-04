@@ -14,7 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.ActivitySetupBinding
-import com.pardeep.yogify.thirdActivity.ThirdActivity
+import com.pardeep.yogify.ThirdActivity
 
 class SetupActivity : AppCompatActivity()  {
     lateinit var sharedPreferences: SharedPreferences
