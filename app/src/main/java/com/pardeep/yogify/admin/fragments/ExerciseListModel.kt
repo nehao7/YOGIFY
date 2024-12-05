@@ -7,9 +7,10 @@ data class ExerciseListModel(
     var exrImgUri: String?=null,
     var duration: String?=null,
     var catId:String?=null,
-    var beginnner:Boolean=false,
-    var intermediate:Boolean=false,
-    var advance:Boolean=false,
+    var level:Int?=0,
+    var beginnner:Boolean=false,//0
+    var intermediate:Boolean=false,//1
+    var advance:Boolean=false,//2
 
 //    var subCategoryList: ArrayList<SubCategory>? = arrayListOf()
 )

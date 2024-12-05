@@ -72,4 +72,14 @@
         android:name="com.pardeep.yogify.admin.fragments.AddExerciseFragment"
         android:label="fragment_add_exercise"
         tools:layout="@layout/fragment_add_exercise" />
+    <fragment
+        android:id="@+id/levelFilteredExrFragment"
+        android:name="com.pardeep.yogify.admin.fragments.LevelFilteredExrFragment"
+        android:label="fragment_level_filtered_exr"
+        tools:layout="@layout/fragment_level_filtered_exr" />
+    <fragment
+        android:id="@+id/exrDetailsFragment"
+        android:name="com.pardeep.yogify.admin.fragments.ExrDetailsFragment"
+        android:label="fragment_exr_details"
+        tools:layout="@layout/fragment_exr_details" />
 </navigation>

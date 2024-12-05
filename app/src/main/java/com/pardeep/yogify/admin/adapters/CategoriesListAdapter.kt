@@ -12,7 +12,9 @@ import com.pardeep.yogify.admin.fragments.CategoriesListModel
 import com.pardeep.yogify.databinding.CategoryListItemBinding
 
 
-class CategoriesListAdapter(var context: Context, var arrayList: ArrayList<CategoriesListModel>, var clicklistener: clickInterface)
+class CategoriesListAdapter(var context: Context,
+                            var arrayList: ArrayList<CategoriesListModel>,
+                            var clicklistener: clickInterface)
     :RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
     class ViewHolder(var binding: CategoryListItemBinding):RecyclerView.ViewHolder(binding.root) {
@@ -40,8 +42,8 @@ class CategoriesListAdapter(var context: Context, var arrayList: ArrayList<Categ
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(binding.image)
 
-            binding.layout.setOnClickListener {
-                clicklistener.onClick(position, ClickType.OnViewClick)
+            binding.ivAdd.setOnClickListener {
+                clicklistener.onClick(position, ClickType.img)
             }
             binding.imgDelete.setOnClickListener {
                 clicklistener.onClick(position, ClickType.Delete)

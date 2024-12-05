@@ -22,6 +22,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -82,6 +83,7 @@ class AddExerciseFragment : Fragment() {
     var isBeginnerSelected = false
     var isIntermediateSelected = false
     var isAdvancedSelected = false
+    var level=-1
 
     private var mediaPermission = if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S)
         Manifest.permission.READ_EXTERNAL_STORAGE
@@ -202,6 +204,10 @@ class AddExerciseFragment : Fragment() {
                     }
 
                     ClickType.OnViewClick -> {
+                        adminActivity.navController.navigate(R.id.exrDetailsFragment,
+                            bundleOf("imgUrl" to categoriesList[position].exrImgUri,
+                                "des" to categoriesList[position].description,
+                            "name" to categoriesList[position].exrName))
 //                        startActivity(
 //                            Intent(adminActivity,MydrawingActivity::class.java)
 //                            .putExtra("screen",1)
@@ -356,9 +362,18 @@ class AddExerciseFragment : Fragment() {
 
             // Check which RadioButton is selected and update the corresponding boolean variable
             when (checkedId) {
-                R.id.beginner -> isBeginnerSelected = true
-                R.id.intermediate -> isIntermediateSelected = true
-                R.id.advanced -> isAdvancedSelected = true
+                R.id.beginner ->{
+                    isBeginnerSelected = true
+                    level=0
+                }
+                R.id.intermediate -> {
+                    isIntermediateSelected = true
+                    level=1
+                }
+                R.id.advanced -> {
+                    isAdvancedSelected = true
+                    level=2
+                }
             }
 
             // You can now use these boolean variables, for example:
@@ -462,6 +477,7 @@ class AddExerciseFragment : Fragment() {
             duration = dialogBinding.edtDuration.text.toString(),
             beginnner = begin,
             intermediate = Intermediate,
+            level = level,
             advance = Advanced,
             exrImgUri = imageUrl,
             catId = categoryid

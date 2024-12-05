@@ -344,8 +344,8 @@ class ExerciseFragment : Fragment(), RecyclerInterface, CategoryRecyclerInterfac
             "LevelAdaptor" -> {
                 Toast.makeText(requireContext(), "LevelAdaptorClick", Toast.LENGTH_SHORT).show()
                 navController.navigate(
-                    R.id.innerLevelFragment, bundleOf(
-                        "Level" to position % levelData.size,
+                    R.id.levelFilteredExrFragment, bundleOf(
+                        "level" to position % levelData.size,
                         "title" to levelData[position % levelData.size].title,
                         "image" to levelData[position % levelData.size].image
                     )

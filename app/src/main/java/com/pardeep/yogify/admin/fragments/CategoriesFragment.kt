@@ -175,7 +175,7 @@ class CategoriesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentCategoriesBinding.inflate(
             layoutInflater
@@ -191,9 +191,10 @@ class CategoriesFragment : Fragment() {
                 override fun onClick(position: Int, clickType: ClickType?): Boolean {
                     when (clickType) {
                         ClickType.AddSub -> {
+
                         }
 
-                        ClickType.OnViewClick -> {
+                        ClickType.img -> {
                             findNavController().navigate(
                                 R.id.addExerciseFragment,
                                 bundleOf(
@@ -228,8 +229,8 @@ class CategoriesFragment : Fragment() {
                 }
 
                 override fun view(position: Int, imageView: ImageView) {
-                    imgCandle = imageView
-                    imageView?.let { it1 ->
+
+                    imageView.let { it1 ->
                         Glide.with(requireContext())
                             .load(Uri.parse(categoriesList[position].categoryImgUri))
                             .centerCrop()
