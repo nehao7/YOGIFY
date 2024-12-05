@@ -74,4 +74,7 @@
     <string name="delete_alert">Are you sure you want to Delete ?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="advanced">Advanced</string>
+    <string name="select_level">Select Level</string>
 </resources>

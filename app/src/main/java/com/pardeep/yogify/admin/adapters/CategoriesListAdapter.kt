@@ -1,4 +1,4 @@
-package com.pardeep.yogify.admin
+package com.pardeep.yogify.admin.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pardeep.yogify.R
+import com.pardeep.yogify.admin.ClickType
+import com.pardeep.yogify.admin.clickInterface
 import com.pardeep.yogify.admin.fragments.CategoriesListModel
 import com.pardeep.yogify.databinding.CategoryListItemBinding
 

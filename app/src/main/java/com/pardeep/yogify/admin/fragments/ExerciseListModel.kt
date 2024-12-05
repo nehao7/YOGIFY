@@ -9,7 +9,7 @@ data class ExerciseListModel(
     var catId:String?=null,
     var beginnner:Boolean=false,
     var intermediate:Boolean=false,
-    var difficult:Boolean=false,
+    var advance:Boolean=false,
 
 //    var subCategoryList: ArrayList<SubCategory>? = arrayListOf()
 )

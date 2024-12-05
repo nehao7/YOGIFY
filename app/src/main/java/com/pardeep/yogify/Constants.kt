@@ -4,6 +4,6 @@ class Constants {
     companion object{
         var customers="Customers"
         var categories="Categories"
-        var drawings="Drawings"
+        var exercises="Exercises"
     }
 }

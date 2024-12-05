@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:background="@color/bg_peach"
+        android:background="@color/bg_grey"
         android:orientation="vertical"
         android:padding="1dp"
         app:layout_constraintStart_toStartOf="parent"

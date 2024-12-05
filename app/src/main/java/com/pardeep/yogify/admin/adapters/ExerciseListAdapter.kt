@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.o7services.mycolouringbook.ClickType
-import com.o7services.mycolouringbook.R
-import com.o7services.mycolouringbook.clickInterface
-import com.o7services.mycolouringbook.databinding.DrawingListItemBinding
-import com.o7services.mycolouringbook.mydrawing.models.DrawingListModel
+import com.pardeep.yogify.R
+import com.pardeep.yogify.admin.ClickType
+import com.pardeep.yogify.admin.clickInterface
+import com.pardeep.yogify.admin.fragments.ExerciseListModel
+import com.pardeep.yogify.databinding.ExerciseListItemBinding
 
 
-class ExerciseListAdapter(var context: Context, var arrayList: ArrayList<DrawingListModel>, var clicklistener: clickInterface):RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>() {
+class ExerciseListAdapter(var context: Context, var arrayList: ArrayList<ExerciseListModel>, var clicklistener: clickInterface):RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>() {
 
-    class ViewHolder(var binding: DrawingListItemBinding):RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(var binding: ExerciseListItemBinding):RecyclerView.ViewHolder(binding.root) {
 
 
     }
@@ -22,7 +22,7 @@ class ExerciseListAdapter(var context: Context, var arrayList: ArrayList<Drawing
         parent: ViewGroup,
         viewType: Int
     ): ViewHolder {
-        val binding=DrawingListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding=ExerciseListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(binding)
     }
 
@@ -30,11 +30,11 @@ class ExerciseListAdapter(var context: Context, var arrayList: ArrayList<Drawing
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.apply {
-            binding.tvcategory.setText(arrayList[position].drawingName)
+            binding.tvcategory.setText(arrayList[position].exrName)
 
             Glide
                 .with(context)
-                .load(arrayList[position].drawingImgUri)
+                .load(arrayList[position].exrImgUri)
                 .centerCrop()
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(binding.image)

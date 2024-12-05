@@ -35,8 +35,7 @@ import com.google.firebase.firestore.firestore
 import com.pardeep.yogify.Constants
 import com.pardeep.yogify.R
 import com.pardeep.yogify.ThirdActivity
-import com.pardeep.yogify.admin.CategoriesListAdapter
-import com.pardeep.yogify.admin.CategoryData
+import com.pardeep.yogify.admin.adapters.CategoriesListAdapter
 import com.pardeep.yogify.admin.ClickType
 import com.pardeep.yogify.admin.clickInterface
 import com.pardeep.yogify.databinding.AddCategoryDialogBinding
