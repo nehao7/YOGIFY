@@ -86,13 +86,14 @@
         <item name="indicatorColor">@color/orange</item>
     </style>
 
-    <style name="cardViewCorner">
-        <item name="android:color">@color/orange</item>
-    </style>
 
     <style name="bottomNav">
         <item name="indicatorColor">@color/orange</item>
         <item name="android:background">@color/customBlack</item>
     </style>
 
+    <style name="CardViewColor">
+        <item name="android:background">@drawable/gradient_file</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

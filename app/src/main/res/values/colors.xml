@@ -25,6 +25,7 @@
     <!-- dark mode color -->
     <color name="customBlack">#131313</color>
     <color name="orange">#FF5733</color>
+    <color name="darkGradient">#485563</color>
     <color name="lightWhite">#F5F5F5</color>
     <color name="pureWhite">#FFFFFF</color>
     <color name="dullBlack">#F5F5F5</color>

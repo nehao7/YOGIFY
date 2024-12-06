@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.pardeep.yogify.DayDataClass
 import com.pardeep.yogify.R
 
-class CalenderAdapter( val days: List<DayDataClass>,
-    val recyclerInterface: RecyclerInterface) :RecyclerView.Adapter<CalenderAdapter.ViewHolder>(){
+class CalenderAdapter(val days: List<DayDataClass>,
+                      val recyclerInterface: RecyclerInterface) :RecyclerView.Adapter<CalenderAdapter.ViewHolder>(){
     class ViewHolder(var view : View): RecyclerView.ViewHolder(view)  {
         var day = view.findViewById<TextView>(R.id.day)
         var date = view.findViewById<TextView>(R.id.date)

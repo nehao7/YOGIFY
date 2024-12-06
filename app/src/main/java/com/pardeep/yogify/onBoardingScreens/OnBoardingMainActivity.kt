@@ -31,7 +31,7 @@ class OnBoardingMainActivity : AppCompatActivity() {
     lateinit var sharedPreferences: SharedPreferences
     lateinit var editor : SharedPreferences.Editor
 
-    var viewPagerAdapter=ViewPagerAdapter(supportFragmentManager,lifecycle,fragments)
+    var viewPagerAdapter =ViewPagerAdapter(supportFragmentManager,lifecycle,fragments)
 //    var viewPagerAdapter = ViewPagerAdapter(supportFragmentManager, lifecycle, fragments)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,6 +111,15 @@ class OnBoardingMainActivity : AppCompatActivity() {
     override fun onDestroy() { super.onDestroy() // Clean up binding
      binding?.viewPager?.adapter = null
 }
+
+    override fun onResume() {
+        super.onResume()
+        viewPagerAdapter.notifyDataSetChanged()
+    }
+    override fun onRestart() {
+        super.onRestart()
+        viewPagerAdapter.notifyDataSetChanged()
+    }
     fun currentUserCheck(){
         mAuth = FirebaseAuth.getInstance()
         // Check if a user is currently logged in

@@ -1,4 +1,4 @@
-package com.pardeep.yogify.admin
+package com.pardeep.yogify
 
 data class DayDataClass(
     val date : String,

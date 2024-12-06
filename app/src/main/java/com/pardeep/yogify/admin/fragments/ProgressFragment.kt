@@ -12,6 +12,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.firestore
@@ -100,7 +101,8 @@ class ProgressFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exerciseAdapter = ExerciseListAdapter(requireContext(), categoriesList, object :
+        exerciseAdapter = ExerciseListAdapter(requireContext(), categoriesList,
+            FirebaseAuth.getInstance() ,object :
             clickInterface {
             override fun onClick(position: Int, clickType: ClickType?): Boolean {
                 when (clickType) {

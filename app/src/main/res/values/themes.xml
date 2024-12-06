@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.YOGIFY" parent="Theme.Material3.DayNight">
 
-        <item name="colorPrimary">@color/lightGrey</item>
+<!--        <item name="colorPrimary">@color/lightGrey</item>-->
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
@@ -82,12 +82,14 @@
         <item name="indicatorColor">@color/lightGreen</item>
     </style>
 
-    <style name="cardViewCorner">
-        <item name="android:color">@color/lightGreen</item>
-    </style>
 
     <style name="bottomNav">
         <item name="indicatorColor">@color/white</item>
         <item name="android:background">@color/lightGrey</item>
+    </style>
+
+    <style name="CardViewColor">
+        <item name="android:backgroundTint">@color/lightWhite</item>
+        <item name="android:textColor">@color/lightGreen</item>
     </style>
 </resources>

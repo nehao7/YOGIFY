@@ -31,6 +31,7 @@ import com.canhub.cropper.CropImageContract
 import com.canhub.cropper.CropImageContractOptions
 import com.canhub.cropper.CropImageOptions
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.firestore
@@ -196,7 +197,7 @@ class AddExerciseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exerciseAdapter = ExerciseListAdapter(requireContext(), categoriesList, object :
+        exerciseAdapter = ExerciseListAdapter(requireContext(), categoriesList, FirebaseAuth.getInstance() ,object :
             clickInterface {
             override fun onClick(position: Int, clickType: ClickType?): Boolean {
                 when (clickType) {

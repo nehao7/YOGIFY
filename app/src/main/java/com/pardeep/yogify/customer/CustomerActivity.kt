@@ -75,7 +75,7 @@ class CustomerActivity : AppCompatActivity() {
             ) {
                 when (newIndex) {
                     0 -> {
-                        navController.navigate(R.id.exerciseFragment)
+                        navController.navigate(R.id.userHomeFragment)
                         binding.fragmentName.setText("Exercise")
                     }
 
@@ -85,7 +85,7 @@ class CustomerActivity : AppCompatActivity() {
                     }
 
                     2 -> {
-                        navController.navigate(R.id.profileFragment)
+                        navController.navigate(R.id.profileFragment2)
                         binding.fragmentName?.setText("Profile")
                     }
                 }

@@ -10,20 +10,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.firestore
 import com.pardeep.yogify.Constants
 import com.pardeep.yogify.R
-import com.pardeep.yogify.ThirdActivity
+import com.pardeep.yogify.admin.CalenderAdapter
 import com.pardeep.yogify.admin.ClickType
+import com.pardeep.yogify.DayDataClass
+import com.pardeep.yogify.admin.RecyclerInterface
 import com.pardeep.yogify.admin.adapters.ExerciseListAdapter
 import com.pardeep.yogify.admin.clickInterface
 import com.pardeep.yogify.admin.fragments.ExerciseListModel
 import com.pardeep.yogify.databinding.AddExerciseDialogBinding
+import com.pardeep.yogify.databinding.ExerciseListItemBinding
 import com.pardeep.yogify.databinding.FragmentUserProgressBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,24 +43,29 @@ private const val ARG_PARAM2 = "param2"
  * Use the [UserProgressFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UserProgressFragment : Fragment() {
+class UserProgressFragment : Fragment() ,RecyclerInterface {
     lateinit var binding: FragmentUserProgressBinding
-    lateinit var adminActivity: ThirdActivity
     lateinit var exerciseAdapter: ExerciseListAdapter
     var categoriesList = arrayListOf<ExerciseListModel>()
     val db = Firebase.firestore
     var collectionName = Constants.exercises
-
     var imgCandle: ImageView? = null
-    lateinit var dialogBinding: AddExerciseDialogBinding
+    var dialogBinding : AddExerciseDialogBinding?=null
     var level=-1
+    val weekDayDataClasses = mutableListOf<DayDataClass>()
+    val calenderAdp = CalenderAdapter(weekDayDataClasses, this)
+    lateinit var linearLayoutManager: LinearLayoutManager
+    val dateFormat = SimpleDateFormat("dd", Locale.getDefault())
+    val dayFormat = SimpleDateFormat("EEEE", Locale.getDefault())
+    lateinit var linearSnapHelper: LinearSnapHelper
+    private  val TAG = "UserProgressFragment"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             level=it.getInt("level",-1)
         }
         Log.d("TAG", "onCreatelvl:$level ")
-        adminActivity=activity as ThirdActivity
         db.collection(collectionName).whereEqualTo("completed", true)
             .addSnapshotListener { snapshots, e ->
                 if (e != null) {
@@ -99,7 +112,8 @@ class UserProgressFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exerciseAdapter = ExerciseListAdapter(requireContext(), categoriesList, object :
+
+        exerciseAdapter = ExerciseListAdapter(requireContext(), categoriesList, firebaseAuth = FirebaseAuth.getInstance(), object :
             clickInterface {
             override fun onClick(position: Int, clickType: ClickType?): Boolean {
                 when (clickType) {
@@ -158,12 +172,56 @@ class UserProgressFragment : Fragment() {
             }
 
         })
-        binding.recyclerCategory.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerCategory.adapter = exerciseAdapter
-        binding.fabAdd.setOnClickListener {
+        binding.completedExercise.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        binding.completedExercise.adapter = exerciseAdapter
+
+
+        getWeekDays()
+
+        binding.userDayRecyclerView.adapter = calenderAdp
+        linearLayoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        binding.userDayRecyclerView.layoutManager = linearLayoutManager
+
+        linearSnapHelper = LinearSnapHelper()
+        linearSnapHelper.attachToRecyclerView(binding.userDayRecyclerView)
+//        binding.fabAdd.setOnClickListener {
 //            showAddExerciseDialog()
-        }
+//        }
     }
+
+        // ----------------------- getting the week of day ------------------------------------
+        fun getWeekDays(): Pair<List<DayDataClass>, Int> {
+            val calendar = Calendar.getInstance()
+            val dayOfWeek = Calendar.DAY_OF_WEEK
+            val firstDayOfWeek = calendar.firstDayOfWeek
+            val currentDate = dateFormat.format(calendar.time)
+            Log.d(TAG, "onViewCreated: $dayOfWeek , $firstDayOfWeek")
+            Log.d(TAG, "onViewCreated: ${calendar.time}")
+            var currentDatePosition = 0
+
+
+            for (i in 0..6) {
+                val date = dateFormat.format(calendar.time)
+                val day = dayFormat.format(calendar.time).first().toString()
+                weekDayDataClasses.add(DayDataClass(date, day))
+
+
+                Log.d(TAG, "onViewCreated1: ${date} ${day}")
+
+                if (date.equals(currentDate)) {
+                    Log.d(TAG, "getWeekDays: 'Matched'")
+                    currentDatePosition = i
+                    Log.d(TAG, "currentDatePosition : $currentDatePosition")
+                    binding?.userDayRecyclerView?.scrollToPosition(currentDatePosition)
+                    binding?.userDayRecyclerView?.post {
+                        onItemClick(currentDatePosition , "calenderAdapter")
+                    }
+                }
+                calendar.add(Calendar.DAY_OF_WEEK, 1)
+            }
+            return Pair(weekDayDataClasses, currentDatePosition)
+        }
+
 
     fun convertObject(snapshot: QueryDocumentSnapshot): ExerciseListModel {
         val exerciseListModel:ExerciseListModel =
@@ -200,5 +258,22 @@ class UserProgressFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onItemClick(position: Int, callFrom: String) {
+        for (i in 0 until binding.userDayRecyclerView.childCount){
+            val child = binding.userDayRecyclerView.getChildAt(i)
+            child?.scaleX = 0.85f
+            child?.scaleY = 0.85f
+            child?.alpha = 0.85f
+        }
+
+        val clickedChild = binding.userDayRecyclerView.findViewHolderForAdapterPosition(position)?.itemView
+        clickedChild?.scaleX = 1.1f
+        clickedChild?.scaleY = 1.1f
+        clickedChild?.alpha = 1.0f
+
+
+
     }
 }

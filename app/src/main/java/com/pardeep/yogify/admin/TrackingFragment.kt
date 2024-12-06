@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
+import com.pardeep.yogify.DayDataClass
 import com.pardeep.yogify.databinding.FragmentTrackingBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar

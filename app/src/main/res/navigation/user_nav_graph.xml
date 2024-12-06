@@ -30,4 +30,9 @@
         android:name="com.pardeep.yogify.customer.UserProgressFragment"
         android:label="fragment_user_progress"
         tools:layout="@layout/fragment_user_progress" />
+    <fragment
+        android:id="@+id/profileFragment2"
+        android:name="com.pardeep.yogify.admin.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

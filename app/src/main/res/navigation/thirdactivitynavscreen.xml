@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_exerciseFragment_to_innerLevelFragment"
             app:destination="@id/innerLevelFragment" />
+        <action
+            android:id="@+id/action_exerciseFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -33,6 +36,9 @@
         <action
             android:id="@+id/action_trackingFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_trackingFragment_to_exerciseFragment"
+            app:destination="@id/exerciseFragment" />
     </fragment>
     <fragment
         android:id="@+id/drawableFragment"

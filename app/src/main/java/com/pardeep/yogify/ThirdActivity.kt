@@ -82,9 +82,6 @@ class ThirdActivity : AppCompatActivity()  {
         }
 
 
-
-
-
         navController = findNavController(R.id.fragmentContainerView)
 
         binding?.bottomNavigation?.setOnTabSelectListener(object :
@@ -102,7 +99,7 @@ class ThirdActivity : AppCompatActivity()  {
                     }
 
                     1 -> {
-                        navController.navigate(R.id.progressFragment)
+                        navController.navigate(R.id.trackingFragment)
                         binding?.fragmentName?.setText("Progress")
                     }
 

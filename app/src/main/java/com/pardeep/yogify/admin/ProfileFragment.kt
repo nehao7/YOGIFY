@@ -11,8 +11,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentProfileBinding
+import com.pardeep.yogify.login_signup_screen.LoginSignupActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,6 +33,7 @@ class ProfileFragment : Fragment() {
     lateinit var sharedPreferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
     var binding: FragmentProfileBinding? = null
+    lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +54,10 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        firebaseAuth = FirebaseAuth.getInstance()
+        val currentUserLogin = firebaseAuth.currentUser?.email
+        binding?.userEmail?.setText(currentUserLogin)
+        binding?.logoTv?.setText(currentUserLogin?.first().toString().uppercase())
         sharedPreferences = activity?.getSharedPreferences("DayNightMode", Context.MODE_PRIVATE)!!
         editor = sharedPreferences.edit()
         if (sharedPreferences.getBoolean("Night", false)) {
@@ -87,6 +94,10 @@ class ProfileFragment : Fragment() {
 
         binding?.helpBtn?.setOnClickListener {
             openAlertDialog("helpBtn")
+        }
+
+        binding?.logout?.setOnClickListener {
+            openAlertDialog("logOut")
         }
 
     }
@@ -130,6 +141,19 @@ class ProfileFragment : Fragment() {
                             data = Uri.parse("smsto:+918968531504")
                         }
                         startActivity(smsIntent)
+                    }
+                }.show()
+            }
+
+            "logOut" -> {
+                AlertDialog.Builder(requireContext()).apply {
+                    setTitle("Are you sure you wanna to logout")
+                    setPositiveButton("Logout"){_,_ ->
+                        firebaseAuth.signOut()
+                        startActivity(Intent(requireContext(),LoginSignupActivity::class.java))
+                    }
+                    setNegativeButton("Cancel"){dailog,_ ->
+                        dailog.dismiss()
                     }
                 }.show()
             }
