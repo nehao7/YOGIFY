@@ -55,12 +55,13 @@ class UserExrDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (isAdded){
         Glide.with(requireContext())
             .load(imgurl)
             .into(binding.imageslider)
         binding.instruction.setText(des)
         binding.title.setText(name)
-        binding.durationTv.setText(duration)
+        binding.durationTv.setText(duration)}
         binding.play.setOnClickListener {
             // Get the time input from the user
             val inputTime = binding.durationTv.text.toString()
@@ -78,11 +79,14 @@ class UserExrDetailsFragment : Fragment() {
 
                 } catch (e: NumberFormatException) {
                     // Handle invalid input
+                    if (isAdded){
                     Toast.makeText(requireContext(), "Invalid time input!", Toast.LENGTH_SHORT).show()
                 }
+                }
             } else {
+                if (isAdded){
                 Toast.makeText(requireContext(), "Please enter a time", Toast.LENGTH_SHORT).show()
-            }
+            }}
         }
     }
 
@@ -99,7 +103,9 @@ class UserExrDetailsFragment : Fragment() {
 
                 // Format minutes and seconds to always display two digits
                 val formattedTime = String.format("%02d:%02d", minutesRemaining, seconds)
+                if (isAdded){
                 binding.tvTimeRemaining.text = "Time Remaining: $formattedTime"
+                }
 //                // Update the UI every second
 //                val secondsRemaining = millisUntilFinished / 1000
 //                binding.tvTimeRemaining.text = "Time Remaining: $secondsRemaining"
@@ -107,10 +113,12 @@ class UserExrDetailsFragment : Fragment() {
 
             override fun onFinish() {
                 // Timer finished
+                if (isAdded){
                 binding.tvTimeRemaining.text = "Time's up!"
                 exrId?.let { updateExerciseCompletionStatus(it) }
                 findNavController().popBackStack()
 
+            }
             }
         }
 
@@ -128,11 +136,15 @@ class UserExrDetailsFragment : Fragment() {
         exerciseRef.update("completed", true)
             .addOnSuccessListener {
                 // Successfully updated the document
+                if (isAdded){
                 Toast.makeText(requireContext(), "Exercise marked as completed", Toast.LENGTH_SHORT).show()
+            }
             }
             .addOnFailureListener { e ->
                 // Handle failure
+                if (isAdded){
                 Toast.makeText(requireContext(), "Failed to update status: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
             }
     }
     override fun onDestroy() {

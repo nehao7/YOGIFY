@@ -120,7 +120,8 @@ class UserLevelFilteredExrFragment : Fragment() {
                             bundleOf(
                                 "imgUrl" to categoriesList[position].exrImgUri,
                                 "des" to categoriesList[position].description,
-                                "name" to categoriesList[position].exrName
+                                "name" to categoriesList[position].exrName,
+                                "time" to categoriesList[position].duration
                             )
                         )
 //

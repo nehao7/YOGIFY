@@ -61,13 +61,15 @@ class ExrDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Glide.with(requireContext())
-            .load(imgurl)
-            .into(binding.imageslider)
-        binding.instruction.setText(des)
-        binding.title.setText(name)
-        binding.durationTv.setText(duration)
 
+        if (isAdded) {
+            Glide.with(requireContext())
+                .load(imgurl)
+                .into(binding.imageslider)
+            binding.instruction.setText(des)
+            binding.title.setText(name)
+            binding.durationTv.setText(duration)
+        }
         binding.play.setOnClickListener {
             // Get the time input from the user
             val inputTime = binding.durationTv.text.toString()
@@ -85,11 +87,13 @@ class ExrDetailsFragment : Fragment() {
 
                 } catch (e: NumberFormatException) {
                     // Handle invalid input
+                    if (isAdded){
                     Toast.makeText(requireContext(), "Invalid time input!", Toast.LENGTH_SHORT).show()
-                }
+                }}
             } else {
+                if (isAdded){
                 Toast.makeText(requireContext(), "Please enter a time", Toast.LENGTH_SHORT).show()
-            }
+            }}
         }
     }
 
@@ -106,18 +110,21 @@ class ExrDetailsFragment : Fragment() {
 
                 // Format minutes and seconds to always display two digits
                 val formattedTime = String.format("%02d:%02d", minutesRemaining, seconds)
+                if (isAdded){
                 binding.tvTimeRemaining.text = "Time Remaining: $formattedTime"
-//                // Update the UI every second
+             }
+                // Update the UI every second
 //                val secondsRemaining = millisUntilFinished / 1000
 //                binding.tvTimeRemaining.text = "Time Remaining: $secondsRemaining"
             }
 
             override fun onFinish() {
                 // Timer finished
-                binding.tvTimeRemaining.text = "Time's up!"
-                exrId?.let { updateExerciseCompletionStatus(it) }
-                findNavController().popBackStack()
-
+                if (isAdded) {
+                    binding.tvTimeRemaining.text = "Time's up!"
+                    exrId?.let { updateExerciseCompletionStatus(it) }
+                    findNavController().popBackStack()
+                }
             }
         }
 
@@ -140,12 +147,16 @@ class ExrDetailsFragment : Fragment() {
         // Set the completed field to true
         exerciseRef.update("completed", true)
             .addOnSuccessListener {
+
                 // Successfully updated the document
+                if (isAdded){
                 Toast.makeText(requireContext(), "Exercise marked as completed", Toast.LENGTH_SHORT).show()
-            }
+            }}
             .addOnFailureListener { e ->
+                if (isAdded){
                 // Handle failure
                 Toast.makeText(requireContext(), "Failed to update status: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
             }
     }
     companion object {

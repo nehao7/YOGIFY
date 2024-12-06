@@ -326,6 +326,12 @@ class AddExerciseFragment : Fragment() {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
+            if (position>-1){
+                dialogBinding.btnsave.setText("Update")
+            }else{
+                dialogBinding.btnsave.setText("Add")
+
+            }
             show()
         }
 //        dialogBinding.position = position
@@ -345,6 +351,10 @@ class AddExerciseFragment : Fragment() {
         }
         if (position > -1) {
             dialogBinding.categoriesModel = categoriesList[position]
+            dialogBinding.beginner.isChecked=categoriesList[position].beginnner
+            dialogBinding.intermediate.isChecked=categoriesList[position].intermediate
+            dialogBinding.advanced.isChecked=categoriesList[position].advance
+
         } else {
             dialogBinding.categoriesModel =
                 ExerciseListModel()

@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
@@ -104,6 +105,15 @@ class LevelFilteredExrFragment : Fragment() {
                     }
 
                     ClickType.OnViewClick -> {
+                        adminActivity.navController.navigate(
+                            R.id.userExrDetailsFragment,
+                            bundleOf(
+                                "imgUrl" to categoriesList[position].exrImgUri,
+                                "des" to categoriesList[position].description,
+                                "name" to categoriesList[position].exrName,
+                                "time" to categoriesList[position].duration
+                            )
+                        )
 //                        startActivity(
 //                            Intent(adminActivity,MydrawingActivity::class.java)
 //                            .putExtra("screen",1)
