@@ -207,7 +207,10 @@ class AddExerciseFragment : Fragment() {
                         adminActivity.navController.navigate(R.id.exrDetailsFragment,
                             bundleOf("imgUrl" to categoriesList[position].exrImgUri,
                                 "des" to categoriesList[position].description,
-                            "name" to categoriesList[position].exrName))
+                            "name" to categoriesList[position].exrName,
+                            "id" to categoriesList[position].exrId,
+                            "time" to categoriesList[position].duration)
+                            )
 //                        startActivity(
 //                            Intent(adminActivity,MydrawingActivity::class.java)
 //                            .putExtra("screen",1)

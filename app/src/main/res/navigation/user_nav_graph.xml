@@ -25,4 +25,9 @@
         android:id="@+id/userLevelFilteredExrFragment"
         android:name="com.pardeep.yogify.customer.UserLevelFilteredExrFragment"
         android:label="Level" />
+    <fragment
+        android:id="@+id/userProgressFragment2"
+        android:name="com.pardeep.yogify.customer.UserProgressFragment"
+        android:label="fragment_user_progress"
+        tools:layout="@layout/fragment_user_progress" />
 </navigation>

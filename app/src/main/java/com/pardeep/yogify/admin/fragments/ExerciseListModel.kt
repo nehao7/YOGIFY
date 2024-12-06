@@ -8,6 +8,7 @@ data class ExerciseListModel(
     var duration: String?=null,
     var catId:String?=null,
     var level:Int?=0,
+    var completed:Boolean=false,
     var beginnner:Boolean=false,//0
     var intermediate:Boolean=false,//1
     var advance:Boolean=false,//2

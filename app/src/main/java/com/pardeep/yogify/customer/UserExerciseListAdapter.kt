@@ -2,6 +2,7 @@ package com.pardeep.yogify.customer
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -33,6 +34,11 @@ class UserExerciseListAdapter(var context: Context, var arrayList: ArrayList<Exe
         holder.apply {
             binding.tvcategory.setText(arrayList[position].exrName)
 
+            if (arrayList[position].completed){
+                binding.ivCompleted.visibility= View.VISIBLE
+            }else{
+                binding.ivCompleted.visibility= View.INVISIBLE
+            }
             Glide
                 .with(context)
                 .load(arrayList[position].exrImgUri)

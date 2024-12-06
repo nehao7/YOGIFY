@@ -82,4 +82,9 @@
         android:name="com.pardeep.yogify.admin.fragments.ExrDetailsFragment"
         android:label="Details"
         tools:layout="@layout/fragment_exr_details" />
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="com.pardeep.yogify.admin.fragments.ProgressFragment"
+        android:label="fragment_progress"
+        tools:layout="@layout/fragment_progress" />
 </navigation>

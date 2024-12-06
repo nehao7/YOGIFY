@@ -7,7 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
+import com.pardeep.yogify.Constants
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentExrDetailsBinding
 
@@ -27,8 +31,13 @@ class ExrDetailsFragment : Fragment() {
     private var name: String? = null
     private var des: String? = null
     private var imgurl: String? = null
+    private var exrId: String? = null
     private var countDownTimer: CountDownTimer? = null
     private var timeInMillis: Long = 0
+    val db = Firebase.firestore
+    private var duration: String? = null
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +46,8 @@ class ExrDetailsFragment : Fragment() {
             name = it.getString("name")
             des = it.getString("des")
             imgurl = it.getString("imgUrl")
+            duration = it.getString("time")
+            exrId = it.getString("id")
         }
     }
 
@@ -55,6 +66,7 @@ class ExrDetailsFragment : Fragment() {
             .into(binding.imageslider)
         binding.instruction.setText(des)
         binding.title.setText(name)
+        binding.durationTv.setText(duration)
 
         binding.play.setOnClickListener {
             // Get the time input from the user
@@ -103,18 +115,39 @@ class ExrDetailsFragment : Fragment() {
             override fun onFinish() {
                 // Timer finished
                 binding.tvTimeRemaining.text = "Time's up!"
+                exrId?.let { updateExerciseCompletionStatus(it) }
+                findNavController().popBackStack()
+
             }
         }
 
         // Start the countdown
         countDownTimer?.start()
     }
+
     override fun onDestroy() {
         super.onDestroy()
         // Cancel the timer when the activity is destroyed
         countDownTimer?.cancel()
     }
 
+    private fun updateExerciseCompletionStatus(exrId: String) {
+        // Get a reference to the Firestore collection
+
+        // Reference to the document you want to update
+        val exerciseRef = db.collection(Constants.exercises).document(exrId)
+
+        // Set the completed field to true
+        exerciseRef.update("completed", true)
+            .addOnSuccessListener {
+                // Successfully updated the document
+                Toast.makeText(requireContext(), "Exercise marked as completed", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e ->
+                // Handle failure
+                Toast.makeText(requireContext(), "Failed to update status: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of

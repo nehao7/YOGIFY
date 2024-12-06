@@ -2,6 +2,7 @@ package com.pardeep.yogify.admin.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -31,6 +32,11 @@ class ExerciseListAdapter(var context: Context, var arrayList: ArrayList<Exercis
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.apply {
             binding.tvcategory.setText(arrayList[position].exrName)
+            if (arrayList[position].completed){
+                binding.ivCompleted.visibility=View.VISIBLE
+            }else{
+                binding.ivCompleted.visibility= View.INVISIBLE
+            }
 
             Glide
                 .with(context)

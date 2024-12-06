@@ -206,9 +206,8 @@ class UserAddExerciseFragment : Fragment() {
                                 "imgUrl" to categoriesList[position].exrImgUri,
                                 "des" to categoriesList[position].description,
                                 "name" to categoriesList[position].exrName,
-                                "time" to categoriesList[position].duration
-                            )
-                        )
+                                "time" to categoriesList[position].duration,
+                                "id" to categoriesList[position].exrId)                        )
 //                        startActivity(
 //                            Intent(adminActivity,MydrawingActivity::class.java)
 //                            .putExtra("screen",1)

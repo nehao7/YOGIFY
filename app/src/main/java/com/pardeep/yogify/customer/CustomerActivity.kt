@@ -80,7 +80,7 @@ class CustomerActivity : AppCompatActivity() {
                     }
 
                     1 -> {
-                        navController.navigate(R.id.trackingFragment)
+                        navController.navigate(R.id.userProgressFragment2)
                         binding.fragmentName.setText("Progress")
                     }
 
@@ -101,7 +101,7 @@ class CustomerActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.exerciseFragment -> binding.bottomNavigation.selectTabAt(0)
-                R.id.trackingFragment -> binding.bottomNavigation.selectTabAt(1)
+                R.id.userProgressFragment2 -> binding.bottomNavigation.selectTabAt(1)
                 R.id.profileFragment -> binding.bottomNavigation.selectTabAt(2)
                 // ... add more cases for other fragments
             }
