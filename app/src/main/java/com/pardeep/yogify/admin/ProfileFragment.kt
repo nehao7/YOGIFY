@@ -1,13 +1,16 @@
 package com.pardeep.yogify.admin
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentProfileBinding
 
@@ -26,7 +29,8 @@ class ProfileFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var sharedPreferences: SharedPreferences
-    var binding :FragmentProfileBinding?=null
+    lateinit var editor: SharedPreferences.Editor
+    var binding: FragmentProfileBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +41,7 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(layoutInflater)
@@ -49,6 +52,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences = activity?.getSharedPreferences("DayNightMode", Context.MODE_PRIVATE)!!
+        editor = sharedPreferences.edit()
         if (sharedPreferences.getBoolean("Night", false)) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             binding?.iconView?.setImageResource(R.drawable.user_skill_gear_night)
@@ -77,26 +81,77 @@ class ProfileFragment : Fragment() {
 
 
         }
+        binding?.modeBtn?.setOnClickListener {
+            openAlertDialog("modeBtn")
+        }
+
+        binding?.helpBtn?.setOnClickListener {
+            openAlertDialog("helpBtn")
+        }
 
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
+    private fun openAlertDialog(s: String) {
+        when (s) {
+            "modeBtn" -> {
+                AlertDialog.Builder(requireContext()).apply {
+                    setTitle("Are you sure you want to change theme")
+                    setPositiveButton("Yes") { _, _ ->
+                        if (sharedPreferences.getBoolean("Night", false)) {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                            editor.putBoolean("Night", false)
+                            editor.commit()
+                            editor.apply()
+                        } else {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                            editor.putBoolean("Night", true)
+                            editor.commit()
+                            editor.apply()
+                        }
+                    }
+                    setNegativeButton("No") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                }.show()
+            }
+
+            "helpBtn" -> {
+                AlertDialog.Builder(requireContext()).apply {
+                    setTitle("Send issue on either email or sms")
+                    setPositiveButton("Email") { _, _ ->
+                        val emailIntent = Intent(Intent.ACTION_SEND).apply {
+                            data = Uri.parse("mailto:maheyp666@gmail.com")
+                            putExtra(Intent.EXTRA_SUBJECT, "Error occur in yogify app")
+                        }
+                        startActivity(emailIntent)
+                    }
+                    setNegativeButton("sms") { _, _ ->
+                        val smsIntent = Intent(Intent.ACTION_SENDTO).apply {
+                            data = Uri.parse("smsto:+918968531504")
+                        }
+                        startActivity(smsIntent)
+                    }
+                }.show()
+            }
+            }
+        }
+
+        companion object {
+            /**
+             * Use this factory method to create a new instance of
+             * this fragment using the provided parameters.
+             *
+             * @param param1 Parameter 1.
+             * @param param2 Parameter 2.
+             * @return A new instance of fragment ProfileFragment.
+             */
+            // TODO: Rename and change types and number of parameters
+            @JvmStatic
+            fun newInstance(param1: String, param2: String) = ProfileFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                 }
             }
+        }
     }
-}

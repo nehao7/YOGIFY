@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.YOGIFY" parent="Theme.Material3.DayNight">
         <!-- Customize your dark theme here. -->
+        <item name="android:background">@color/customBlack</item>
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
 

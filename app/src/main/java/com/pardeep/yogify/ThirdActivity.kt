@@ -44,12 +44,19 @@ class ThirdActivity : AppCompatActivity()  {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        sharedPreferences = getSharedPreferences("DayNightMode", MODE_PRIVATE)
+        editor = sharedPreferences.edit()
         navController=findNavController(R.id.fragmentContainerView)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
         supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.lightGrey)))
 
         mAuth = Firebase.auth
+
+        if(sharedPreferences.getBoolean("Night",false)){
+            supportActionBar
+        }
 
 
 
