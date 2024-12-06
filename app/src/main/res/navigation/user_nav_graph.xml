@@ -7,6 +7,22 @@
     <fragment
         android:id="@+id/userHomeFragment"
         android:name="com.pardeep.yogify.customer.UserHomeFragment"
-        android:label="fragment_user_home"
+        android:label="Home"
         tools:layout="@layout/fragment_user_home" />
+    <fragment
+        android:id="@+id/userCategoriesFragment"
+        android:name="com.pardeep.yogify.customer.UserCategoriesFragment"
+        android:label="Categories" />
+    <fragment
+        android:id="@+id/userAddExerciseFragment"
+        android:name="com.pardeep.yogify.customer.UserAddExerciseFragment"
+        android:label="Exercises" />
+    <fragment
+        android:id="@+id/userExrDetailsFragment"
+        android:name="com.pardeep.yogify.customer.UserExrDetailsFragment"
+        android:label="Details" />
+    <fragment
+        android:id="@+id/userLevelFilteredExrFragment"
+        android:name="com.pardeep.yogify.customer.UserLevelFilteredExrFragment"
+        android:label="Level" />
 </navigation>

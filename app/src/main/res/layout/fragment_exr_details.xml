@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".admin.fragments.ExrDetailsFragment">
 
     <com.google.android.material.card.MaterialCardView
@@ -22,8 +22,7 @@
         <ImageView
             android:id="@+id/imageslider"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-          />
+            android:layout_height="match_parent" />
     </com.google.android.material.card.MaterialCardView>
 
 
@@ -99,6 +98,23 @@
 
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:padding="5dp"
+            app:cardCornerRadius="25dp">
+
+            <TextView
+                android:id="@+id/tvTimeRemaining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:padding="10dp"
+                android:text="Time Remaining: 0"
+                android:textSize="18sp" />
+
+        </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
@@ -153,6 +169,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
+                            android:id="@+id/tvmin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -167,10 +184,11 @@
                             android:id="@+id/image2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="10dp"
+                            android:padding="5dp"
                             android:src="@drawable/signal_alt_2"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/poseLevelTv"
+                            app:layout_constraintStart_toEndOf="@+id/tvmin"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView

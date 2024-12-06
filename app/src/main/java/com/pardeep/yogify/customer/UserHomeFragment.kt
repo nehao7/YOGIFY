@@ -5,7 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
 import com.pardeep.yogify.R
+import com.pardeep.yogify.admin.LevelAdaptor
+import com.pardeep.yogify.admin.LevelData
+import com.pardeep.yogify.admin.RecyclerInterface
+import com.pardeep.yogify.databinding.FragmentUserHomeBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,10 +28,17 @@ private const val ARG_PARAM2 = "param2"
  * Use the [UserHomeFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class UserHomeFragment : Fragment() {
+class UserHomeFragment : Fragment(), RecyclerInterface {
+    lateinit var binding:FragmentUserHomeBinding
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var navController: NavController
+    var levelData = arrayListOf<LevelData>()
+    lateinit var levelLinearLayoutManager: LinearLayoutManager
+    var levelAdp = LevelAdaptor(levelData, this)
+    val imageList = ArrayList<SlideModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +46,52 @@ class UserHomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        navController = findNavController()
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_home, container, false)
+    ): View {
+        binding= FragmentUserHomeBinding.inflate(layoutInflater)        // Inflate the layout for this fragment
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        levelData.add(LevelData(image = R.drawable.beginner_pose, title = "Beginner"))
+        levelData.add(LevelData(image = R.drawable.intermediate_pose_imae, title = "Intermediate"))
+        levelData.add(LevelData(image = R.drawable.advanced_pose_image, title = "Advance"))
+        binding.recyclerView1.adapter = levelAdp
+        levelLinearLayoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView1.layoutManager = levelLinearLayoutManager
+        imageList.add(
+            SlideModel(
+                R.drawable.standing_pose_bend,
+                "Standing Pose",
+                scaleType = ScaleTypes.CENTER_CROP
+            )
+        )
+        imageList.add(
+            SlideModel(
+                R.drawable.standing_pose_bend,
+                "Standing Pose",
+                scaleType = ScaleTypes.CENTER_CROP
+            )
+        )
+        imageList.add(
+            SlideModel(
+                R.drawable.standing_pose_bend,
+                "Standing Pose",
+                scaleType = ScaleTypes.CENTER_CROP
+            )
+        )
+
+
+        binding?.imageSlider?.setImageList(imageList)
+
     }
 
     companion object {
@@ -56,5 +112,21 @@ class UserHomeFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onItemClick(position: Int, callFrom: String) {
+        when (callFrom) {
+            "LevelAdaptor" -> {
+                Toast.makeText(requireContext(), "LevelAdaptorClick", Toast.LENGTH_SHORT).show()
+                navController.navigate(
+                    R.id.userLevelFilteredExrFragment, bundleOf(
+                        "level" to position % levelData.size,
+                        "title" to levelData[position % levelData.size].title,
+                        "image" to levelData[position % levelData.size].image
+                    )
+                )
+
+            }
+        }
     }
 }

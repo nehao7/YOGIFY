@@ -2,6 +2,7 @@ package com.pardeep.yogify
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -13,6 +14,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -27,6 +30,7 @@ class ThirdActivity : AppCompatActivity()  {
     lateinit var sharedPreferences: SharedPreferences
     lateinit var editor: SharedPreferences.Editor
     lateinit var mainmenu: Unit
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var mAuth: FirebaseAuth
 
 
@@ -40,6 +44,11 @@ class ThirdActivity : AppCompatActivity()  {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        navController=findNavController(R.id.fragmentContainerView)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.lightGrey)))
+
         mAuth = Firebase.auth
 
 
