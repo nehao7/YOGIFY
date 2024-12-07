@@ -17,7 +17,7 @@
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg_grey"
+        style="@style/CardViewColor"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="1dp"

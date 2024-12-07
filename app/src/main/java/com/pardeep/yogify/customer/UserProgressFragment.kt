@@ -45,7 +45,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class UserProgressFragment : Fragment() ,RecyclerInterface {
     lateinit var binding: FragmentUserProgressBinding
-    lateinit var exerciseAdapter: ExerciseListAdapter
+    var exerciseAdapter: ExerciseListAdapter?=null
     var categoriesList = arrayListOf<ExerciseListModel>()
     val db = Firebase.firestore
     var collectionName = Constants.exercises
@@ -96,7 +96,7 @@ class UserProgressFragment : Fragment() ,RecyclerInterface {
                     }
                 }
                 // Notify adapter after data changes
-                exerciseAdapter.notifyDataSetChanged()
+                exerciseAdapter?.notifyDataSetChanged()
                 Log.d("LevelFilteredExr", "Categories List: $categoriesList")
             }
     }

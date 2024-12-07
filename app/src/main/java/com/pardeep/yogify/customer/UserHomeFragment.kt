@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.PagerAdapter
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.pardeep.yogify.R
@@ -160,7 +159,7 @@ class UserHomeFragment : Fragment(), RecyclerInterface {
             "LevelAdaptor" -> {
                 Toast.makeText(requireContext(), "LevelAdaptorClick", Toast.LENGTH_SHORT).show()
                 navController.navigate(
-                    R.id.userLevelFilteredExrFragment, bundleOf(
+                    R.id.inner_day_fragment2, bundleOf(
                         "level" to position % levelData.size,
                         "title" to levelData[position % levelData.size].title,
                         "image" to levelData[position % levelData.size].image

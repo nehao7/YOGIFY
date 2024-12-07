@@ -100,9 +100,9 @@ class CustomerActivity : AppCompatActivity() {
         })
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.exerciseFragment -> binding.bottomNavigation.selectTabAt(0)
+                R.id.userHomeFragment -> binding.bottomNavigation.selectTabAt(0)
                 R.id.userProgressFragment2 -> binding.bottomNavigation.selectTabAt(1)
-                R.id.profileFragment -> binding.bottomNavigation.selectTabAt(2)
+                R.id.profileFragment2 -> binding.bottomNavigation.selectTabAt(2)
                 // ... add more cases for other fragments
             }
         }

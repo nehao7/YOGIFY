@@ -34,7 +34,7 @@ class UserLevelFilteredExrFragment : Fragment() {
     lateinit var binding:FragmentLevelFilteredExrBinding
     // TODO: Rename and change types of parameters
     lateinit var customerActivity: CustomerActivity
-    lateinit var exerciseAdapter: UserExerciseListAdapter
+    var exerciseAdapter: UserExerciseListAdapter?=null
     var categoriesList = arrayListOf<ExerciseListModel>()
     val db = Firebase.firestore
     var collectionName = Constants.exercises
@@ -89,7 +89,7 @@ class UserLevelFilteredExrFragment : Fragment() {
                     }
                 }
                 // Notify adapter after data changes
-                exerciseAdapter.notifyDataSetChanged()
+                exerciseAdapter?.notifyDataSetChanged()
                 Log.d("LevelFilteredExr", "Categories List: $categoriesList")
             }
 //        levelFilterList(level)
@@ -121,7 +121,8 @@ class UserLevelFilteredExrFragment : Fragment() {
                                 "imgUrl" to categoriesList[position].exrImgUri,
                                 "des" to categoriesList[position].description,
                                 "name" to categoriesList[position].exrName,
-                                "time" to categoriesList[position].duration
+                                "time" to categoriesList[position].duration,
+                                "id" to categoriesList[position].exrId
                             )
                         )
 //
@@ -217,7 +218,7 @@ class UserLevelFilteredExrFragment : Fragment() {
                         }
                     }
                 }
-                exerciseAdapter.notifyDataSetChanged()
+                exerciseAdapter?.notifyDataSetChanged()
             }
 
         println("levelfn$categoriesList")

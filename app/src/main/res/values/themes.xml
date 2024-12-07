@@ -92,4 +92,8 @@
         <item name="android:backgroundTint">@color/lightWhite</item>
         <item name="android:textColor">@color/lightGreen</item>
     </style>
+
+    <style name="DayRecyclerColor">
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
 </resources>

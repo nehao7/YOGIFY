@@ -2,6 +2,7 @@ package com.pardeep.yogify.customer
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -34,6 +35,7 @@ class UserExrDetailsFragment : Fragment() {
     private var timeInMillis: Long = 0
     private  val TAG = "UserExrDetailsFragment"
     var click = 0
+    lateinit var textToSpeech: TextToSpeech
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +60,21 @@ class UserExrDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated: $exrId")
+        textToSpeech = TextToSpeech(requireContext(), object : TextToSpeech.OnInitListener {
+            override fun onInit(status: Int) {
+                if (status == TextToSpeech.SUCCESS) {
+                    if (status == TextToSpeech.LANG_NOT_SUPPORTED || status == TextToSpeech.LANG_MISSING_DATA) {
+                        Toast.makeText(requireContext(), "Language error", Toast.LENGTH_SHORT)
+                            .show()
+                    } else textToSpeech.setSpeechRate(0.75f)
+                } else {
+                    Toast.makeText(requireContext(), "Error to play tts", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        })
+
         if (isAdded){
         Glide.with(requireContext())
             .load(imgurl)
@@ -83,11 +100,13 @@ class UserExrDetailsFragment : Fragment() {
                         click = 1
                         startTimer(timeInMillis)
                         binding.play.setImageResource(R.drawable.stop)
+                        speak(des)
                     }
                     else if (click == 1){
                         stopTimer()
                         click =0
                         binding.play.setImageResource(R.drawable.play__3_)
+                        textToSpeech.stop()
                     }
 
                 } catch (e: NumberFormatException) {
@@ -101,6 +120,11 @@ class UserExrDetailsFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please enter a time", Toast.LENGTH_SHORT).show()
             }}
         }
+    }
+
+    private fun speak(des: String?) {
+        textToSpeech.speak(des, TextToSpeech.QUEUE_FLUSH, null, null)
+
     }
 
     private fun stopTimer() {
@@ -135,7 +159,6 @@ class UserExrDetailsFragment : Fragment() {
             override fun onFinish() {
                 // Timer finished
                 if (isAdded){
-                binding.tvTimeRemaining.text = "Time's up!"
                 exrId?.let { updateExerciseCompletionStatus(it) }
                 findNavController().popBackStack()
 
@@ -168,10 +191,12 @@ class UserExrDetailsFragment : Fragment() {
             }
             }
     }
-    override fun onDestroy() {
-        super.onDestroy()
-        // Cancel the timer when the activity is destroyed
-        countDownTimer?.cancel()
+
+
+    override fun onPause() {
+        super.onPause()
+        textToSpeech.stop()
+        textToSpeech.shutdown()
     }
 
     companion object {
