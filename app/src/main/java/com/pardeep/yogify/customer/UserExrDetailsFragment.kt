@@ -2,6 +2,7 @@ package com.pardeep.yogify.customer
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import com.pardeep.yogify.Constants
+import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentExrDetailsBinding
 
 /**
@@ -30,7 +32,8 @@ class UserExrDetailsFragment : Fragment() {
     val db = Firebase.firestore
     private var countDownTimer: CountDownTimer? = null
     private var timeInMillis: Long = 0
-
+    private  val TAG = "UserExrDetailsFragment"
+    var click = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,10 +75,20 @@ class UserExrDetailsFragment : Fragment() {
                     // Convert to seconds and then to milliseconds
 //                    timeInMillis = inputTime.toLong() * 1000
                     val minutes = inputTime.toLong()
+                    Log.d(TAG, "onViewCreated: $minutes")
                     timeInMillis = minutes * 60 * 1000
-
+                    Log.d(TAG, "onViewCreated: $timeInMillis")
                     // Start the timer
-                    startTimer(timeInMillis)
+                    if (click == 0){
+                        click = 1
+                        startTimer(timeInMillis)
+                        binding.play.setImageResource(R.drawable.stop)
+                    }
+                    else if (click == 1){
+                        stopTimer()
+                        click =0
+                        binding.play.setImageResource(R.drawable.play__3_)
+                    }
 
                 } catch (e: NumberFormatException) {
                     // Handle invalid input
@@ -88,6 +101,10 @@ class UserExrDetailsFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please enter a time", Toast.LENGTH_SHORT).show()
             }}
         }
+    }
+
+    private fun stopTimer() {
+        countDownTimer?.cancel()
     }
 
     private fun startTimer(timeInMillis: Long) {
@@ -104,7 +121,11 @@ class UserExrDetailsFragment : Fragment() {
                 // Format minutes and seconds to always display two digits
                 val formattedTime = String.format("%02d:%02d", minutesRemaining, seconds)
                 if (isAdded){
-                binding.tvTimeRemaining.text = "Time Remaining: $formattedTime"
+//                binding.tvTimeRemaining.text = "Time Remaining: $formattedTime"
+                    val total_time = timeInMillis
+                    val progress = ((total_time - millisUntilFinished) * 100 / total_time).toInt()
+                    binding.linearProgress.progress = progress
+                    Log.d(TAG, "onTick: $formattedTime")
                 }
 //                // Update the UI every second
 //                val secondsRemaining = millisUntilFinished / 1000

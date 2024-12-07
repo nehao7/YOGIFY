@@ -33,12 +33,7 @@ class UserExerciseListAdapter(var context: Context, var arrayList: ArrayList<Exe
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.apply {
             binding.tvcategory.setText(arrayList[position].exrName)
-
-            if (arrayList[position].completed){
-                binding.ivCompleted.visibility= View.VISIBLE
-            }else{
-                binding.ivCompleted.visibility= View.INVISIBLE
-            }
+            binding.ivCompleted.visibility = View.GONE
             Glide
                 .with(context)
                 .load(arrayList[position].exrImgUri)

@@ -22,14 +22,18 @@
         <ImageView
             android:id="@+id/imageslider"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            />
     </com.google.android.material.card.MaterialCardView>
 
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/linearProgress"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="15dp"
         android:max="100"
         app:layout_constraintBottom_toTopOf="@id/ll"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,12 +53,14 @@
 
 
         <androidx.cardview.widget.CardView
+            android:visibility="gone"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginVertical="10dp"
             app:cardCornerRadius="25dp">
 
             <ImageButton
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -84,6 +90,7 @@
 
 
         <androidx.cardview.widget.CardView
+            android:visibility="gone"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:cardCornerRadius="25dp">
@@ -109,9 +116,11 @@
                 android:id="@+id/tvTimeRemaining"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-              android:padding="10dp"
+                android:padding="10dp"
+                android:visibility="gone"
                 android:text="Time Remaining: 0"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                 />
 
         </androidx.cardview.widget.CardView>
 

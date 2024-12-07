@@ -2,6 +2,7 @@ package com.pardeep.yogify.admin.fragments
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +37,8 @@ class ExrDetailsFragment : Fragment() {
     private var timeInMillis: Long = 0
     val db = Firebase.firestore
     private var duration: String? = null
+    var click = 0
+    private val TAG = "ExrDetailsFragment"
 
 
 
@@ -61,7 +64,7 @@ class ExrDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        Log.d(TAG, "onViewCreated: $duration")
         if (isAdded) {
             Glide.with(requireContext())
                 .load(imgurl)
@@ -70,9 +73,21 @@ class ExrDetailsFragment : Fragment() {
             binding.title.setText(name)
             binding.durationTv.setText(duration)
         }
+
         binding.play.setOnClickListener {
             // Get the time input from the user
             val inputTime = binding.durationTv.text.toString()
+
+            if (click == 0){
+                click =1
+                Log.d(TAG, "onViewCreated: $click")
+                binding.play.setImageResource(R.drawable.pause)
+                startTimer(duration.toString().toLong())
+            }
+            else if (click == 1){
+                click =0
+                stopTimer()
+            }
 
             // Check if the input is valid
             if (inputTime.isNotEmpty()) {
@@ -80,10 +95,11 @@ class ExrDetailsFragment : Fragment() {
                     // Convert to seconds and then to milliseconds
 //                    timeInMillis = inputTime.toLong() * 1000
                     val minutes = inputTime.toLong()
+                    Log.d(TAG, "onViewCreated: $minutes")
                     timeInMillis = minutes * 60 * 1000
-
+                    Log.d(TAG, "onViewCreated: $click")
                     // Start the timer
-                    startTimer(timeInMillis)
+
 
                 } catch (e: NumberFormatException) {
                     // Handle invalid input
@@ -95,6 +111,10 @@ class ExrDetailsFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please enter a time", Toast.LENGTH_SHORT).show()
             }}
         }
+    }
+
+    private fun stopTimer() {
+        TODO("Not yet implemented")
     }
 
     private fun startTimer(timeInMillis: Long) {
@@ -112,6 +132,9 @@ class ExrDetailsFragment : Fragment() {
                 val formattedTime = String.format("%02d:%02d", minutesRemaining, seconds)
                 if (isAdded){
                 binding.tvTimeRemaining.text = "Time Remaining: $formattedTime"
+                    val total_time = timeInMillis
+                    val progress = ((total_time - millisUntilFinished) * 100 / total_time).toInt()
+                    binding.linearProgress.progress = progress
              }
                 // Update the UI every second
 //                val secondsRemaining = millisUntilFinished / 1000
