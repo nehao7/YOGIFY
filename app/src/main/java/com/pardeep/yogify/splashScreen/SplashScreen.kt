@@ -19,7 +19,6 @@ import com.pardeep.yogify.onBoardingScreens.OnBoardingMainActivity
 
 
 class SplashScreen : AppCompatActivity() {
-    var mAuth = Firebase.auth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,10 +33,9 @@ class SplashScreen : AppCompatActivity() {
 
 
         Handler(Looper.getMainLooper()).postDelayed({
-
             startActivity(Intent(this,
                 OnBoardingMainActivity::class.java))
             finish()
-        }, 2000)
+        }, 3000)
     }
 }

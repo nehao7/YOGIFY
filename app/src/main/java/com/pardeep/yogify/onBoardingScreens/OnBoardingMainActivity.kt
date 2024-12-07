@@ -43,7 +43,7 @@ class OnBoardingMainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+    supportActionBar?.hide()
         // ---------------------------- Day night mode ------------
         sharedPreferences = getSharedPreferences("DayNightMode" , MODE_PRIVATE)
         editor = sharedPreferences.edit()

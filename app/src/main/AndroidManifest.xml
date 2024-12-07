@@ -9,11 +9,11 @@
 
 
     <application
-        android:allowBackup="true"
         android:name=".admin.fragments.MyApplication"
+        android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/yoga_app"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -33,10 +33,11 @@
         </activity>
         <activity
             android:name=".onBoardingScreens.OnBoardingMainActivity"
-            android:exported="false"></activity>
+            android:exported="false"/>
+
         <activity
             android:name=".ThirdActivity"
-            android:exported="true"></activity>
+            android:exported="false"/>
         <activity
             android:name=".setupScreens.SetupActivity"
             android:exported="false" />
