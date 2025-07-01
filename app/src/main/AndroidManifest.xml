@@ -16,7 +16,11 @@
         tools:targetApi="31">
         <activity
             android:name=".splashScreen.SplashScreen"
-            android:exported="false">
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -26,11 +30,8 @@
 
         <activity
             android:name=".thirdActivity.ThirdActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
+
         </activity>
 
         <activity
@@ -39,7 +40,7 @@
         </activity>
 
         <activity
-            android:name=".login_signup_screen.LoginSignupActivity"
+            android:name=".ui.login_signup_screen.LoginSignupActivity"
             android:exported="false">
 
         </activity>

@@ -28,6 +28,7 @@ android {
         }
     }
     buildFeatures {
+        dataBinding = true
         viewBinding = true
     }
     compileOptions {
@@ -75,6 +76,8 @@ dependencies {
 
     //shimmer effect
     implementation("com.facebook.shimmer:shimmer:0.5.0")
+
+    implementation ("com.google.android.gms:play-services-auth:21.0.0")
 
 
 }

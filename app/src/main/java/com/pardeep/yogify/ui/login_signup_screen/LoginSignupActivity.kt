@@ -1,4 +1,4 @@
-package com.pardeep.yogify.login_signup_screen
+package com.pardeep.yogify.ui.login_signup_screen
 
 import android.content.Intent
 import android.content.SharedPreferences

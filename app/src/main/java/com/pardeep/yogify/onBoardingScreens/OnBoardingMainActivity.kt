@@ -13,7 +13,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.denzcoskun.imageslider.adapters.ViewPagerAdapter
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.ActivityOnBoardingMainBinding
-import com.pardeep.yogify.login_signup_screen.LoginSignupActivity
+import com.pardeep.yogify.ui.login_signup_screen.LoginSignupActivity
 
 class OnBoardingMainActivity : AppCompatActivity() {
     var binding: ActivityOnBoardingMainBinding? = null
@@ -84,7 +84,7 @@ class OnBoardingMainActivity : AppCompatActivity() {
                 1 -> {
                     binding?.viewPager?.currentItem = 2
                 }
-                2 -> { val intent = Intent(this ,LoginSignupActivity::class.java )
+                2 -> { val intent = Intent(this , LoginSignupActivity::class.java )
                     startActivity(intent)
                     finish()
                 }

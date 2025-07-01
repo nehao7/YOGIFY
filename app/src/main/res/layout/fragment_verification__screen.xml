@@ -5,7 +5,7 @@
     style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login_signup_screen.Verification_Screen">
+    tools:context=".ui.login_signup_screen.Verification_Screen">
 
     <LinearLayout
         android:layout_width="match_parent"
