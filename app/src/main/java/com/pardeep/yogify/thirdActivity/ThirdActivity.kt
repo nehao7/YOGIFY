@@ -1,22 +1,17 @@
 package com.pardeep.yogify.thirdActivity
 
-import android.app.Dialog
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.ActivityThirdBinding
-import com.pardeep.yogify.setupScreens.setupScreen6
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class ThirdActivity : AppCompatActivity()  {

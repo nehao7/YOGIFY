@@ -87,7 +87,7 @@ class SetupActivity : AppCompatActivity()  {
     }
 
      fun moveToSecondDestination() {
-        val intent = Intent(this, ThirdActivity::class.java)
+        val intent = Intent(this@SetupActivity, ThirdActivity::class.java)
         startActivity(intent)
         finish()
     }

@@ -345,6 +345,7 @@ class ExerciseFragment : Fragment(), RecyclerInterface, CategoryRecyclerInterfac
         when (callFrom) {
             "LevelAdaptor" -> {
                 Toast.makeText(requireContext(), "LevelAdaptorClick", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "$position", Toast.LENGTH_SHORT).show()
                 navController.navigate(
                     R.id.innerLevelFragment, bundleOf(
                         "Level" to position % levelData.size,

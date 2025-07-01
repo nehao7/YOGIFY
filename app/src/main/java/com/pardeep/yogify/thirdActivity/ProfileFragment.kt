@@ -1,14 +1,20 @@
 package com.pardeep.yogify.thirdActivity
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.FragmentProfileBinding
 
@@ -27,7 +33,10 @@ class ProfileFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var sharedPreferences: SharedPreferences
+    lateinit var editor : SharedPreferences.Editor
     var binding :FragmentProfileBinding?=null
+    var firebaseAuth: FirebaseAuth?=null
+    private  val TAG = "ProfileFragment"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,15 +58,20 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        firebaseAuth = FirebaseAuth.getInstance()
+        val currentLoginUser = firebaseAuth?.currentUser?.email
+        binding?.userEmailTv?.setText(currentLoginUser)
+        binding?.logoTv?.setText(currentLoginUser?.first()?.uppercaseChar().toString())
+        Toast.makeText(requireContext(), "${currentLoginUser}", Toast.LENGTH_SHORT).show()
+        Log.d(TAG, "onViewCreated: $currentLoginUser")
         sharedPreferences = activity?.getSharedPreferences("DayNightMode", Context.MODE_PRIVATE)!!
+        editor = sharedPreferences.edit()
         if (sharedPreferences.getBoolean("Night", false)) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            binding?.iconView?.setImageResource(R.drawable.user_skill_gear_night)
             binding?.iconView2?.setImageResource(R.drawable.english_night)
             binding?.iconView3?.setImageResource(R.drawable.cloud_question_night)
             binding?.iconView4?.setImageResource(R.drawable.night_day_night)
             binding?.iconView5?.setImageResource(R.drawable.arrow_left_from_arc_night)
-            binding?.endIcon?.setImageResource(R.drawable.right_arrow_night)
             binding?.endIcon2?.setImageResource(R.drawable.right_arrow_night)
             binding?.endIcon3?.setImageResource(R.drawable.right_arrow_night)
             binding?.endIcon4?.setImageResource(R.drawable.right_arrow_night)
@@ -65,12 +79,10 @@ class ProfileFragment : Fragment() {
 
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            binding?.endIcon?.setImageResource(R.drawable.right_arrow)
             binding?.endIcon2?.setImageResource(R.drawable.right_arrow)
             binding?.endIcon3?.setImageResource(R.drawable.right_arrow)
             binding?.endIcon4?.setImageResource(R.drawable.right_arrow)
             binding?.endIcon5?.setImageResource(R.drawable.right_arrow)
-            binding?.iconView?.setImageResource(R.drawable.user_skill_gear)
             binding?.iconView2?.setImageResource(R.drawable.english)
             binding?.iconView3?.setImageResource(R.drawable.cloud_question)
             binding?.iconView4?.setImageResource(R.drawable.night_day)
@@ -78,7 +90,76 @@ class ProfileFragment : Fragment() {
 
 
         }
+        binding?.loginCardView?.setOnClickListener {
+            openAlertDialog("logOut")
+        }
 
+        binding?.modeCardView?.setOnClickListener {
+            openAlertDialog("modeBtn")
+        }
+        binding?.helpCardView?.setOnClickListener {
+            openAlertDialog("helpBtn")
+        }
+
+    }
+
+    private fun openAlertDialog(s: String) {
+        when (s) {
+            "logOut" -> {
+                AlertDialog.Builder(requireContext()).apply {
+                    setTitle("Are you sure you want to logout")
+                    setPositiveButton("Yes") { _, _ ->
+                        //code for log out
+                    }
+                    setNegativeButton("No") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                }.show()
+            }
+
+            "modeBtn" -> {
+                AlertDialog.Builder(requireContext()).apply {
+                    setTitle("Are you sure you want to change theme")
+                    setPositiveButton("Yes") { _, _ ->
+                        if (sharedPreferences.getBoolean("Night", false)) {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                            editor.putBoolean("Night" , false)
+                            editor.commit()
+                            editor.apply()
+                        } else {
+                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                            editor.putBoolean("Night",true)
+                            editor.commit()
+                            editor.apply()
+                        }
+                    }
+                    setNegativeButton("No") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                }.show()
+            }
+
+            "helpBtn" ->{
+                AlertDialog.Builder(requireContext()).apply {
+                    setTitle("Are you sure you want to change theme")
+                    setPositiveButton("Email") { _, _ ->
+                        val emailIntent = Intent(Intent.ACTION_SEND).apply {
+                            data = Uri.parse("mailto:maheyp666@gmail.com")
+                            putExtra(Intent.EXTRA_SUBJECT, "Error occur in yogify app")
+                        }
+                        startActivity(emailIntent)
+                    }
+                    setNegativeButton("Sms") { dialog, _ ->
+                        val smsIntent = Intent(Intent.ACTION_SENDTO).apply {
+                            data = Uri.parse("smsto:+918968531504")
+                        }
+                        startActivity(smsIntent)
+                    }
+                }.show()
+
+            }
+
+        }
     }
 
     companion object {

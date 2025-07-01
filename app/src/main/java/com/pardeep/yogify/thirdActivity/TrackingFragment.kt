@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -74,13 +75,13 @@ class TrackingFragment : Fragment() , RecyclerInterface {
         binding?.dayRecyclerView?.adapter = calenderAdp
         binding?.dayRecyclerView?.layoutManager = linearLayoutManager
 
+
         //
 
 
-        // linear snap helper used for center snaping
+        // linear snap helper used for center snap
         linearSnapHelper = LinearSnapHelper()
         linearSnapHelper.attachToRecyclerView(binding?.dayRecyclerView)
-
         binding?.datePicker?.setOnClickListener {
             setupDatePicker()
         }
@@ -88,17 +89,19 @@ class TrackingFragment : Fragment() , RecyclerInterface {
     }
 
     private fun setupDatePicker() {
-        DatePickerDialog(requireContext() ,{
-            _ , year , month , dayOfMonth ->
-           val calendar = Calendar.getInstance()
-            calendar.set(year , month, dayOfMonth)
-            findFirstDayOfWeek(calendar)
-
-        },
+        DatePickerDialog(
+            requireContext(),
+            { _, year, month, dayofmonth ->
+                val calender = Calendar.getInstance()
+                calender.set(year, month, dayofmonth)
+                var formatDate = dateFormat.format(calender.time)
+                Toast.makeText(requireContext(), "${formatDate}", Toast.LENGTH_SHORT).show()
+            },
             Calendar.getInstance().get(Calendar.YEAR),
-            Calendar.getInstance().get(Calendar.MONTH),
-            Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
-            ).show()
+            Calendar.getInstance().get(Calendar.MONDAY),
+            Calendar.getInstance().get(Calendar.DATE),
+        ).show()
+
     }
 
     private fun findFirstDayOfWeek(calendar: Calendar) {
@@ -128,6 +131,7 @@ class TrackingFragment : Fragment() , RecyclerInterface {
         Log.d(TAG, "onViewCreated: ${calendar.time}")
         var currentDatePosition = 0
 
+
         for (i in 0..6) {
             val date = dateFormat.format(calendar.time)
             val day = dayFormat.format(calendar.time).first().toString()
@@ -139,13 +143,12 @@ class TrackingFragment : Fragment() , RecyclerInterface {
             if (date.equals(currentDate)) {
                 Log.d(TAG, "getWeekDays: 'Matched'")
                 currentDatePosition = i
-                Log.d(TAG, "currentDatePostion : $currentDatePosition ")
+                Log.d(TAG, "currentDatePosition : $currentDatePosition")
                 binding?.dayRecyclerView?.scrollToPosition(currentDatePosition)
                 binding?.dayRecyclerView?.post {
                     onItemClick(currentDatePosition , "calenderAdapter")
                 }
             }
-
             calendar.add(Calendar.DAY_OF_WEEK, 1)
         }
         return Pair(weekDayDataClasses, currentDatePosition)

@@ -17,14 +17,13 @@
         <activity
             android:name=".splashScreen.SplashScreen"
             android:exported="false">
-
         </activity>
 
         <activity
             android:name=".onBoardingScreens.OnBoardingMainActivity"
             android:exported="false">
-
         </activity>
+
         <activity
             android:name=".thirdActivity.ThirdActivity"
             android:exported="true">
@@ -36,9 +35,13 @@
 
         <activity
             android:name=".setupScreens.SetupActivity"
-            android:exported="false"/>
+            android:exported="false">
+        </activity>
+
         <activity
             android:name=".login_signup_screen.LoginSignupActivity"
-            android:exported="false"/>
+            android:exported="false">
+
+        </activity>
     </application>
 </manifest>

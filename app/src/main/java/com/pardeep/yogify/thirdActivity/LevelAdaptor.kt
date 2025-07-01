@@ -40,7 +40,7 @@ class LevelAdaptor(
         holder.image?.setImageResource(array[actualPosition].image!!)
 
         holder.cardItem.setOnClickListener{
-            recyclerInterface.onItemClick(position , "LevelAdaptor")
+            recyclerInterface.onItemClick(actualPosition , "LevelAdaptor")
         }
 
     }

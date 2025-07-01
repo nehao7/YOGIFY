@@ -79,14 +79,15 @@ class login_signup_screen_1 : Fragment() {
             } else {
                 val email = binding?.etEmail?.text.toString()
                 val password = binding?.etPassword?.text.toString()
-                    firebaseAuth.signInWithEmailAndPassword(email , password).addOnCompleteListener {
-                        if (it.isSuccessful){
+                firebaseAuth.signInWithEmailAndPassword(email , password).addOnCompleteListener {
+                    if (it.isSuccessful){
                             Toast.makeText(requireContext(), "login successfully", Toast.LENGTH_SHORT).show()
+                        firebaseAuth.customAuthDomain
                             loginSignupActivity.loginSuccessfully()
 
-                        }else{
+                    }else{
                             Toast.makeText(requireContext(), "Invalid Account", Toast.LENGTH_SHORT).show()
-                        }
+                    }
 
 
 
