@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/login_signup_screen_1"
-        android:name="com.pardeep.yogify.ui.login_signup_screen.login_signup_screen_1"
+        android:name="com.pardeep.yogify.presentation.login_signup_screen.login_signup_screen_1"
         android:label="fragment_login_signup_screen_1"
         tools:layout="@layout/fragment_login_signup_screen_1" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/login_signup_screen_2"
-        android:name="com.pardeep.yogify.ui.login_signup_screen.login_signup_screen_2"
+        android:name="com.pardeep.yogify.presentation.login_signup_screen.login_signup_screen_2"
         android:label="fragment_login_signup_screen_2"
         tools:layout="@layout/fragment_login_signup_screen_2" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/verification_Screen2"
-        android:name="com.pardeep.yogify.ui.login_signup_screen.Verification_Screen"
+        android:name="com.pardeep.yogify.presentation.login_signup_screen.Verification_Screen"
         android:label="fragment_verification__screen"
         tools:layout="@layout/fragment_verification__screen" />
 </navigation>

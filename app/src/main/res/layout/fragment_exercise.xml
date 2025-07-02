@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".thirdActivity.ExerciseFragment">
+    tools:context=".presentation.mainScreen.homeScreen.ExerciseFragment">
 
     <ScrollView
         android:layout_width="match_parent"

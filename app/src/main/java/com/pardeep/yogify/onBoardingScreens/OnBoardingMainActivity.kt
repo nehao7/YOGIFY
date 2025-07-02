@@ -3,17 +3,15 @@ package com.pardeep.yogify.onBoardingScreens
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.denzcoskun.imageslider.adapters.ViewPagerAdapter
 import com.pardeep.yogify.R
 import com.pardeep.yogify.databinding.ActivityOnBoardingMainBinding
-import com.pardeep.yogify.ui.login_signup_screen.LoginSignupActivity
+import com.pardeep.yogify.presentation.login_signup_screen.LoginSignupActivity
 
 class OnBoardingMainActivity : AppCompatActivity() {
     var binding: ActivityOnBoardingMainBinding? = null

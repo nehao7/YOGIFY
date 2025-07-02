@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/ScreenBackground"
-    tools:context=".setupScreens.SetupScreen3">
+    tools:context=".presentation.setupScreens.SetupScreen3">
 
 
     <TextView

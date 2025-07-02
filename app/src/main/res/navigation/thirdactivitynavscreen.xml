@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/exerciseFragment"
-        android:name="com.pardeep.yogify.thirdActivity.ExerciseFragment"
+        android:name="com.pardeep.yogify.presentation.mainScreen.homeScreen.ExerciseFragment"
         android:label="fragment_exercise"
         tools:layout="@layout/fragment_exercise" >
         <action
@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/trackingFragment"
-        android:name="com.pardeep.yogify.thirdActivity.TrackingFragment"
+        android:name="com.pardeep.yogify.presentation.mainScreen.trackingScreen.TrackingFragment"
         android:label="fragment_tracking"
         tools:layout="@layout/fragment_tracking" >
         <action

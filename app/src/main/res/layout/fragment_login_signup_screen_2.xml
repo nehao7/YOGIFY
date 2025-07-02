@@ -6,14 +6,14 @@
 
         <variable
             name="signUpViewModel"
-            type="com.pardeep.yogify.ui.viewModels.signup.SignUpViewModel" />
+            type="com.pardeep.yogify.presentation.viewModels.signup.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
         style="@style/ScreenBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.login_signup_screen.login_signup_screen_2">
+        tools:context=".presentation.login_signup_screen.login_signup_screen_2">
 
 
         <TextView

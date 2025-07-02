@@ -5,7 +5,7 @@
     style="@style/ScreenBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".setupScreens.SetupScreen_1">
+    tools:context=".presentation.setupScreens.SetupScreen_1">
 
     <ScrollView
         android:id="@+id/scrollView"

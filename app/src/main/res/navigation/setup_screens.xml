@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/setupScreen_1"
-        android:name="com.pardeep.yogify.setupScreens.SetupScreen_1"
+        android:name="com.pardeep.yogify.presentation.setupScreens.SetupScreen_1"
         android:label="fragment_setup_screen_1"
         tools:layout="@layout/fragment_setup_screen_1" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/setupScreen2"
-        android:name="com.pardeep.yogify.setupScreens.SetupScreen2"
+        android:name="com.pardeep.yogify.presentation.setupScreens.SetupScreen2"
         android:label="fragment_setup_screen2"
         tools:layout="@layout/fragment_setup_screen2" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/setupScreen3"
-        android:name="com.pardeep.yogify.setupScreens.SetupScreen3"
+        android:name="com.pardeep.yogify.presentation.setupScreens.SetupScreen3"
         android:label="fragment_setup_screen3"
         tools:layout="@layout/fragment_setup_screen3" >
         <action
@@ -34,12 +34,12 @@
     </fragment>
     <fragment
         android:id="@+id/setupScreen4"
-        android:name="com.pardeep.yogify.setupScreens.SetupScreen4"
+        android:name="com.pardeep.yogify.presentation.setupScreens.SetupScreen4"
         android:label="fragment_setup_screen4"
         tools:layout="@layout/fragment_setup_screen4" />
     <fragment
         android:id="@+id/setupScreen5"
-        android:name="com.pardeep.yogify.setupScreens.SetupScreen5"
+        android:name="com.pardeep.yogify.presentation.setupScreens.SetupScreen5"
         android:label="fragment_setup_screen5"
         tools:layout="@layout/fragment_setup_screen5" >
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/setupScreen6"
-        android:name="com.pardeep.yogify.setupScreens.setupScreen6"
+        android:name="com.pardeep.yogify.presentation.setupScreens.setupScreen6"
         android:label="fragment_setup_screen6"
         tools:layout="@layout/fragment_setup_screen6" >
         <action

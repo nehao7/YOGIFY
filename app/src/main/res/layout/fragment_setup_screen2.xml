@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".setupScreens.SetupScreen2">
+    tools:context=".presentation.setupScreens.SetupScreen2">
 
             <RadioGroup
                 android:id="@+id/radioGroup1"

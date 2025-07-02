@@ -1,18 +1,15 @@
-package com.pardeep.yogify.thirdActivity
+package com.pardeep.yogify.presentation.setupScreens
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.pardeep.yogify.R
-import com.pardeep.yogify.databinding.FragmentInnerLevelBinding
-import com.pardeep.yogify.presentation.mainScreen.ThirdActivity
+import com.pardeep.yogify.databinding.FragmentSetupScreen3Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,32 +18,22 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [InnerLevelFragment.newInstance] factory method to
+ * Use the [SetupScreen3.newInstance] factory method to
  * create an instance of this fragment.
  */
-class InnerLevelFragment : Fragment() , RecyclerInterface {
+class SetupScreen3 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    var levelName : String? = ""
-    var title : String? = ""
-    var image : Int = 0
-    var dayArray = arrayListOf<String>("Day1", "Day2" , "Day3" ,"Day4" , "Day5" , )
-    var dayRecyclerView = DayRecyclerView(dayArray , this)
-    var binding : FragmentInnerLevelBinding?=null
-    lateinit var gridLayoutManager: GridLayoutManager
+    var binding: FragmentSetupScreen3Binding? = null
     lateinit var navController: NavController
-    var thirdActivity : ThirdActivity?=null
-
+    private  val TAG = "SetupScreen3"
+    lateinit var setupActivity: SetupActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupActivity = activity as SetupActivity
         arguments?.let {
-            thirdActivity = activity as ThirdActivity
-            levelName = it.getInt("Level").toString()
-            title = it.getString("title")
-            image = it.getInt("image")
-
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
@@ -57,21 +44,33 @@ class InnerLevelFragment : Fragment() , RecyclerInterface {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentInnerLevelBinding.inflate(layoutInflater)
+        binding = FragmentSetupScreen3Binding.inflate(layoutInflater)
         return binding?.root
-       // return inflater.inflate(R.layout.fragment_inner_level, container, false)
+        //return inflater.inflate(R.layout.fragment_setup_screen3, container, false)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = findNavController()
-        print("levelname : $title")
-        print("image : $image" )
-        thirdActivity?.setName(title.toString())
-        gridLayoutManager = GridLayoutManager(requireContext() , 3 , LinearLayoutManager.VERTICAL ,false)
-        binding?.dayRecyclerView?.layoutManager = gridLayoutManager
-        binding?.dayRecyclerView?.adapter = dayRecyclerView
+        binding?.nextBtn?.setOnClickListener {
+            navController = findNavController()
+            setupActivity.progressBarIncrement("SetupScreen3")
+            navController.navigate(R.id.setupScreen5)
+        }
+        binding?.radioGroup?.setOnCheckedChangeListener{_, checkId ->
+            when(checkId){
+                R.id.radioBtn1 -> {
+                    binding?.nextBtn?.isEnabled =true
+                }
 
+                R.id.radioBtn2 -> {
+                    binding?.nextBtn?.isEnabled =true
+                }
+                else -> binding?.nextBtn?.isEnabled = false
+            }
+
+
+        }
     }
 
     companion object {
@@ -81,24 +80,16 @@ class InnerLevelFragment : Fragment() , RecyclerInterface {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment InnerLevelFragment.
+         * @return A new instance of fragment SetupScreen3.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            InnerLevelFragment().apply {
+            SetupScreen3().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                 }
             }
     }
-
-    override fun onItemClick(position: Int, callFrom: String) {
-        if (callFrom == "DayRecycler"){
-            navController.navigate(R.id.inner_day_fragment, bundleOf("image" to image,
-               ))
-        }
-    }
-
 }
